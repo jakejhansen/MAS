@@ -27,7 +27,7 @@ public abstract class Heuristic implements Comparator<Node> {
 		int rows = n.MAX_ROW;
 		int cols = n.MAX_COL;
 		
-		
+		/*
 		//Loop through boxes
 		int totdist = 0;
 		for (int i = 0; i < rows; i++) {
@@ -51,6 +51,7 @@ public abstract class Heuristic implements Comparator<Node> {
 			}
 		}
 		return totdist;
+		*/
 		
 		/*
 		// Distance from goal closest to agent to box and box -> agent
@@ -98,7 +99,7 @@ public abstract class Heuristic implements Comparator<Node> {
 		
 		
 		
-		/*
+		
 		// Distance from all goals to their closest box
 		int tot_dist = 0;
 		int minDist = rows * cols;
@@ -126,7 +127,7 @@ public abstract class Heuristic implements Comparator<Node> {
 			}
 		
 		return tot_dist;
-		*/
+		
 		
 		
 	   

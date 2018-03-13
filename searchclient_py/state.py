@@ -5,8 +5,17 @@
 
 
 import random
-
+import sys
+import numpy as np
 from action import ALL_ACTIONS, ActionType
+
+class Info:
+    def __init__(self, dims):
+        self.dims = dims
+        self.MAX_ROW, self.MAX_COL = dims
+
+        self.walls = [[False for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
+        self.goals = [[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
 
 
 class State:
@@ -14,7 +23,7 @@ class State:
     MAX_ROW = 70
     MAX_COL = 70
     
-    def __init__(self, copy: 'State' = None):
+    def __init__(self, copy: 'State' = None, dims = [70, 70], info = None):
         '''
         If copy is None: Creates an empty State.
         If copy is not None: Creates a copy of the copy state.
@@ -31,15 +40,18 @@ class State:
         
         Note: The state should be considered immutable after it has been hashed, e.g. added to a dictionary!
         '''
+        self.dims = dims
+        State.MAX_ROW, State.MAX_COL = self.dims
+        self.walls = info.walls
+        self.goals = info.goals
+        self.info = info
         self._hash = None
         if copy is None:
             self.agent_row = None
             self.agent_col = None
             
-            self.walls = [[False for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)]
             self.boxes = [[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)]
-            self.goals = [[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)]
-            
+
             self.parent = None
             self.action = None
             
@@ -48,10 +60,8 @@ class State:
             self.agent_row = copy.agent_row
             self.agent_col = copy.agent_col
             
-            self.walls = [row[:] for row in copy.walls]
             self.boxes = [row[:] for row in copy.boxes]
-            self.goals = [row[:] for row in copy.goals]
-            
+
             self.parent = copy.parent
             self.action = copy.action
             
@@ -70,7 +80,7 @@ class State:
             
             if action.action_type is ActionType.Move:
                 if self.is_free(new_agent_row, new_agent_col):
-                    child = State(self)
+                    child = State(self, self.dims, self.info)
                     child.agent_row = new_agent_row
                     child.agent_col = new_agent_col
                     child.parent = self
@@ -82,7 +92,7 @@ class State:
                     new_box_row = new_agent_row + action.box_dir.d_row
                     new_box_col = new_agent_col + action.box_dir.d_col
                     if self.is_free(new_box_row, new_box_col):
-                        child = State(self)
+                        child = State(self, self.dims, self.info)
                         child.agent_row = new_agent_row
                         child.agent_col = new_agent_col
                         child.boxes[new_box_row][new_box_col] = self.boxes[new_agent_row][new_agent_col]
@@ -96,7 +106,7 @@ class State:
                     box_row = self.agent_row + action.box_dir.d_row
                     box_col = self.agent_col + action.box_dir.d_col
                     if self.box_at(box_row, box_col):
-                        child = State(self)
+                        child = State(self, self.dims, self.info)
                         child.agent_row = new_agent_row
                         child.agent_col = new_agent_col
                         child.boxes[self.agent_row][self.agent_col] = self.boxes[box_row][box_col]
@@ -163,11 +173,19 @@ class State:
         for row in range(State.MAX_ROW):
             line = []
             for col in range(State.MAX_COL):
-                if self.boxes[row][col] is not None: line.append(self.boxes[row][col])
-                elif self.goals[row][col] is not None: line.append(self.goals[row][col])
-                elif self.walls[row][col] is not None: line.append('+')
-                elif self.agent_row == row and self.agent_col == col: line.append('0')
-                else: line.append(' ')
+                if self.boxes[row][col] is not None:
+                    line.append(self.boxes[row][col])
+                elif self.goals[row][col] is not None:
+                    line.append(self.goals[row][col])
+                elif self.walls[row][col] is True:
+                    line.append('+')
+                elif self.agent_row == row and self.agent_col == col:
+                    line.append('0')
+                else:
+                    line.append(' ')
             lines.append(''.join(line))
         return '\n'.join(lines)
+
+    def __lt__(self, other):
+        return True
 

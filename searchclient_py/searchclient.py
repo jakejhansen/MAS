@@ -10,6 +10,7 @@ import sys
 
 import memory
 from state import State
+from state import Info
 from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst
 from heuristic import AStar, WAStar, Greedy
 
@@ -25,23 +26,37 @@ class SearchClient:
             if colors_re.fullmatch(line) is not None:
                 print('Invalid level (client does not support colors).', file=sys.stderr, flush=True)
                 sys.exit(1)
-            
-            # Read lines for level.
-            self.initial_state = State()
-            row = 0
+
+            line_save = []
+
+            row_dim = 0
+            col_dim = len(line)
             while line:
+                line_save.append(line) #Save current line
+                row_dim += 1
+                line = server_messages.readline().rstrip()
+
+
+            # Read lines for level.
+            self.info = Info(dims = [row_dim, col_dim])
+            self.initial_state = State(dims = [row_dim, col_dim], info = self.info)
+
+            row = 0
+            for line in line_save:
                 for col, char in enumerate(line):
-                    if char == '+': self.initial_state.walls[row][col] = True
+                    if char == '+':
+                        self.info.walls[row][col] = True
                     elif char in "0123456789":
                         if self.initial_state.agent_row is not None:
                             print('Error, encoutered a second agent (client only supports one agent).', file=sys.stderr, flush=True)
                             sys.exit(1)
                         self.initial_state.agent_row = row
                         self.initial_state.agent_col = col
-                    elif char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ": self.initial_state.boxes[row][col] = char
-                    elif char in "abcdefghijklmnopqrstuvwxyz": self.initial_state.goals[row][col] = char
+                    elif char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                        self.initial_state.boxes[row][col] = char
+                    elif char in "abcdefghijklmnopqrstuvwxyz":
+                        self.info.goals[row][col] = char
                 row += 1
-                line = server_messages.readline().rstrip()
         except Exception as ex:
             print('Error parsing level: {}.'.format(repr(ex)), file=sys.stderr, flush=True)
             sys.exit(1)
@@ -93,9 +108,13 @@ def main(strat):
         strategy = StrategyDFS()
     
     # Ex. 3:
-    #strategy = StrategyBestFirst(AStar(client.initial_state))
-    #strategy = StrategyBestFirst(WAStar(client.initial_state, 5)) # You can test other W values than 5, but use 5 for the report.
-    #strategy = StrategyBestFirst(Greedy(client.initial_state))
+
+    elif strat == "astar":
+        strategy = StrategyBestFirst(AStar(client.initial_state))
+    elif strat == "wstar":
+        strategy = StrategyBestFirst(WAStar(client.initial_state, 5)) # You can test other W values than 5, but use 5 for the report.
+    elif strat == "greedy":
+        strategy = StrategyBestFirst(Greedy(client.initial_state))
     
     solution = client.search(strategy)
     if solution is None:

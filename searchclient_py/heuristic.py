@@ -5,15 +5,28 @@
 
 
 from abc import ABCMeta, abstractmethod
-
+from state import State
+import numpy as np
+import sys
 
 class Heuristic(metaclass=ABCMeta):
     def __init__(self, initial_state: 'State'):
         pass
     
     def h(self, state: 'State') -> 'int':
-        raise NotImplementedError
-    
+        goals = np.array(state.goals)
+        goals_loc = np.argwhere(goals)
+        boxes = np.array(state.boxes)
+        boxes_loc = np.argwhere(boxes)
+
+        tot_dist = 0
+        for box in boxes_loc:
+            for goal in goals_loc:
+                if boxes[box[0]][box[1]].lower() == goals[goal[0], goal[1]]:
+                    tot_dist += np.abs(box[0] - goal[0]) + np.abs(box[1] - goal[1])
+                    
+        return tot_dist
+
     @abstractmethod
     def f(self, state: 'State') -> 'int': pass
     
