@@ -1,0 +1,3 @@
+[submodule "multi-agent-systems"]
+	path = multi-agent-systems
+	url = git@github.com:GandalfSaxe/multi-agent-systems.git
