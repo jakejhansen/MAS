@@ -1,0 +1,72 @@
+red: 0,1,A,B
+blue: 2,C
++++++++++++++++++++++++++++
++           c+b           +
++      +++++ ++++++++++++ +
++      +  C+ +            +
++a     +     ++ +++B+++++++
++++++ ++++++++            +
++A          C++++++++++++ +
++ ++++       +            +
++ ++++       + ++++++++++++
++    12      +       B   0+
++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(N)];319
+[Move(W), Move(W), Move(E)];0
+[Move(W), Move(W), Move(N)];0
+[Push(W,W), Move(W), Move(N)];0
+[Push(W,W), Move(N), Move(E)];0
+[Push(W,W), Move(N), Move(E)];0
+[Push(W,W), Push(N,E), Move(E)];0
+[Push(W,W), Push(E,E), Move(E)];0
+[Push(W,W), Push(E,E), Move(S)];0
+[Push(W,W), Push(E,E), Move(E)];0
+[Push(W,N), Push(E,N), Push(N,W)];0
+[Push(N,N), Push(N,N), Push(W,W)];0
+[Push(N,E), Push(N,W), Push(W,W)];0
+[Push(E,E), Push(W,W), Push(W,W)];0
+[Push(E,E), Push(W,W), Push(W,W)];0
+[Push(E,E), Push(W,W), Push(W,W)];0
+[Push(E,E), NoOp, Push(W,W)];0
+[Push(E,E), NoOp, Push(W,N)];0
+[Push(E,E), NoOp, Push(N,N)];0
+[Push(E,E), NoOp, Push(N,E)];0
+[Push(E,E), NoOp, Push(E,N)];0
+[Push(E,E), NoOp, Push(N,N)];0
+[Push(E,E), NoOp, Push(N,N)];0
+[Push(E,N), NoOp, Push(N,E)];0
+[Push(N,N), NoOp, Push(E,E)];0
+[Push(N,W), NoOp, Push(E,E)];0
+[Push(W,W), NoOp, Push(E,E)];0
+[Push(W,W), NoOp, Push(E,E)];0
+[Push(W,W), NoOp, Push(E,E)];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(N,N), NoOp, NoOp];0
+[Push(N,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,N), NoOp, NoOp];0
+[Push(N,N), NoOp, NoOp];0
+[Push(N,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+32808ba12ae1ece57c1e7a77110c734962f73940
+successful
+319
+52
+d4cdbd4d302c74e0826bf0ebad37de472e3d04c4
+1495030772410

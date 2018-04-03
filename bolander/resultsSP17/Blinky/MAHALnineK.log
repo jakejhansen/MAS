@@ -1,0 +1,225 @@
+red: X
+yellow: Z
+orange: Q
+cyan: 0,O,N,R,T,V,C,I,M,A,P
+                    ++++++++++
+                 +++     1    +++
+               ++  POD BAY DOORS ++
+             ++      ++++++++      ++
+           ++I    ++++++++++++++     ++
+          +K    ++++++++++++++++++     +
+         ++N  ++++++++++++++++++++++   ++
+        ++ O ++++++++++++++++++++++++   ++
+       ++  W++++++++++++++++++++++++++   ++
+      ++I  ++++++++++++++++++++++++++++   ++
+      + V ++++++++++++++++++++++++++++++   +
+     +M E++++++++++++++++++++++++++++++++  I+
+    + A ++++++++++++++++++++++++++++++++++ M +
+    + D+++++++++++++++XXXXXX++++++++++++++   +
+   +S E+++++++++++++XXXXXXXXXX+++++++++++++  A+
+   +O ++++++++++++XXXXXXXXXXXXXX++++++++++++ F+
+  + M +++++++++++XXXXXXXXXXXXXXXX+++++++++++ R +
+  + E+++++++++++XXXXXXXXXXXXXXXXXX+++++++++++A +
+  +P +++++++++++XXXXXXXXXXXXXXXXXX+++++++++++I +
+ + O ++++++++++XXXXXXXXXXXXXXXXXXXX++++++++++D  +
+ + O+++++++++++XXXXXXXXXXXXXXXXXXXX+++++++++++  +
+ + R++++++++++XXXXXXXXXQQQQXXXXXXXXX++++++++++  +
+ +  ++++++++++XXXXXXXXQQQQQQXXXXXXXX++++++++++  +
+ + D++++++++++XXXXXXXXQQZZQQXXXXXXXX++++++++++  +
+ + E++++++++++XXXXXXXXQQZZQQXXXXXXXX++++++++++  +
+ + C++++++++++XXXXXXXXQQQQQQXXXXXXXX++++++++++  +
+ + I++++++++++XXXXXXXXXQQQQXXXXXXXXX++++++++++  +
+ + S+++++++++++XXXXXXXXXXXXXXXXXXXX+++++++++++  +
+ + I ++++++++++XXXXXXXXXXXXXXXXXXXX++++++++++   +
+  +O +++++++++++XXXXXXXXXXXXXXXXXX+++++++++++  +
+  +N +++++++++++XXXXXXXXXXXXXXXXXX+++++++++++  +
+  +S R+++++++++++XXXXXXXXXXXXXXXX+++++++++++   +
+   + E++++++++++++XXXXXXXXXXXXXX++++++++++++  +
+   + C +++++++++++++XXXXXXXXXX+++++++++++++   +
+    +E +++++++++++++++XXXXXX+++++++++++++++  +
+    +NTLY++++++++++++++++++++++++++++++++    +
+     +im sorry dave im afraid i cant do that+
+      +   ++++++++++++++++++++++++++++++   +
+      ++   ++++++++++++++++++++++++++++   ++
+       ++   ++++++++++++++++++++++++++   ++
+        ++   ++++++++++++++++++++++++   ++
+         ++   ++++++++++++++++++++++   ++
+          +     ++++++++++++++++++     +
+           ++     ++++++++++++++     ++
+             ++ I    ++++++++      ++
+               ++ WANT  0    YOU ++
+                 +++  TO HELP +++
+                    ++++++++++
+
+[Move(W), Move(W)];241495
+[Move(W), Move(S)];0
+[Push(W,S), Push(W,W)];0
+[Push(W,N), Push(W,N)];0
+[Push(W,N), Push(W,N)];0
+[Move(W), Move(W)];0
+[Move(W), Move(W)];0
+[Move(N), Move(W)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(W), Move(W)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(W), Move(W)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(N), Move(S)];0
+[Move(W), Move(W)];0
+[Move(W), Move(S)];0
+[Move(W), Move(W)];0
+[Pull(E,N), Move(S)];0
+[Pull(E,W), Move(W)];0
+[Push(W,S), Move(S)];0
+[Push(S,E), Move(W)];0
+[Move(N), Move(S)];0
+[Move(W), Move(S)];0
+[Move(N), Push(W,S)];0
+[Pull(S,W), Push(S,S)];0
+[Pull(E,N), Push(S,W)];0
+[Pull(S,W), Push(W,S)];0
+[Push(N,E), Push(S,S)];0
+[Move(W), Push(S,S)];0
+[Move(N), Push(S,E)];0
+[Move(W), Move(S)];0
+[Move(N), Move(S)];0
+[Push(N,N), Move(S)];0
+[Pull(W,N), Push(S,W)];0
+[Move(N), Push(S,W)];0
+[Move(N), Move(S)];0
+[Push(E,S), Move(S)];0
+[Move(W), Push(S,W)];0
+[Move(W), Move(S)];0
+[Pull(E,N), Move(S)];0
+[Pull(S,W), Move(S)];0
+[Push(N,E), Push(S,E)];0
+[Move(W), Move(N)];0
+[Move(N), Move(N)];0
+[Push(N,E), Move(N)];0
+[Push(N,W), Move(N)];0
+[Pull(S,W), Move(N)];0
+[Move(S), Move(N)];0
+[Move(S), Move(N)];0
+[Move(E), Move(N)];0
+[Pull(S,E), Move(N)];0
+[Push(E,N), Move(N)];0
+[Push(S,W), Move(N)];0
+[Move(S), Move(N)];0
+[Move(S), Move(N)];0
+[Move(E), Move(N)];0
+[Move(S), Move(N)];0
+[Move(E), Move(E)];0
+[Push(E,E), Move(N)];0
+[Pull(W,S), Move(N)];0
+[Pull(W,E), Move(E)];0
+[Pull(N,E), Move(N)];0
+[Pull(W,S), Move(N)];0
+[Push(E,S), Move(E)];0
+[Push(S,E), Move(N)];1
+[Push(E,E), Move(E)];0
+[Move(S), Move(N)];0
+[Move(E), Move(E)];0
+[Move(E), Move(N)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(E), Move(E)];0
+[Move(S), Move(E)];0
+[Move(E), Move(N)];0
+[Move(E), Move(E)];0
+[Move(S), Move(E)];0
+[Move(S), Move(N)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(N)];0
+[Pull(W,S), Push(E,S)];0
+[Pull(W,N), Push(E,S)];0
+[Pull(W,N), Push(S,E)];0
+[Move(W), Push(W,N)];0
+[Move(N), Move(W)];0
+[Move(N), Move(W)];0
+[Move(W), Move(W)];0
+[Move(W), Move(W)];0
+[Move(N), Move(S)];0
+[Move(W), Move(W)];1
+[Move(W), Move(W)];0
+[Move(N), Move(S)];0
+[Move(W), Move(W)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Move(N), Move(W)];0
+[Move(W), Move(S)];0
+[Push(N,W), Move(W)];0
+[Push(W,W), Move(S)];0
+[Push(W,N), Move(W)];0
+[Pull(E,N), Move(S)];0
+[Pull(E,W), Move(W)];0
+[Push(W,S), Move(S)];0
+[Move(E), Move(W)];0
+[Pull(W,E), Move(S)];0
+[Pull(W,E), Move(W)];0
+[Pull(N,E), Move(S)];0
+[Pull(W,S), Move(S)];0
+[Pull(N,E), Move(W)];0
+[Move(N), Move(S)];0
+[Pull(N,W), Move(S)];0
+[Pull(W,N), Push(S,W)];0
+[Push(N,W), Push(W,N)];0
+[Push(W,N), Move(S)];0
+[Pull(E,N), Move(S)];0
+[Pull(S,W), Pull(N,E)];0
+[Push(N,E), Pull(N,S)];0
+[Move(W), Pull(E,S)];0
+[Move(N), Pull(N,W)];0
+[Move(N), Pull(N,S)];0
+[Pull(S,E), Pull(N,S)];0
+[Push(N,E), Pull(E,S)];0
+[Pull(S,N), Push(W,S)];0
+[Pull(S,N), Push(S,S)];0
+[Pull(E,N), Push(S,S)];0
+[Pull(S,W), Push(W,S)];0
+[Pull(S,N), Push(S,S)];0
+[Push(E,E), Push(S,S)];0
+[Move(W), Push(S,E)];0
+[Pull(E,N), Move(S)];0
+[Move(S), Move(S)];0
+[Pull(N,S), Move(S)];0
+[Push(N,W), Move(W)];0
+[Push(W,N), Push(S,E)];0
+[Push(S,E), Push(S,E)];0
+[Push(E,N), Push(E,S)];0
+[Pull(W,S), Push(S,S)];0
+[Pull(N,E), Push(S,S)];0
+[Push(E,S), Push(S,S)];0
+[Push(S,S), Pull(N,W)];0
+[Push(S,S), Push(S,W)];0
+[Push(S,E), Push(S,E)];0
+[Push(E,S), Pull(S,E)];0
+aa58f20eeb92ab5fb1fe5f55ceabe02ac8eb11ad
+unsuccessful
+241497
+166
+89eb4430c5a572d5bb78b4a4eea731ea1cc1d36b
+1494957960199

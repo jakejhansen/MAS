@@ -1,0 +1,44 @@
+blue: 0,A,E,H,K,N,Q
+red: 1,B,F,I,L,O,R
+green: 2,C,G,J,M,P,S
++++++++++++++++++++++++++++++
++BAC     +ONP            GEF+
+++++     ++++            ++++
++LKM     0  1  2         JHI+
+++++                     ++++
++                           ++++++++++
++                            s  r  q +
++S+                         ++++++++++
++Q+                         +
++R+                         +
+++++++ +++ +++++++ +++ +++ ++
+     + + + +     + + + + + +
+     +p+ +m+     +j+ +g+ +c+
+     + + + +     + + + + + +
+     +o+ +l+     +i+ +f+ +b+
+     + + + +     + + + + + +
+     +n+ +k+     +h+ +e+ +a+
+     + + + +     + + + + + +
+     +++ +++     +++ +++ +++
+
+[NoOp, NoOp, Move(N)];3618
+[NoOp, NoOp, Move(W)];101
+[NoOp, NoOp, Move(W)];95
+[NoOp, NoOp, Move(N)];123
+[NoOp, NoOp, Pull(E,W)];138
+[NoOp, NoOp, Push(W,S)];107
+[NoOp, NoOp, Push(S,S)];103
+[NoOp, NoOp, Push(S,S)];52472
+[NoOp, NoOp, Push(S,W)];32357
+[NoOp, NoOp, Push(W,W)];34472
+[NoOp, NoOp, Push(W,W)];34825
+[NoOp, NoOp, Push(W,W)];31825
+[NoOp, NoOp, Push(W,W)];31509
+[NoOp, NoOp, Push(W,W)];36173
+[NoOp, NoOp, Push(W,W)];33892
+1e1371aee37419ef435f269df490828db40b872c
+unsuccessful
+291810
+15
+f3b8ca1e942b9af9f8c7535e64a4aab8ee1d0318
+1495032175591

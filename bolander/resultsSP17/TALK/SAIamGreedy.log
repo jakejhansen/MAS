@@ -1,0 +1,96 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ 0        BBB BBB BBB BBB    a+C     c  +                 +
++                              +++++++ + +                 +
++                                  b + + +       Aa        +
++                              +++++ + + +                 +
++                          A         + + +                 +
++b+++++++++++b+++++++ ++++++++++++++++ +             Dd    +
++b+         +b+     +b+    +A          +++++++++++++++++++++
++b+         +b+     + +    +                             Da+
++ +           +            +                             Cb+
++ +           +            +                             Bc+
++ +           +            +                             Ad+
++ +C         c+C          c+                               +
++ ++++++++++++++++++++++++++++++                    Ee     +
++                         AAAAA+                           +
++                              +                           +
++                              +                           +
++                                  Aa                      +
++                              +                           +
++                              +                           +
++                              +                           +
++                         aaaaa+                       a   +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Move(E)];427
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];1
+[Move(S)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Push(N,W)];104
+[Push(W,S)];1
+[Push(S,W)];1
+[Push(W,W)];0
+[Push(W,S)];1
+[Push(S,W)];0
+[Push(W,S)];1
+[Push(S,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,S)];0
+[Push(S,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,S)];0
+[Push(S,S)];1
+[Move(N)];24
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(N)];0
+[Move(N)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(N)];1
+[Move(N)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(S)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Pull(S,N)];12
+[Pull(E,N)];0
+[Push(W,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+840e5500a20c661c019ed88feb33a6fa2e854722
+unsuccessful
+589
+66
+8fbdeeb9166264bea18b532e8d7dff30ede8b70e
+1495035121823

@@ -1,0 +1,38 @@
+blue: 0,A,E,H,K,N,Q
+red: 1,B,F,I,L,O,R
+green: 2,C,G,J,M,P,S
++++++++++++++++++++++++++++++
++BAC     +ONP            GEF+
+++++     ++++            ++++
++LKM     0  1  2         JHI+
+++++                     ++++
++                           ++++++++++
++                            s  r  q +
++S+                         ++++++++++
++Q+                         +
++R+                         +
+++++++ +++ +++++++ +++ +++ ++
+     + + + +     + + + + + +
+     +p+ +m+     +j+ +g+ +c+
+     + + + +     + + + + + +
+     +o+ +l+     +i+ +f+ +b+
+     + + + +     + + + + + +
+     +n+ +k+     +h+ +e+ +a+
+     + + + +     + + + + + +
+     +++ +++     +++ +++ +++
+
+[NoOp, NoOp, Move(N)];2593
+[NoOp, NoOp, Move(N)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Pull(E,W)];0
+[NoOp, Move(E), Pull(E,W)];0
+[NoOp, Move(N), NoOp];1
+[NoOp, Move(N), NoOp];0
+[NoOp, Move(W), NoOp];0
+1e1371aee37419ef435f269df490828db40b872c
+unsuccessful
+2594
+9
+d545bb7fa48b5af70322e96038fddce690239a5a
+1495030918463

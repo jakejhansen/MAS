@@ -1,0 +1,30 @@
+red: 1,2,A,B,C
+cyan: 3,4,D,E,F
+blue: 5,6,0,7,G,H,X,Y
+ ++++++++    ++++++++
+ +abcg  +    +  hdef+
+ +++++ ++    ++ +++++
+ +0  + +      + +   +
+ +  Y+ +      + +X 7+
+ +++++ ++++++++ +++++
+    +            +
++++++ ++++++++++ +++++
++1        DA        3+
++     ++++++++++     +
++5       EGHB       6+
++     ++++++++++     +
++2        FC        4+
+++++++++++++++++++++++
+
+[NoOp, Move(E), Move(E), Move(W), Move(W), NoOp, NoOp, NoOp];11258
+[NoOp, Move(E), Move(E), Move(W), Move(W), NoOp, NoOp, NoOp];0
+[NoOp, Move(E), Move(E), Move(W), Move(W), NoOp, NoOp, NoOp];1
+[NoOp, Move(E), Move(E), Move(W), Move(W), NoOp, NoOp, NoOp];0
+[NoOp, Move(S), Move(N), Move(S), Move(N), NoOp, NoOp, NoOp];0
+[NoOp, Move(S), NoOp, Move(S), NoOp, NoOp, NoOp, NoOp];3
+137393f54979de3b32f36fb66014596453906979
+unsuccessful
+11262
+6
+c5d017d01639c5bdc58d259b4f8ca587ff530db6
+1495032077367

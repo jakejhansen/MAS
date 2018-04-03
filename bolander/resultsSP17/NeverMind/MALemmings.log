@@ -1,0 +1,85 @@
++++++++++++++++++++++++++++++
++B b                       A+
++                           +
++   a   0                   +
++++++++++++++++++++++++++++++
++   A                   a  B+
++                           +
++                           +
++       1                  b+
++++++++++++++++++++++++++++++
+
+[Move(N), Move(E)];163
+[Move(W), Move(E)];0
+[Move(W), Move(E)];0
+[Move(W), Move(E)];0
+[Move(W), Move(E)];0
+[Move(N), Move(E)];0
+[Move(W), Move(E)];0
+[Move(W), Move(E)];0
+[Pull(E,W), Move(E)];0
+[Pull(S,W), Move(E)];0
+[Move(E), Move(E)];0
+[Move(N), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(N)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(E)];0
+[Move(E), Move(N)];0
+[Move(E), Pull(S,N)];0
+[Move(E), Pull(S,N)];0
+[Move(E), Pull(W,N)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(N)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Move(E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(S,E), Move(W)];0
+[Pull(S,N), Move(W)];0
+[Pull(W,N), Move(W)];0
+[Pull(W,E), Move(N)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(W)];0
+[Pull(W,E), Move(N)];0
+[Pull(W,E), Pull(E,W)];0
+[Pull(W,E), Pull(E,W)];0
+[Pull(W,E), Pull(E,W)];0
+[Pull(W,E), Pull(E,W)];0
+[Pull(N,E), Pull(S,W)];0
+[Push(S,W), Push(N,E)];0
+[Push(W,W), Push(E,E)];0
+[Push(W,W), Push(E,E)];15
+[Push(W,W), Push(E,E)];0
+[Push(W,W), Push(E,E)];0
+[Push(W,W), Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+3f6351c51866644b64183bf7e631a86c7e531e2f
+successful
+178
+68
+ff168904eeb4c3be9ba95a1ecb6213504f7e6a35
+1495014736716

@@ -1,0 +1,71 @@
+++++++++++++++
++       KALLE+
++pp        ++++++++
++p p       +q  E  +
++p I       ++++++ +
++0 SISP   Qkalle+ +
++     P    ++++++ +
++   P P           +
++     P           +
++                 +
++++++++++++++++++++
+
+[Move(E)];6
+[Push(E,S)];0
+[Push(E,N)];0
+[Push(E,S)];0
+[Pull(N,E)];0
+[Pull(N,S)];0
+[Pull(W,S)];0
+[Pull(N,E)];1
+[Push(S,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,N)];0
+[Move(E)];2
+[Move(E)];0
+[Move(E)];0
+[Push(S,E)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,S)];0
+[Pull(W,S)];0
+[Push(E,N)];0
+[Push(N,N)];0
+[Push(N,W)];0
+[Push(W,N)];0
+[Push(N,W)];0
+[Move(E)];2
+[Move(E)];0
+[Move(E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,S)];0
+[Push(S,W)];0
+[Push(W,W)];1
+[Push(W,N)];0
+[Push(N,N)];1
+[Push(N,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Move(E)];3
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(E,S)];0
+[Push(W,N)];0
+[Push(N,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+7956be741067b79764e6bace36e6af94dbd0102e
+unsuccessful
+18
+53
+b90e7c41bb411746d5a770d7cccc734493ae6239
+1494963300651

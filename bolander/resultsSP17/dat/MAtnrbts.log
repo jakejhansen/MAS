@@ -1,0 +1,52 @@
+red: A,R,E,F,U,N,B,0,1
+yellow: O,2,3
+green: T,S,4,5
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++              ++++              ++++                  +++
++     +R++O+    +++     +O++T+    +++                  +++++++
+++    +++++++    +++    +BO+R++          ++      ++    ++ 135++
+  +   ++++++O    ++++   +++++++    +++++++++    +++++++++ 240+++
+  +   +++++++    ++++   +++++++    +++++++++    +++++++++ +++++++
+  +   +B++T+    +++++   ++++++    ++++++++++    +++++++          +
+  +           +++++++           ++++++++++++    +++++             +
+  +   ++++++    +++++   ++++++    ++++++++++    ++++      ++++     +
+  +   +++++++    ++++   +++++++    ++ROBOT++    +++++     +  S++++++
+  +   +++++++    ++++   +++++++                 +++++++      S++++++
+  +   +++++++    ++++   +++++++    +++++++++    ++++++++++      ++++
+++    +++++++    +++    ++++++     ++++++++      O++++++++++S     ++
++     +++++++    ++               +++++++R        O+     +++S      +
++     +++++++                    ++++++++B        T+              +
+++   +++++++++++++++++++++  +++++++++++++++++++++++++           ++
++                                                           +++++
++    robots          robots          robots          robots     +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        ++   ARE FUN   ++
+                         +++++++++++++++
+
+[NoOp, Move(W), Move(W), NoOp, NoOp, NoOp];1644
+[NoOp, NoOp, Move(S), NoOp, Move(W), NoOp];762
+[NoOp, Move(S), Move(S), NoOp, NoOp, NoOp];22
+[NoOp, Move(S), Move(W), NoOp, NoOp, NoOp];22
+[NoOp, Move(S), Move(W), NoOp, Move(W), NoOp];0
+[NoOp, Move(W), Move(S), NoOp, Move(S), NoOp];1
+[NoOp, Move(W), Move(S), NoOp, Move(S), NoOp];0
+[NoOp, Move(S), Move(S), NoOp, Move(S), NoOp];1
+[NoOp, Move(W), Move(S), NoOp, Move(S), NoOp];0
+[NoOp, Move(W), Move(E), NoOp, Move(S), NoOp];0
+[NoOp, Move(S), Move(E), NoOp, NoOp, NoOp];31
+[NoOp, Move(S), Move(W), NoOp, NoOp, NoOp];39
+[NoOp, Move(E), NoOp, NoOp, Move(S), NoOp];0
+[NoOp, Move(E), NoOp, NoOp, Move(E), NoOp];1
+[NoOp, Move(S), NoOp, NoOp, Move(E), NoOp];0
+[NoOp, Move(N), NoOp, NoOp, Move(E), NoOp];791
+[NoOp, Move(E), NoOp, NoOp, Move(N), NoOp];0
+[NoOp, Move(E), NoOp, NoOp, Pull(W,E), NoOp];0
+[NoOp, Move(S), NoOp, NoOp, Pull(S,E), NoOp];1
+[NoOp, Move(W), NoOp, NoOp, NoOp, NoOp];33920
+[NoOp, NoOp, NoOp, NoOp, Pull(S,N), NoOp];0
+f0141f62cd13e2d770f9fa841108dd17f08a08d9
+unsuccessful
+37235
+21
+ad8e79b1f45125bcc118d1f5a6ce0e3769870443
+1495032126986

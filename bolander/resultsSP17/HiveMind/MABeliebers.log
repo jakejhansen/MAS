@@ -1,0 +1,35 @@
+blue: 4,0,5,6,A,E,J,K,L,F
+red: 1,B
+yellow: 2,C
+magenta: 3,7,D,G,N
+cyan: 8,9,H,I,M
++++++++++++++++++++++++++
++  G 1            7 A g +
++ b H 2       h    8  B +
++  I 3   a++++    9 C i +
++         ++++          +
++ d J 4   ++++    0 D j +
++  K 5   c++++k      E  +
++ f L 6  e++++      F l +
++                       +
++  M                 N  +
++  +++++++++++++++++++  +
++          mn           +
++++++++++++++++++++++++++
+
+[Move(E), Move(E), Move(E), Move(W), Move(W), Move(W), Move(W), Move(S), Move(W), Move(W)];2066
+[Move(S), Move(E), Move(E), Move(S), Pull(N,W), Push(W,S), Pull(E,W), Move(S), Move(N), Move(S)];168
+[Move(E), Move(E), Move(E), Move(W), Pull(N,S), Push(S,S), Pull(E,W), Move(S), Move(W), Move(S)];54
+[Pull(W,E), Move(E), Move(E), Move(W), Push(S,E), Push(S,E), Pull(E,W), Move(S), Move(W), Move(S)];494
+[Pull(N,E), Move(E), Move(E), Move(N), Push(E,E), Push(E,E), Pull(S,W), Move(S), Move(S), Move(S)];743
+[Move(N), Move(E), Move(E), Move(N), Push(E,E), Push(E,E), Pull(E,N), Move(S), Move(W), Move(S)];520
+[Move(N), Move(E), Move(E), Move(E), Push(E,N), Push(E,E), Pull(E,W), Move(E), Move(W), Move(S)];1398
+[Move(N), Move(E), Move(E), Push(N,E), Pull(S,N), Push(E,E), Pull(E,W), Move(S), Move(W), Move(W)];1617
+[Move(N), Move(E), Move(W), Push(E,E), Pull(S,N), Push(E,E), Pull(E,W), Move(E), Move(S), Move(W)];1004
+[Pull(S,E), Move(E), Move(E), Push(E,E), Push(N,N), Push(E,E), Pull(E,W), Move(E), Move(N), Move(W)];39
+bba1f8f55ba186a9bbf677b67f39779598fac054
+unsuccessful
+8103
+10
+1740433a87b4e2b7406f4562f4025a603a0ea862
+1495029854825

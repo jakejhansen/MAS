@@ -1,0 +1,35 @@
+red: 0,A
+green: 1,2,3,4,5
+blue: 6,B
++++++++++++
++6       a+
++++++B+++++
++         +
++ +++3+++ +
++ +     + +
++ + +++ + +
++ + 102 +5+
++ + +++ + +
++ +     + +
++ +++4+++ +
++    A    +
++++++++++++
+
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(E)];187
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(E)];1
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(E)];0
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(E)];0
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Pull(W,S)];0
+[NoOp, Move(W), NoOp, NoOp, NoOp, NoOp, Pull(W,E)];1
+[Move(W), Move(N), NoOp, NoOp, NoOp, NoOp, Pull(W,E)];0
+[Move(W), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp];1
+[Move(S), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp];0
+[Move(S), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp];0
+c276a9e5329350f5ca341e52e5e3ad07d6781bc1
+unsuccessful
+191
+12
+cfc16ff29e3d902f7882700928ce23406831477f
+1495032058108

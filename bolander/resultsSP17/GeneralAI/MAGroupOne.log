@@ -1,0 +1,191 @@
+red: 0,A,B
+blue: 1,C,D
+cyan: 2,E,F
+magenta: 3,G,H
+    +++++
+    +aCh+
+    ++0++
+     + +
+     + +
++++  + +   +++
++g++++B+++++b+
++A3  H D   1E+
++f++++F+++++c+
++++  + +   +++
+     + +
+     + +
+    ++2++
+    +eGd+
+    +++++
+
+[Move(S), Move(W), Move(N), Move(E)];390
+[NoOp, NoOp, Move(N), Move(E)];6
+[Move(S), Move(W), Move(N), NoOp];11
+[Move(S), Move(W), NoOp, NoOp];1
+[Pull(N,S), NoOp, NoOp, NoOp];0
+[Pull(N,S), Push(W,W), NoOp, NoOp];0
+[Pull(N,S), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[Push(S,S), Pull(E,W), NoOp, NoOp];113
+[Push(S,S), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, Push(N,N), NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[Push(S,S), NoOp, NoOp, NoOp];27
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];30
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];21
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];25
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];20
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];23
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];19
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];24
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];22
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];24
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];22
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];2
+[NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];24
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp];0
+6ed4776ba51dc7acf2f0eef79aa8bae0d61b3624
+unsuccessful
+812
+165
+e42880e0bd2824b1cca536a9b40c5ca9ecba3f05
+1495034697172

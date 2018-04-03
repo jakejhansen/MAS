@@ -1,0 +1,35 @@
+++++++++++++++
++A    ++++AAA+
++ ++        a+
+++++  A   + A+
+++A+0+++  + ++
+++++++aaa  a++
+++a+Aa  + + ++
++   +aaaa  A +
++B  +aa   A  +
++cA +  +++   +
++C+ +++      +
++b+  AAA     +
+++++++++++++++
+
+[Move(N)];280
+[Move(E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,S)];0
+[Push(S,S)];0
+[Push(S,W)];0
+[Push(W,W)];0
+[Move(S)];235
+[Move(W)];0
+[Move(W)];0
+[Pull(S,W)];0
+[Push(N,E)];0
+[Push(E,E)];0
+[Push(E,N)];0
+479c1b98c43f4b5841d835fa5154dc3cbde96e1a
+unsuccessful
+515
+15
+ff318c885e6af2a10fddcd9e71bf5a092e771c19
+1495037546854

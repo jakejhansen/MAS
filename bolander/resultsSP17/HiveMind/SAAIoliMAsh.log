@@ -1,0 +1,118 @@
++++++++++++
++AIO     0+
++LIM      +
++ASH      +
++         +
++BBBB BBBB+
++BBBB BBBB+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++AAAA AAAA+
++AAAA AAAA+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++AAAA AAAA+
++AAAA AAAA+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++BBBB BBBB+
++BBBB BBBB+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++aiolimash+
++++++++++++
+
+[Move(W)];1588
+[Move(W)];8
+[Move(W)];3
+[Move(S)];3
+[Move(W)];2
+[Move(W)];3
+[Pull(S,W)];2
+[Push(W,S)];263
+[Push(S,E)];3
+[Push(E,E)];2
+[Push(E,S)];4
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];2
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];2
+[Push(S,S)];3
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];5
+[Push(S,S)];4
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];1
+[Push(S,S)];1
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];2
+[Push(S,S)];4
+[Push(S,S)];4
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];3
+[Push(S,S)];2
+[Push(S,S)];4
+[Push(S,E)];2
+[Push(E,E)];2
+[Push(E,E)];4
+[Push(E,E)];2
+[Move(W)];55
+[Move(W)];2
+[Move(W)];1
+[Move(N)];2
+[Move(N)];3
+[Move(N)];7
+[Move(N)];4
+[Move(N)];3
+[Move(N)];3
+[Move(N)];2
+[Pull(N,W)];2
+[Pull(N,W)];3
+[Pull(N,S)];2
+[Pull(N,S)];1
+[Move(N)];4
+[Move(N)];2
+[Move(N)];1
+[Move(N)];2
+[Move(N)];1
+cbb0d7f66f94775b6185a6692b47fdca24a5cb1e
+unsuccessful
+2084
+69
+9db4030b20acd8adcdea717319fb05820da7507e
+1495032775654

@@ -1,0 +1,30 @@
+red: 0,A
+cyan: 1,C
+yellow: 2,B
+blue: 3,D
+magenta: 4,M
+orange: 5,I
+pink: 6,N
+green: 7,J
++++++++++++++++++
++ +1+ +3+ +5+n+7+
++ + + + + + + + +
++ + + + + + + + +++
++0AC B D M I N J a+
++ + + + + + + + +++
++ + + + + + + + +
++ + +2+ +4+ +6+c+
++++++++++++++++++
+
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(N), Move(S)];134
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(N), Move(S)];0
+[NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Push(N,N), Pull(N,S)];0
+[NoOp, Move(S), NoOp, NoOp, NoOp, Move(S), Push(N,N), NoOp];5
+[NoOp, Move(S), NoOp, NoOp, NoOp, Move(S), Push(N,N), NoOp];0
+[NoOp, Push(S,E), NoOp, NoOp, NoOp, Pull(N,S), NoOp, NoOp];1
+7c1f45a0600593fa6854169a8f8842953b0f2b53
+unsuccessful
+140
+6
+ed65a7de4353ac2c885ca51f7bc1d9e4aba79115
+1495032088655

@@ -1,0 +1,72 @@
+red: 0,1,A,B
+blue: 2,C
++++++++++++++++++++++++++++
++           c+b           +
++      +++++ ++++++++++++ +
++      +  C+ +            +
++a     +     ++ +++B+++++++
++++++ ++++++++            +
++A          C++++++++++++ +
++ ++++       +            +
++ ++++       + ++++++++++++
++    12      +       B   0+
++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(N)];645
+[Move(W), Move(W), Move(E)];27
+[Move(W), Move(W), Move(E)];24
+[Push(W,W), Move(W), Move(E)];5
+[Push(W,W), Move(N), Move(E)];8
+[Push(W,W), Move(N), Move(N)];1
+[Push(W,W), Push(N,E), Move(E)];22
+[Push(W,W), Push(E,E), Move(N)];36
+[Push(W,W), Push(E,E), Pull(W,E)];1
+[Push(W,W), Push(E,E), Pull(W,E)];1
+[Push(W,N), Push(E,N), Pull(W,E)];3
+[Push(N,N), Push(N,N), Pull(W,E)];3
+[Push(N,E), Push(N,W), Pull(W,E)];1
+[Push(E,E), Push(W,W), Pull(W,E)];1
+[Push(E,E), Push(W,W), Pull(W,E)];2
+[Push(E,E), Push(W,W), Push(E,N)];8
+[Push(E,E), NoOp, Push(N,N)];5
+[Push(E,E), NoOp, Push(N,N)];1
+[Push(E,E), NoOp, Push(N,N)];2
+[Push(E,E), NoOp, Push(N,N)];1
+[Push(E,E), NoOp, Push(N,E)];2
+[Push(E,E), NoOp, Push(E,E)];3
+[Push(E,E), NoOp, Push(E,E)];2
+[Push(E,N), NoOp, Push(E,E)];3
+[Push(N,N), NoOp, Push(E,E)];1
+[Push(N,W), NoOp, Push(E,E)];7
+[Push(W,W), NoOp, Push(E,E)];3
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];6
+[Push(W,W), NoOp, NoOp];1
+[Push(N,N), NoOp, NoOp];2
+[Push(N,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];2
+[Push(E,E), NoOp, NoOp];3
+[Push(E,N), NoOp, NoOp];1
+[Push(N,N), NoOp, NoOp];1
+[Push(N,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];133
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];5
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];1
+12d7766fed7bb54915ca8486b1d717182092904c
+successful
+983
+52
+ae9600428b7895688137c190383a85521f9b4c18
+1495038967968

@@ -1,0 +1,116 @@
+red: 0,1,2,3,A,B,D,E,H,I,L,M,N,O,R,S,T,X,V
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++      t   h  o   m   as  x +      b  ol  an    der       +
++ +++++++++++++++++++++++++ + +++++++++++++++++++++++++++x+
++ +        H  O   M   AS  +++ +        L  A     D       +++
++ +                        0+ +                          1+
++ +                         + +                           +
++ +                         + +         T                 +
++ +                         + +                           +
++ +                         + +              T            +
++ +              A          + +                           +
++ +              R          + +                           +
++ +              N          + +            HOV            +
++ +              E          + +            AAAV           +
++ +                         + +                           +
++ +                         + +                           +
++ +T                        + +B                          +
++ +H                        + +O                          +
++ +O                        + +L                          +
++ +M                        + +A                          +
++ +A                        + +N                          +
++ +S                        + +D                          +
++ +X                        + +ERX                        +
++                           +                             +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                      +AIARNE            +
++                                      +             +    +
++  +++++++++++++++++++++++++++++++++   +             +    +
++  +                               +   +             +    +
++  +        +           ++++++++++++   +             +    +
++  +        +           +     +        +             +    +
++  +        +           +   +a+  +++++++             +    +
++  +        +           +   +i+  +a+                 +    +
++  +        +           +   +a+  +i+                 +    +
++  +        +           +   +r+  +a+                 +    +
++  +        +           +   +n+  +r+                 +    +
++  +        +           +   +e+  +n+                 +    +
++  +        +           +   +++  +e+                 +    +
++  +        +           +     +    +                 +    +
++  +        +           +     ++++++++++++++++++++++++    +
++  +        +           +                                 +
++  +        +           +++++++++++++++++++++++++++++     +
++  +        +                                      3+     +
++  +        +                                 +++++++     +
++           +                      AIARNE     +2          +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(E), Move(W)];99838
+[Move(W), Move(W), Move(E), Move(W)];0
+[Move(W), Move(W), Move(E), Move(W)];1
+[Move(W), Move(W), Move(E), Move(W)];1
+[Move(W), Move(W), Move(E), Move(W)];0
+[Move(W), Move(W), Move(E), Move(W)];0
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(N), Move(W)];0
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(E), Move(W)];1
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(N), Move(S)];0
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(N), Move(W)];1
+[Move(W), Move(W), Move(N), Move(W)];0
+[Move(W), Move(W), Move(N), Pull(N,S)];1
+[Move(S), Move(W), Move(N), Pull(W,S)];1
+[Move(W), Move(W), Move(N), Pull(W,E)];1
+[Move(S), Move(W), Move(N), Pull(W,E)];0
+[Move(S), Move(W), Move(N), Pull(W,E)];1
+[Move(S), Move(S), Move(N), Pull(W,E)];1
+[Move(S), Move(S), Move(N), Pull(W,E)];1
+[Move(S), Move(S), Move(N), Pull(W,E)];0
+[Move(W), Move(S), Move(N), Pull(W,E)];1
+[Move(S), Move(S), Move(N), Pull(W,E)];1
+[Move(S), Move(S), Move(W), Pull(W,E)];1
+[Move(S), Move(S), Move(W), Pull(W,E)];0
+[Move(W), Move(W), Move(W), Pull(W,E)];1
+[Move(W), Move(W), Move(W), Pull(W,E)];1
+[Move(W), Move(S), Move(W), Pull(N,E)];1
+[Move(S), Move(S), Move(W), Pull(N,S)];0
+[Move(S), Move(S), Move(W), Pull(N,S)];1
+[Move(S), Move(W), Move(W), Pull(N,S)];1
+[Move(S), Move(S), Pull(E,W), Pull(N,S)];1
+[Move(S), Move(W), Pull(E,W), Pull(N,S)];0
+[Move(S), Move(S), Pull(E,W), Pull(N,S)];1
+[Move(S), Move(E), Pull(E,W), Pull(N,S)];16260
+[Move(W), Move(E), Pull(E,W), Pull(N,S)];0
+[Move(S), Move(E), Pull(E,W), Pull(N,S)];0
+[Push(W,S), Move(E), Pull(E,W), Pull(N,S)];0
+[Push(S,W), Move(N), Pull(E,W), Pull(N,S)];0
+[Push(W,W), Move(E), Pull(S,W), Pull(N,S)];0
+[Push(W,N), Move(E), Pull(S,N), Pull(N,S)];1
+[Push(N,N), Move(E), Pull(S,N), Pull(W,S)];0
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];1
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(N), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(N), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];0
+[Push(N,N), Move(W), Pull(S,N), Pull(W,E)];16234
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];15820
+[Push(N,N), Move(W), Pull(S,N), Pull(W,E)];15405
+[Push(N,N), Move(E), Pull(S,N), Pull(W,E)];15638
+[Push(N,N), Move(W), Pull(S,N), Pull(S,E)];15307
+[Push(N,N), Move(E), Pull(W,N), Pull(S,N)];15498
+[Push(N,N), Move(W), Pull(W,E), Pull(S,N)];15247
+[Push(N,N), Move(E), Pull(W,E), Pull(S,N)];15450
+[Push(N,N), Move(W), Pull(W,E), Pull(S,N)];15294
+[Push(N,N), Move(E), Pull(W,E), Pull(S,N)];15490
+[Push(N,N), Move(W), Pull(W,E), Pull(S,N)];15366
+b8f8c643bd45d2b30fa2d104aa923fbfdb3fa04a
+unsuccessful
+286874
+63
+7bffaed3e0aded397a84373080fdc0d1e1fb10b8
+1495030617620

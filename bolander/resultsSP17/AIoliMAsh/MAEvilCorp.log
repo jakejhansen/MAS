@@ -1,0 +1,68 @@
+red: 0,B,C,D,E
+green: 1,A,F,G,H,I,J
+++++++++++++
++     fghij+
++  0  ++++++
++     FGHIJ+
++A+E+a++++++
++B+ +b+
++C+ +c+
++D+1+d+
++++++++
+
+[Move(S), NoOp];590
+[Pull(W,S), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,E), NoOp];0
+[NoOp, Move(N)];234
+[NoOp, Move(N)];0
+[NoOp, Move(N)];1
+[NoOp, Move(N)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Pull(E,S)];0
+[NoOp, Push(W,N)];0
+[NoOp, Push(N,E)];0
+[NoOp, Push(E,N)];0
+[NoOp, Push(N,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[Pull(W,E), NoOp];400
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(S), NoOp];1
+[Pull(N,S), NoOp];0
+[Pull(E,S), NoOp];0
+[Push(W,N), NoOp];0
+[Push(N,E), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Pull(N,S), NoOp];0
+[Pull(N,S), NoOp];0
+[Pull(E,S), NoOp];0
+[Push(W,N), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Pull(N,S), NoOp];0
+[Pull(N,S), NoOp];0
+[Pull(N,S), NoOp];0
+[Pull(E,S), NoOp];0
+[Pull(E,W), NoOp];0
+[Pull(S,W), NoOp];0
+[Push(N,N), NoOp];0
+[Push(N,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,S), NoOp];0
+[Push(S,S), NoOp];1
+[Push(S,S), NoOp];0
+[Push(S,S), NoOp];0
+[Push(S,S), NoOp];0
+726b54302bcf99c117e4ce708d0bd8947c6e326f
+unsuccessful
+1227
+50
+adc7df7a53637db83a6ff06a283af22a71a17f96
+1495031172079

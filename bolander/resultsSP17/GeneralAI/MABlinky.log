@@ -1,0 +1,78 @@
+red: 0,1,A,B
+blue: 2,C
++++++++++++++++++++++++++++
++           c+b           +
++      +++++ ++++++++++++ +
++      +  C+ +            +
++a     +     ++ +++B+++++++
++++++ ++++++++            +
++A          C++++++++++++ +
++ ++++       +            +
++ ++++       + ++++++++++++
++    12      +       B   0+
++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(N)];435
+[Move(W), Move(W), Move(N)];1
+[Move(W), Move(W), Move(N)];0
+[Push(W,W), Move(W), NoOp];1
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), Move(N), NoOp];5
+[Push(W,W), Move(N), NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), Push(N,E), NoOp];4
+[Push(W,W), NoOp, NoOp];0
+[NoOp, Push(E,E), NoOp];3
+[Push(W,N), Push(E,E), NoOp];23
+[Push(N,N), Push(E,E), NoOp];0
+[Push(N,E), NoOp, NoOp];0
+[NoOp, Push(E,N), NoOp];0
+[Push(E,E), NoOp, NoOp];16
+[Push(E,E), Push(N,N), NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), Push(N,W), NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), Push(W,W), Move(W)];0
+[Push(E,E), Push(W,W), NoOp];0
+[Push(E,E), Push(W,W), Move(N)];5
+[Push(E,E), NoOp, Move(N)];0
+[Push(E,E), NoOp, Move(N)];1
+[Push(E,N), NoOp, Move(N)];1
+[Push(N,N), NoOp, Move(N)];1
+[Push(N,W), NoOp, Move(E)];0
+[Push(W,W), NoOp, Move(E)];1
+[Push(W,W), NoOp, Move(E)];0
+[Push(W,W), NoOp, Move(E)];0
+[Push(W,W), NoOp, Move(E)];1
+[Push(W,W), NoOp, Move(E)];1
+[Push(W,W), NoOp, Move(E)];0
+[Push(N,N), NoOp, NoOp];1
+[NoOp, NoOp, Move(S)];3
+[Push(N,E), NoOp, Move(S)];3
+[Push(E,E), NoOp, Move(S)];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, Move(W)];2
+[Push(E,E), NoOp, Move(W)];1
+[Push(E,E), NoOp, NoOp];0
+[NoOp, NoOp, Pull(W,N)];1
+[Push(E,N), NoOp, NoOp];2
+[NoOp, NoOp, Push(E,E)];2
+[Push(N,N), NoOp, Push(E,E)];1
+[Push(N,W), NoOp, NoOp];1
+[NoOp, NoOp, Push(E,N)];0
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, Push(N,N)];1
+[Push(W,W), NoOp, Push(N,N)];1
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];6
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+12d7766fed7bb54915ca8486b1d717182092904c
+successful
+526
+58
+0ed2199b1c448e5b02230a7436918ce0052e3cf6
+1495033761722

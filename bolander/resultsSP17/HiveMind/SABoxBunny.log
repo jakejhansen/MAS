@@ -1,0 +1,129 @@
++++++++++++++++++++++++++++++++++++
+++++++ ++++++++++++++++         +++
++c    c +++++BOX+++++++ +++++++ +++
++ ++++ ++++++++++++++++ +++++++ +++
++ ++++++++++BUNNY++++++ +++++     +
++ +++++++++++++++++++++ +++++Z+ +z+
++  CC  + ++++++++++++++ +++++Y+ +y+
++ ++++++ ++++++++++++++ +++++X+ +x+
++      B    AAA0   ++++ +++++V+ +v+
++ ++ +++++++++++++ ++++ +++++A+ +a+
++  +b+TOP+FUNNY+++ ++++ +++++B+ +b+
++  +++++++++++++++ ++++ +++++C+ +c+
++  +++++ +++++++++ ++++ +++++E+ +e+
++  +B+             ++++ +++++F+ +f+
++  ++++++++++++++++++++ +++++G+ +g+
++                ++++++ +++++H+ +h+
++++++++++++++            ++++I+ +i+
+++++++++++++              +++J+ +j+
++++++++++++                ++K+ +k+
+++++++++++DDD++++++++++++++++L+ +l+
++++++++++DDD+++++++++++++++++M+ +m+
+++++++++DDD++  +  +++++++++++N+ +n+
++++++++DDD+++  +  +++++ + +++O+ +o+
+++++++DDDD++CUT+POW++ +++++ +P+ +p+
++++++DDDD++         ++ +++ ++Q+ +q+
+++++DDDD++++       ++++ + +++R+ +r+
++++DDDD++++++ HAD ++++++ ++++S+ +s+
+++DDDD++++++++   ++++++++++++T+ +t+
++ DDDDDDDDDDDD   whatupdoc ++U+ +u+
++++++++++++++++++++++++++++++++++++
+
+[Pull(E,W)];34012
+[Pull(E,W)];8
+[Pull(E,W)];10
+[Pull(S,W)];8
+[Pull(S,N)];7
+[Pull(S,N)];4
+[Pull(S,N)];4
+[Pull(S,N)];5
+[Pull(W,N)];3
+[Pull(W,E)];5
+[Pull(W,E)];7
+[Pull(W,E)];7
+[Pull(W,E)];3
+[Pull(W,E)];3
+[Pull(W,E)];4
+[Pull(W,E)];3
+[Pull(W,E)];3
+[Pull(W,E)];2
+[Pull(N,E)];3
+[Push(S,W)];4
+[Push(W,W)];2
+[Move(E)];2
+[Move(E)];4
+[Move(E)];9
+[Move(E)];7
+[Move(E)];5
+[Move(E)];2
+[Move(E)];6
+[Move(E)];4
+[Move(E)];3
+[Move(E)];5
+[Move(E)];4
+[Move(N)];5
+[Move(N)];5
+[Move(N)];3
+[Move(N)];1
+[Move(N)];2
+[Move(W)];2
+[Move(W)];3
+[Move(W)];2
+[Move(W)];3
+[Pull(E,W)];3
+[Pull(E,W)];4
+[Pull(E,W)];7
+[Pull(E,W)];5
+[Pull(S,W)];1
+[Pull(S,N)];2
+[Pull(S,N)];4
+[Pull(S,N)];4
+[Pull(S,N)];4
+[Pull(W,N)];4
+[Pull(W,E)];3
+[Pull(W,E)];1
+[Pull(W,E)];3
+[Pull(W,E)];2
+[Pull(W,E)];2
+[Pull(W,E)];3
+[Pull(W,E)];9
+[Pull(W,E)];2
+[Pull(W,E)];5
+[Pull(W,E)];2
+[Push(E,N)];2
+[Move(E)];6
+[Move(E)];4
+[Move(E)];5
+[Move(E)];2
+[Move(E)];1
+[Move(E)];2
+[Move(E)];1
+[Move(E)];1
+[Move(E)];2
+[Move(E)];1
+[Move(N)];2
+[Move(N)];3
+[Move(N)];3
+[Move(N)];2
+[Move(N)];1
+[Move(W)];2
+[Move(W)];4
+[Move(W)];2
+[Move(W)];2
+[Move(W)];2
+[Push(W,W)];5
+[Push(W,W)];4
+[Push(W,W)];3
+[Push(W,W)];3
+[Push(W,N)];2
+[Push(W,W)];17
+[Push(W,W)];2
+[Push(W,W)];2
+[Push(W,S)];3
+[Push(S,S)];3
+3fcb3fcfef36132413110e38c26c0fdf290de7ca
+unsuccessful
+34348
+92
+d8956cfabf78cd1135dfc0b75c6d0415ce708734
+1495033236126

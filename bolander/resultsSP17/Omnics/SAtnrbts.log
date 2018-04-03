@@ -1,0 +1,91 @@
+++++++            ++++++
+++    ++          ++    ++
++      ++++++++++++      +
++  BD  ad        bc  AC  +
++      ++++     +++      +
+++    ++  ++   ++ ++    ++
+ ++++++    +   +   ++++++
+           ++0++
+ ++++++    +   +   ++++++
+++    ++  ++   ++ ++    ++
++      ++++     +++      +
++  BD  cd        ba  AC  +
++      ++++++++++++      +
+++    ++          ++    ++
+ ++++++            ++++++
+
+[Move(N)];125
+[Move(N)];1
+[Move(N)];0
+[Move(N)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];1
+[Move(N)];0
+[Move(E)];1
+[Move(E)];0
+[Pull(W,S)];0
+[Push(S,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];2
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Move(E)];142
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(W)];1
+[Move(S)];0
+[Move(S)];0
+[Move(E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(E)];0
+[Move(S)];1
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];1
+[Move(N)];0
+[Move(E)];0
+[Pull(E,S)];10
+[Push(S,W)];0
+[Push(W,W)];0
+[Push(W,W)];2
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+3269f3ae118a7e9b0f363a030505aa2da9b17657
+unsuccessful
+302
+69
+55b28021f1bcb07cde16714237099742bc79d58b
+1495026844735

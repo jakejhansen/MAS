@@ -1,0 +1,97 @@
++++++++++++++++++++++++++++++
++B b                       A+
++                           +
++   a   0                   +
++++++++++++++++++++++++++++++
++   A                   a  B+
++                           +
++                           +
++       1                  b+
++++++++++++++++++++++++++++++
+
+[Move(N), NoOp];158
+[Move(N), NoOp];1
+[Move(E), NoOp];0
+[Move(E), NoOp];1
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];3
+[Move(E), NoOp];2
+[Move(E), NoOp];1
+[Move(E), NoOp];1
+[Move(E), NoOp];1
+[Move(E), NoOp];2
+[Move(E), NoOp];1
+[Move(E), NoOp];0
+[Move(E), NoOp];1
+[Move(E), NoOp];0
+[Move(E), NoOp];1
+[Move(E), NoOp];0
+[Move(E), NoOp];1
+[Move(E), NoOp];0
+[Push(E,S), NoOp];0
+[Push(S,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];3
+[Push(W,W), NoOp];2
+[Push(W,W), NoOp];3
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];2
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];1
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,S), NoOp];1
+[Move(N), NoOp];3
+[Move(W), NoOp];1
+[Move(W), NoOp];1
+[Pull(E,W), NoOp];1
+[Pull(E,W), NoOp];1
+[NoOp, Move(N)];6
+[NoOp, Move(N)];1
+[NoOp, Move(N)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];1
+[NoOp, Move(W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];2
+[NoOp, Pull(E,W)];2
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];1
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];1
+[NoOp, Move(E)];1
+[NoOp, Push(E,S)];1
+[NoOp, Push(S,S)];0
+[NoOp, Push(S,S)];0
+3f6351c51866644b64183bf7e631a86c7e531e2f
+successful
+223
+80
+859f175eed926fd93e0ae5047ab25d0a37221f2f
+1495027164648

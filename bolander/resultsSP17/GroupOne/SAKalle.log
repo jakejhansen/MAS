@@ -1,0 +1,41 @@
+++++++++++++++
++       KALLE+
++pp        ++++++++
++p p       +q  E  +
++p I       ++++++ +
++0 SISP   Qkalle+ +
++     P    ++++++ +
++   P P           +
++     P           +
++                 +
++++++++++++++++++++
+
+[Move(E)];172
+[Push(E,S)];1
+[Push(E,N)];0
+[Push(E,N)];0
+[Push(E,N)];0
+[Push(N,N)];1
+[Push(N,W)];0
+[Push(W,N)];0
+[Push(N,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[NoOp];0
+[Push(W,N)];1
+[Pull(S,N)];0
+[Push(N,E)];1
+[NoOp];0
+[Pull(S,E)];0
+[Pull(S,N)];1
+[NoOp];0
+[Push(N,E)];0
+[Push(E,E)];0
+[NoOp];1
+7956be741067b79764e6bace36e6af94dbd0102e
+unsuccessful
+179
+23
+4376fa822e95c241ab8ed6a99a187e61407275df
+1494927768642

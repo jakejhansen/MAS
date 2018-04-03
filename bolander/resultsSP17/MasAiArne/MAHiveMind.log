@@ -1,0 +1,50 @@
+blue: 0,1,7,A,B,T,W
+red: 2,9,C,D,G,L
+green: 3,8,E,H
+magenta: 4,F,U
+orange: 5,6,P,S,J
++++++++++++++++++++++++++++++++++++
++a       A+1dD    +a++++  s+   J  +
++         +        C+      +      +
++3        +       +++             +
++         +    A    +    0 +      +
++E        +        2+  WW  +      +
++e        +Bb      c+5WWWWS+     j+
++++++ +++++++ +++ +++++++++++++ +++
+++f     C +D       +++e  H +      +
+++                  h      +      +
+++c    F  +d      E+++     +      +
++++++ +++++++++ ++++++++++++      +
++ d     a   h       +   P  ++++  ++
++   D 4 A         H +6 FFFF+++  +++
++++++++++++++++++++++++++++++ s++++
++t      l  9          e   e+  +++++
++      THE JUNGLE          +     W+
++ 7     h     8    g       + S   w+
++++++++++++++++++++++++++++++++++++
+
+[Move(W), Move(S), Move(N), Move(S), Move(N), Move(N), NoOp, Move(E), Move(W), Move(E)];297
+[Push(S,E), Move(S), Move(W), Push(S,S), Move(W), Move(E), NoOp, Move(E), Move(W), Move(E)];1
+[Push(E,N), Move(S), Move(W), NoOp, Move(N), Move(N), NoOp, Move(E), Move(W), Move(E)];1
+[Push(N,E), Move(S), Move(N), NoOp, Move(N), Move(E), NoOp, Move(N), Move(W), Pull(W,S)];4
+[Push(E,N), Push(S,E), Move(W), NoOp, Move(E), Move(E), NoOp, Move(E), Move(W), Push(E,E)];1
+[Push(N,E), NoOp, Move(N), NoOp, Push(E,N), Move(N), NoOp, Push(E,N), Move(W), Push(E,E)];2
+[Push(E,E), NoOp, Move(W), Move(E), Push(N,W), Move(E), NoOp, Push(N,W), Pull(E,N), Push(E,E)];14
+[Push(E,S), NoOp, Move(W), Move(E), Push(W,W), Move(E), NoOp, Push(W,W), NoOp, Push(E,E)];1
+[Push(S,S), Move(N), Move(N), Move(E), Push(W,W), Move(S), NoOp, Push(W,W), NoOp, Push(E,E)];12
+[Push(S,S), Move(N), Push(W,W), Move(S), Push(W,W), Move(S), NoOp, Push(W,W), Push(N,E), Push(E,S)];3
+[Push(S,E), Move(E), NoOp, Move(E), Push(W,N), Pull(W,S), NoOp, Push(W,W), Push(E,N), Push(S,S)];1
+[Push(E,E), Move(E), NoOp, Move(S), Push(N,W), Push(E,N), NoOp, Push(W,W), Push(N,E), NoOp];3
+[Push(E,E), Move(E), Move(S), Move(S), NoOp, Push(N,N), NoOp, NoOp, Push(E,E), NoOp];10
+[Push(E,S), Push(E,S), Move(E), Move(S), NoOp, Push(N,N), NoOp, NoOp, Push(E,E), NoOp];1
+[Push(S,S), Push(S,S), Move(E), Move(E), NoOp, Push(N,N), NoOp, NoOp, Push(E,E), NoOp];1
+[Push(S,W), Push(S,W), Move(E), Move(E), NoOp, NoOp, NoOp, NoOp, Push(E,S), Move(W)];10
+[Push(W,S), Push(W,W), Move(E), Move(E), NoOp, NoOp, NoOp, NoOp, Push(S,S), Move(W)];3
+[Push(S,S), Push(W,S), Move(E), Move(E), NoOp, NoOp, NoOp, NoOp, Push(S,E), Move(S)];1
+[Push(S,S), Push(S,S), Pull(W,E), Move(E), NoOp, NoOp, NoOp, NoOp, Push(E,E), Move(W)];1
+648f731f9fc3b4c68f6e65b36a5ca74986bf9e78
+unsuccessful
+367
+19
+b3ed1e0d97e3074b59fd6f06bf601100417983fe
+1495034623737
