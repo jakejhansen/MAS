@@ -91,10 +91,14 @@ class SearchClient:
             iterations += 1
 
 
-def main(strat):
+def main(strat, lvl):
     # Read server messages from stdin.
-    server_messages = sys.stdin
-    
+    if lvl == "":
+        server_messages = sys.stdin
+    else:
+        server_messages = open("../levels/" + lvl, "r")
+
+
     # Use stderr to print to console through server.
     print('SearchClient initializing. I am sending this using the error output stream.', file=sys.stderr, flush=True)
     
@@ -139,12 +143,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple client based on state-space graph search.')
     parser.add_argument('--max_memory', metavar='<MB>', type=float, default=512.0, help='The maximum memory usage allowed in MB (soft limit, default 512).')
     parser.add_argument('--strategy', default = "BFS", help='The chosen strategy BFS | DFS | ASTAR | WASTAR | GREEDY')
+    parser.add_argument('--lvl', default = "", help="Choose to input lvl, mode made when running without server")
     args = parser.parse_args()
     
     # Set max memory usage allowed (soft limit).
     memory.max_usage = args.max_memory
     strat = args.strategy
-    
+
     # Run client.
-    main(strat)
+    main(strat, args.lvl)
+
+
 
