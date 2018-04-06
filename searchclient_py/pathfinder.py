@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 LEVELS_PATH = "../levels/"
 
@@ -127,7 +128,7 @@ def path_and_length(array, start, goal):
     path = astar(array, start, goal)
     return (len(path), path)
 
-x = path_and_length(nmap, (0,0), (10,13))
+test = path_and_length(nmap, (0,0), (10,13))
 
 
 rows, cols = nmap.shape
@@ -136,21 +137,32 @@ rows, cols = nmap.shape
 
 paths = numpy.empty([rows, cols], dtype=np.ndarray)
 
-start = (0,0)
-paths_from_start = numpy.empty([rows, cols], dtype=tuple)
-for i in range(rows):
-    for j in range(cols):
-        # don't calculate path from start to start (distance is 0)
-        if start == (i, j):
-            continue
-        # don't calculate path from start to a wall
-        elif nmap[i,j] == 1:
-            continue
-        else:
-            # re-use path if already calculated from (i,j) to start
-            if 0 != 0:
-                pass # TODO re-use calculation here!
-            else:
-                # calculate path from start to (i,j)
-                paths_from_start[i,j] = path_and_length(nmap, start, (i, j))
+t0 = time.time()
 
+for x in range(rows):
+    for y in range(cols):
+        start = (x,y)
+        if nmap[x,y] == 1:
+            continue
+        paths_from_start = numpy.empty([rows, cols], dtype=tuple)
+        for i in range(rows):
+            for j in range(cols):
+                goal = (i, j)
+                # don't calculate path from start to start (distance is 0)
+                if start == goal:
+                    continue
+                # don't calculate path from start to a wall
+                elif nmap[goal] == 1:
+                    continue
+                else:
+                    # re-use path if already calculated from (i,j) to start
+                    if 0 != 0:
+                        pass # TODO re-use calculation here!
+                    else:
+                        # calculate path from start to (i,j)
+                        paths_from_start[goal] = path_and_length(nmap, start, goal)
+
+t1 = time.time()
+
+total = t1-t0
+print(total)
