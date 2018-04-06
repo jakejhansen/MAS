@@ -161,8 +161,23 @@ for x in range(rows):
                     else:
                         # calculate path from start to (i,j)
                         paths_from_start[goal] = path_and_length(nmap, start, goal)
-
+        paths[start] = paths_from_start
 t1 = time.time()
 
 total = t1-t0
 print(total)
+
+# Testing that path is the same both ways
+
+test1 = paths[0,0][10,13]
+trim1 = np.delete(test1[1],0,0)
+trim1 = np.delete(test1[1],-1,0)
+test1 = (test1[0], trim1)
+
+test2 = paths[10,13][0,0]
+trim2 = np.delete(test2[1],0,0)
+trim2 = np.delete(test2[1],-1,0)
+trim2 = np.flip(trim2, axis=0)
+test2 = (test2[0], trim2)
+
+numpy.testing.assert_equal(test1, test2)
