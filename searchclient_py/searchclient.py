@@ -57,6 +57,7 @@ class SearchClient:
                     elif char in "abcdefghijklmnopqrstuvwxyz":
                         self.info.goals[row][col] = char
                 row += 1
+
         except Exception as ex:
             print('Error parsing level: {}.'.format(repr(ex)), file=sys.stderr, flush=True)
             sys.exit(1)
@@ -103,7 +104,8 @@ def main(strat, lvl):
     print('SearchClient initializing. I am sending this using the error output stream.', file=sys.stderr, flush=True)
     
     # Read level and create the initial state of the problem.
-    client = SearchClient(server_messages);
+    client = SearchClient(server_messages)
+
     
     if strat == "BFS":
         strategy = StrategyBFS()

@@ -6,6 +6,7 @@
 
 from abc import ABCMeta, abstractmethod
 from state import State
+from pathfinder import pathfinder
 import numpy as np
 import sys
 
@@ -27,6 +28,34 @@ class Heuristic(metaclass=ABCMeta):
                     
         return tot_dist
 
+    def h2(self, state: 'State') -> 'int':
+        goals = np.array(state.goals)
+        goals_loc = np.argwhere(goals)
+        boxes = np.array(state.boxes)
+        boxes_loc = np.argwhere(boxes)
+
+        #Find reachability of goals to boxes:
+        reach = 0
+        for goal in goals_loc:
+            for box in boxes_loc:
+                if boxes[box[0]][box[1]].lower() == goals[goal[0], goal[1]]:
+                    path = pathfinder((box[0], box[1]), (goal[0], goal[1]))
+                    if path:
+                        reach += path
+                    else:
+                        reach += 100
+
+        #Find distance from goals to boxes:
+        goals_to_boxes = self.h(state)
+
+        #Add them all together:
+        tot_dist = goals_to_boxes + reach
+
+        import IPython
+        IPython.embed()
+
+        return tot_dist
+
     @abstractmethod
     def f(self, state: 'State') -> 'int': pass
     
@@ -39,7 +68,7 @@ class AStar(Heuristic):
         super().__init__(initial_state)
     
     def f(self, state: 'State') -> 'int':
-        return state.g + self.h(state)
+        return state.g + self.h2(state)
     
     def __repr__(self):
         return 'A* evaluation'
