@@ -1,0 +1,72 @@
+red: 0,1,A,B
+blue: 2,C
++++++++++++++++++++++++++++
++           c+b           +
++      +++++ ++++++++++++ +
++      +  C+ +            +
++a     +     ++ +++B+++++++
++++++ ++++++++            +
++A          C++++++++++++ +
++ ++++       +            +
++ ++++       + ++++++++++++
++    12      +       B   0+
++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(N)];53691
+[Move(W), Move(W), Move(N)];2
+[Move(W), Move(W), Move(N)];1
+[Push(W,W), Move(W), Move(E)];1
+[Push(W,W), Move(N), Move(E)];1
+[Push(W,W), Move(N), Move(E)];1
+[Push(W,W), Push(N,E), Move(E)];1
+[Push(W,W), Push(E,E), Move(E)];1
+[Push(W,W), Push(E,E), Pull(W,E)];1
+[Push(W,W), Push(E,E), Pull(W,E)];1
+[Push(W,N), Push(E,N), Pull(W,E)];0
+[Push(N,N), Push(N,N), Pull(W,E)];1
+[Push(N,E), Push(N,W), Pull(W,E)];0
+[Push(E,E), Push(W,W), Pull(W,E)];1
+[Push(E,E), Push(W,W), Pull(N,E)];0
+[Push(E,E), Push(W,W), Pull(N,S)];0
+[Push(E,E), NoOp, Pull(N,S)];3
+[Push(E,E), NoOp, Pull(E,S)];1
+[Push(E,E), NoOp, Pull(N,W)];0
+[Push(E,E), NoOp, Pull(N,S)];0
+[Push(E,E), NoOp, Pull(W,S)];1
+[Push(E,E), NoOp, Push(E,E)];1
+[Push(E,E), NoOp, Push(E,E)];0
+[Push(E,N), NoOp, Push(E,E)];0
+[Push(N,N), NoOp, Push(E,E)];0
+[Push(N,W), NoOp, Push(E,E)];0
+[Push(W,W), NoOp, Push(E,E)];1
+[Push(W,W), NoOp, NoOp];35
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(N,N), NoOp, NoOp];1
+[Push(N,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];2
+[Push(E,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];1
+[Push(E,N), NoOp, NoOp];1
+[Push(N,N), NoOp, NoOp];1
+[Push(N,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp];1
+12d7766fed7bb54915ca8486b1d717182092904c
+successful
+53762
+52
+c85505442f121d9801b69a0665c7ad58aaa146ea
+1495025487770

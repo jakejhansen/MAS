@@ -1,0 +1,47 @@
+++++++            ++++++
+++    ++          ++    ++
++      ++++++++++++      +
++  BD  ad        bc  AC  +
++      ++++     +++      +
+++    ++  ++   ++ ++    ++
+ ++++++    +   +   ++++++
+           ++0++
+ ++++++    +   +   ++++++
+++    ++  ++   ++ ++    ++
++      ++++     +++      +
++  BD  cd        ba  AC  +
++      ++++++++++++      +
+++    ++          ++    ++
+ ++++++            ++++++
+
+[Move(N)];4
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(E)];0
+[Move(E)];1
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Pull(N,E)];1
+[Push(S,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];1
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+3269f3ae118a7e9b0f363a030505aa2da9b17657
+unsuccessful
+7
+25
+e95453de72a7ec1b1402324d5546e420ef8abed0
+1494964503864

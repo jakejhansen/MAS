@@ -1,0 +1,19 @@
+red: 0,A,1,B
+green:2
+yellow: 3, C
+++++++++++++++++++++++++++++
++     b    1    0A B2C  a  +
++                  ++3     +
+++++++++++++++++++++++++++++
+
+[Push(E,S), Move(E), NoOp, NoOp];189
+[Pull(E,S), Move(E), NoOp, NoOp];1
+[Push(W,W), Move(E), NoOp, NoOp];1
+[Move(E), Move(E), NoOp, NoOp];0
+[Pull(W,E), Move(E), NoOp, NoOp];1
+31b4cdbecbcf073f278551c265e935deff5a6827
+unsuccessful
+192
+5
+a83fc3d4cc3796b91c3b16bc2bf5533891d56af2
+1494926938447

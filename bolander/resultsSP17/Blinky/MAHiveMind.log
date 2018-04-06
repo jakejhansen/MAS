@@ -1,0 +1,40 @@
+blue: 0,1,7,A,B,T,W
+red: 2,9,C,D,G,L
+green: 3,8,E,H
+magenta: 4,F,U
+orange: 5,6,P,S,J
++++++++++++++++++++++++++++++++++++
++a       A+1dD    +a++++  s+   J  +
++         +        C+      +      +
++3        +       +++             +
++         +    A    +    0 +      +
++E        +        2+  WW  +      +
++e        +Bb      c+5WWWWS+     j+
++++++ +++++++ +++ +++++++++++++ +++
+++f     C +D       +++e  H +      +
+++                  h      +      +
+++c    F  +d      E+++     +      +
++++++ +++++++++ ++++++++++++      +
++ d     a   h       +   P  ++++  ++
++   D 4 A         H +6 FFFF+++  +++
++++++++++++++++++++++++++++++ s++++
++t      l  9          e   e+  +++++
++      THE JUNGLE          +     W+
++ 7     h     8    g       + S   w+
++++++++++++++++++++++++++++++++++++
+
+[Move(E), Move(S), Move(N), Move(S), Move(N), Move(N), NoOp, Move(N), Move(E), Move(E)];137722
+[Move(N), Move(S), Move(W), Push(S,S), Move(W), Move(E), NoOp, Move(E), Move(E), Move(E)];0
+[Move(E), Move(S), Move(W), Move(E), Move(N), Move(N), NoOp, Move(E), Push(N,N), Move(E)];127064
+[Move(E), Move(S), Move(N), Move(E), Move(N), Move(E), NoOp, Move(E), Push(N,E), Move(E)];0
+[Move(E), Push(S,E), Move(N), Move(E), Move(E), Move(E), NoOp, Move(E), Push(E,E), Pull(W,S)];1
+[Move(E), Push(E,E), Move(W), Move(E), Pull(N,E), Move(E), NoOp, Pull(W,E), Push(E,E), Pull(W,E)];0
+[Move(E), Push(E,S), Move(W), Move(S), Pull(W,S), Move(E), NoOp, Pull(S,E), Push(E,E), Pull(W,E)];0
+[Move(E), Push(S,S), Move(W), Move(S), Pull(N,E), Move(S), NoOp, Push(N,W), Push(E,E), Pull(W,E)];0
+[Move(S), Push(S,W), Move(W), NoOp, Pull(W,S), Pull(N,S), NoOp, Push(W,W), Push(E,E), Pull(W,E)];86
+648f731f9fc3b4c68f6e65b36a5ca74986bf9e78
+unsuccessful
+264873
+9
+87c05fd1fc428a45e5df6d30bbce8fd4adac2e10
+1494958260213

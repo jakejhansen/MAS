@@ -1,0 +1,104 @@
+red: 0,A
+blue: 1,B
++++++++++++++++++++
++        0        +
++       +++       +
++   ++++ a   ++   +
++       +++       +
++  +++++++++++++  +
++        +        +
++    +  A B  +    +
++                 +
++  ++++++++++++++++
++     ++++++++    +
++   ++   b   ++   +
++       +++       +
++        1        +
++++++++++++++++++++
+
+[Move(W), NoOp];220
+[Move(W), NoOp];0
+[Move(S), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Move(W), NoOp];0
+[Move(S), NoOp];0
+[Move(S), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Push(S,E), NoOp];16
+[Push(E,S), NoOp];0
+[Push(S,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,N), NoOp];0
+[Push(N,N), NoOp];0
+[Push(N,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,E), NoOp];0
+[Push(E,N), NoOp];0
+[Push(N,N), NoOp];0
+[Push(N,W), NoOp];0
+[Push(W,W), NoOp];15
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,N), NoOp];0
+[Push(N,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(N)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(N)];0
+[NoOp, Move(N)];0
+[NoOp, Move(W)];0
+[NoOp, Move(N)];0
+[NoOp, Move(N)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(N)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Push(E,S)];16
+[NoOp, Push(S,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,W)];0
+[NoOp, Push(W,S)];0
+[NoOp, Push(S,S)];0
+[NoOp, Push(S,E)];0
+[NoOp, Push(E,S)];0
+[NoOp, Push(S,S)];0
+[NoOp, Push(S,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,N)];0
+[NoOp, Push(N,E)];0
+[NoOp, Push(E,E)];0
+[NoOp, Push(E,E)];0
+037a18e7465f5ad5a0a84e50e7cc15ed36a291a4
+successful
+267
+80
+aa9e552de9b413af9420041cd3da2f9d2f905f47
+1495034907581

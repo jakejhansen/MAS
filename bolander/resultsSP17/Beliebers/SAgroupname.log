@@ -1,0 +1,227 @@
+red:0,A
+++++++++++++++++++++++++++++++++++++++++++++++++
++0A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Move(S)];292200
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Move(N)];7171
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];1
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];1
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];1
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];1
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];0
+[Move(N)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(N)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(N)];1
+[Move(N)];0
+48f27850246f9c22520f42c9c3d3d35a71667807
+unsuccessful
+299396
+171
+d9e40309466d1689a3226054e537e7913735df46
+1495032789957

@@ -1,0 +1,36 @@
+green: 1,A,F,K,P,U
+red: 0,B,G,L,Q,V
+yellow: 2,C,H,M,R
+blue: 3,D,I,N,S
+pink: 4,E,J,O,T
+++++++++++++++++
++0 A   E    B 2+
+++++    O   ++++
++1   G    F    +
++  V    H   T+ +
++ P  K     I +C+
++ L     J    +3+
++    M     N +++
++ S R   Q   U  +
++g+j+m+p+s+v++D+
++f+i+l+o+r+u++ +
++e+h+k+n+q+t++4+
+++++++++++++++++
+
+[NoOp, Move(S), NoOp, NoOp, NoOp];9335
+[NoOp, Move(S), NoOp, NoOp, NoOp];0
+[NoOp, Push(E,E), NoOp, NoOp, NoOp];1
+[NoOp, Push(E,S), NoOp, NoOp, NoOp];0
+[NoOp, Push(S,E), NoOp, NoOp, NoOp];1
+[NoOp, Push(E,E), NoOp, NoOp, NoOp];0
+[NoOp, Push(E,E), NoOp, NoOp, NoOp];1
+[NoOp, Push(E,E), NoOp, NoOp, NoOp];0
+[NoOp, Push(E,S), NoOp, NoOp, NoOp];0
+[NoOp, Push(S,S), NoOp, NoOp, NoOp];0
+[NoOp, Push(S,S), NoOp, NoOp, NoOp];0
+c4f42b8942032edf41bcab49dce111b3ec1c59be
+unsuccessful
+9338
+11
+8925a5d5c07ba9bf49d0c871ec731c7c9231d68f
+1495025841594

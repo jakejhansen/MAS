@@ -1,0 +1,258 @@
+orange: 0,A
+++++++++++++++++++++++++++++++++++++++++++++++
++     LICORICE                               +
+++++++++++++++++++++++++++++++++++++++++++++++
++0 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  +
++  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAa+
++++++++++++++++++++++++++++++++++++++++++++Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          +Aa+
+                                          ++++
+
+[Move(S)];465
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Move(E)];0
+[Push(E,N)];0
+[Move(E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];15
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Pull(N,W)];0
+[Move(N)];0
+[Push(W,S)];0
+[Push(S,E)];0
+[Move(N)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+[Push(W,S)];0
+b0947b9f3f2fde6b1c69fa5d78cce193dbd91871
+successful
+480
+192
+c6820b7e394cf85b13b386abd29f87fdf680721d
+1495041078975

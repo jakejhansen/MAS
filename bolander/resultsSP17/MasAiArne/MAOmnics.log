@@ -1,0 +1,50 @@
+blue: 0,A,E,H,K,N,Q
+red: 1,B,F,I,L,O,R
+green: 2,C,G,J,M,P,S
++++++++++++++++++++++++++++++
++BAC     +ONP            GEF+
+++++     ++++            ++++
++LKM     0  1  2         JHI+
+++++                     ++++
++                           ++++++++++
++                            s  r  q +
++S+                         ++++++++++
++Q+                         +
++R+                         +
+++++++ +++ +++++++ +++ +++ ++
+     + + + +     + + + + + +
+     +p+ +m+     +j+ +g+ +c+
+     + + + +     + + + + + +
+     +o+ +l+     +i+ +f+ +b+
+     + + + +     + + + + + +
+     +n+ +k+     +h+ +e+ +a+
+     + + + +     + + + + + +
+     +++ +++     +++ +++ +++
+
+[NoOp, NoOp, Move(W)];238
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(S)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(N)];16
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Move(W)];0
+[NoOp, NoOp, Pull(E,W)];0
+[NoOp, NoOp, Push(W,S)];0
+[NoOp, NoOp, Push(S,S)];16
+[NoOp, NoOp, Push(S,W)];0
+[Move(W), NoOp, Move(N)];200
+[Move(W), NoOp, Move(E)];0
+[Move(W), NoOp, Move(E)];0
+[Move(W), NoOp, Move(N)];0
+1e1371aee37419ef435f269df490828db40b872c
+unsuccessful
+470
+21
+cf56db122d6305d0628ca25182628e4472e33fe6
+1495034631762

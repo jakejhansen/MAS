@@ -1,0 +1,72 @@
+red: 0,1,A,B
+blue: 2,C
++++++++++++++++++++++++++++
++           c+b           +
++      +++++ ++++++++++++ +
++      +  C+ +            +
++a     +     ++ +++B+++++++
++++++ ++++++++            +
++A          C++++++++++++ +
++ ++++       +            +
++ ++++       + ++++++++++++
++    12      +       B   0+
++++++++++++++++++++++++++++
+
+[Move(W), Move(W), Move(N)];925
+[Move(W), Move(W), Move(N)];5
+[Move(W), Move(W), Move(N)];10
+[Push(W,W), Move(W), Move(W)];9
+[Push(W,W), Move(N), Move(N)];21
+[Push(W,W), Move(N), Move(N)];4
+[Push(W,W), Push(N,E), Move(N)];508
+[Push(W,W), Push(E,E), Move(N)];3
+[Push(W,W), Push(E,E), Move(N)];2
+[Push(W,W), Push(E,E), Move(E)];2
+[Push(W,N), Push(E,N), Move(E)];2
+[Push(N,N), Push(N,N), Move(E)];6
+[Push(N,E), Push(N,W), Move(E)];2
+[Push(E,E), Push(W,W), Move(E)];2
+[Push(E,E), Push(W,W), Move(E)];2
+[Push(E,E), Push(W,W), Move(E)];3
+[Push(E,E), NoOp, Move(S)];3
+[Push(E,E), NoOp, Move(S)];1
+[Push(E,E), NoOp, Move(S)];2
+[Push(E,E), NoOp, Move(W)];1
+[Push(E,E), NoOp, Move(W)];1
+[Push(E,E), NoOp, Pull(W,N)];5
+[Push(E,E), NoOp, Push(E,E)];5
+[Push(E,N), NoOp, Push(E,E)];1
+[Push(N,N), NoOp, Push(E,N)];2
+[Push(N,W), NoOp, Push(N,N)];1
+[Push(W,W), NoOp, Push(N,N)];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];2
+[Push(N,N), NoOp, NoOp];10
+[Push(N,E), NoOp, NoOp];5
+[Push(E,E), NoOp, NoOp];2
+[Push(E,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];2
+[Push(E,E), NoOp, NoOp];1
+[Push(E,E), NoOp, NoOp];2
+[Push(E,N), NoOp, NoOp];2
+[Push(N,N), NoOp, NoOp];1
+[Push(N,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+[Push(W,W), NoOp, NoOp];2
+12d7766fed7bb54915ca8486b1d717182092904c
+successful
+1582
+52
+e0e640496adb05a91296fe1fbdfab613be990c7d
+1495030154855

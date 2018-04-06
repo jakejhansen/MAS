@@ -1,0 +1,29 @@
+red: 0,I
+green: 1,W
+yellow: 2,N
+blue: 3,B
+++++++++++++++++++++++++++
++0     1     2     3     +
++  I     W     N     B   +
++                        +
++BRiNG+POwER+RAnGERS+bACK+
+++++++++++++++++++++++++++
+
+[Move(S), Move(E), Move(S), Move(S)];318
+[Move(E), Move(E), Move(W), Move(E)];1
+[Push(E,S), Push(S,S), Move(W), Push(E,S)];5
+[Push(S,S), Push(S,S), Move(W), Push(S,S)];1
+[Pull(N,S), Move(E), Move(W), NoOp];2
+[NoOp, Move(E), Move(S), NoOp];1
+[NoOp, Move(E), Move(W), NoOp];1
+[NoOp, Move(N), Move(W), NoOp];2
+[NoOp, Move(N), Move(W), NoOp];8
+[NoOp, NoOp, Move(W), NoOp];1
+[NoOp, NoOp, Move(W), NoOp];0
+[NoOp, NoOp, Pull(W,S), NoOp];1
+fde005d0d4904aa16b0e68a269ccd6d34457ce9e
+unsuccessful
+341
+12
+bce80d0d3311f67309f07c4631ca6f02034dd6c3
+1495038989629

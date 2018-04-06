@@ -1,0 +1,189 @@
+red:0,A
+++++++++++++++++++++++++++++++++++++++++++++++++
++0A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
++ A                                           a+
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Push(E,E)];4534
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];1
+[Push(E,E)];2
+[Push(E,E)];0
+[Move(W)];3523
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Pull(E,S)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(E,W)];1
+[Pull(E,W)];0
+[Pull(E,W)];0
+[Pull(S,W)];0
+[Pull(E,N)];1
+[Pull(E,W)];0
+[Pull(S,W)];0
+48f27850246f9c22520f42c9c3d3d35a71667807
+unsuccessful
+8085
+133
+9a974a8bae4a6398478e64e1c9c703dd78075d52
+1495029589166

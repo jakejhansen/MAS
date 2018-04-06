@@ -1,0 +1,51 @@
+red: 0,A,E
+green: 1,B
+cyan: 2,C,D
++++++++++++++++++++++++++++++++++
++0    +               1         +
++ + + +++++++++++++++++++ + + + +
++ a B +         c   +   b     A +
++ + + + +++++++++++++++++ + + + +
++             2C                +
++++ +++++++++++++++++++++++++ +++
++++             Dd            +++
++++ +++++++++++++++++++++++++ +++
++++             eE            +++
++++ +++++++++++++++++++++++++ +++
++++             Bb            +++
++++ +++++++++++++++++++++++++ +++
++++             Bb            +++
++++ +++++++++++++++++++++++++ +++
++++             Bb            +++
++++++++++++++++++++++++++++++++++
+
+[Move(E), Move(E), Pull(W,E)];258
+[Move(E), Move(E), Pull(W,E)];0
+[Move(E), Move(E), Pull(W,E)];0
+[Move(E), Move(S), Pull(W,E)];0
+[Move(S), Move(S), Pull(W,E)];0
+[Move(S), Move(S), Move(W)];0
+[Move(S), Move(S), Move(W)];0
+[Move(S), Move(E), Move(N)];0
+[Move(E), Move(E), Move(N)];0
+[Move(E), Move(E), Move(E)];0
+[Move(E), Move(E), Move(E)];0
+[Move(E), Move(S), Move(E)];0
+[Move(E), Move(S), Move(E)];0
+[Move(E), Move(S), Move(E)];0
+[Move(E), Move(S), Move(E)];0
+[Move(E), Move(S), Move(W)];27
+[Move(E), Move(S), Move(W)];0
+[Move(E), Move(W), Move(W)];0
+[Move(E), Move(W), Move(W)];0
+[Move(E), Move(W), Move(W)];0
+[Move(E), Move(W), Move(W)];0
+[Move(E), Move(W), Move(S)];0
+[Move(E), Move(W), Move(S)];0
+[Move(E), Move(W), Move(E)];0
+328dd3d80fc500db0cccdbf10bf522e688f35675
+unsuccessful
+285
+24
+bf3e900ba65ccc4542734a988bc60813ff9d6a8b
+1494957357714

@@ -1,0 +1,142 @@
++++++++++++++++++++++++++++++
++B b                       A+
++                           +
++   a   0                   +
++++++++++++++++++++++++++++++
++   A                   a  B+
++                           +
++                           +
++       1                  b+
++++++++++++++++++++++++++++++
+
+[NoOp, Move(N)];205
+[NoOp, Move(N)];0
+[NoOp, Move(N)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Move(E)];0
+[NoOp, Push(E,S)];16
+[NoOp, Push(S,S)];0
+[NoOp, Push(S,S)];0
+[NoOp, Move(N)];0
+[NoOp, Move(N)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Move(W)];0
+[NoOp, Pull(E,W)];15
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[NoOp, Pull(E,W)];0
+[Move(N), NoOp];0
+[Move(N), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Move(W), NoOp];0
+[Pull(E,W), NoOp];0
+[Pull(E,W), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Move(E), NoOp];0
+[Push(E,S), NoOp];31
+[Push(S,S), NoOp];0
+[Push(S,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+[Push(W,W), NoOp];0
+f4284f51d4efc15ea43da74681904fbbdf309003
+successful
+267
+125
+b5c99ef89f1712a2a120a63e5cdd9f7559376fe1
+1495034908136

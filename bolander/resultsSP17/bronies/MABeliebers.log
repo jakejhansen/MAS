@@ -1,0 +1,205 @@
+blue: 4,0,5,6,A,E,J,K,L,F
+red: 1,B
+yellow: 2,C
+magenta: 3,7,D,G,N
+cyan: 8,9,H,I,M
++++++++++++++++++++++++++
++  G 1            7 A g +
++ b H 2       h    8  B +
++  I 3   a++++    9 C i +
++         ++++          +
++ d J 4   ++++    0 D j +
++  K 5   c++++k      E  +
++ f L 6  e++++      F l +
++                       +
++  M                 N  +
++  +++++++++++++++++++  +
++          mn           +
++++++++++++++++++++++++++
+
+[NoOp, NoOp, Move(E), Move(S), Move(W), Move(E), Move(W), NoOp, Move(S), NoOp];92
+[Move(W), Move(E), Move(E), NoOp, NoOp, Move(E), Pull(E,W), Move(W), Move(S), Move(W)];36
+[Move(W), Move(E), Move(N), NoOp, Move(S), Move(E), Pull(E,W), Move(W), Move(S), Move(W)];3
+[Move(W), NoOp, Move(E), Move(E), Move(W), Move(E), Pull(E,W), Move(W), Move(S), Move(W)];3
+[Move(W), NoOp, Move(E), Move(E), Pull(E,W), Move(S), NoOp, Move(W), Move(W), Move(W)];9
+[Move(N), Move(E), Move(E), Move(E), Pull(E,W), Move(S), Move(S), Move(W), Move(W), Move(N)];2
+[Move(N), Move(S), Move(E), Move(E), Pull(N,W), Move(E), Move(W), NoOp, Move(W), Move(W)];1
+[Move(N), Move(E), NoOp, Move(N), Push(S,S), Move(E), Move(W), NoOp, Move(W), Move(W)];1
+[Move(W), Move(E), NoOp, NoOp, NoOp, Move(E), Move(W), Move(E), Move(W), Move(W)];1
+[Move(W), NoOp, Move(W), Move(W), NoOp, Move(E), Move(W), Move(E), Move(S), NoOp];2
+[NoOp, NoOp, Move(W), Move(W), Move(E), Move(E), Move(N), Move(S), NoOp, NoOp];1
+[Move(E), Move(W), Move(W), Move(W), NoOp, Move(E), NoOp, Move(S), NoOp, Move(N)];229
+[Move(N), Move(S), Move(W), Move(N), NoOp, Move(E), NoOp, Move(S), Move(E), Move(E)];1
+[Move(S), Move(S), Move(S), Move(N), NoOp, Move(E), Move(N), Move(W), Move(S), NoOp];2
+[Move(W), Move(S), Move(S), NoOp, NoOp, Move(E), Pull(S,N), Move(S), Move(S), Move(W)];60
+[Move(W), Move(S), Move(S), Move(E), NoOp, Move(E), Pull(S,N), Move(S), Move(W), Move(W)];1
+[Move(W), Move(S), Move(E), Move(S), NoOp, Move(E), Pull(E,N), Move(S), Move(W), Move(W)];0
+[Move(W), Move(S), Move(S), Move(S), NoOp, NoOp, Pull(E,W), Move(S), Move(W), Move(W)];8
+[Move(W), Move(E), Move(S), Move(E), NoOp, NoOp, Pull(E,W), Move(W), Move(W), Move(W)];2
+[Move(W), Move(E), Move(S), Move(S), NoOp, Move(W), Pull(E,W), Move(W), Move(W), NoOp];176
+[Move(S), NoOp, Move(S), Move(S), NoOp, Move(W), NoOp, NoOp, Move(W), Move(W)];1
+[Move(W), Move(S), Move(E), Move(E), Move(E), Move(W), NoOp, Move(E), Move(W), Move(W)];1
+[Move(S), Move(E), Move(S), Move(S), NoOp, Move(W), Move(N), Move(E), Move(W), Move(S)];1
+[Move(S), Move(E), Move(E), Move(S), NoOp, Move(W), NoOp, Move(S), Move(W), Move(S)];1
+[Move(S), NoOp, Move(E), Move(S), Move(N), Move(S), NoOp, Move(N), Move(W), Move(W)];1
+[NoOp, Move(N), NoOp, Move(E), Move(E), Move(W), NoOp, Move(N), Move(W), Move(S)];354
+[NoOp, Move(W), NoOp, Move(E), Move(N), Move(W), Move(N), Move(N), Move(N), Move(W)];3
+[Move(E), NoOp, Move(W), NoOp, Move(N), Move(N), Move(N), Move(N), Move(W), Move(S)];0
+[NoOp, NoOp, Move(W), NoOp, Move(N), NoOp, Move(N), Move(N), Move(N), Move(S)];192
+[NoOp, Move(S), Move(W), Move(W), Move(E), Move(E), Move(N), Move(N), NoOp, NoOp];1
+[NoOp, Move(E), Move(N), NoOp, Move(E), Move(E), Move(N), Move(N), NoOp, Move(W)];2
+[Move(E), Move(E), Move(N), Move(E), Move(E), Move(E), NoOp, Move(W), Move(W), NoOp];0
+[Move(S), Move(E), Move(N), Move(S), NoOp, Move(S), Move(S), NoOp, NoOp, Move(E)];1
+[Move(S), NoOp, Move(W), NoOp, Move(W), NoOp, Move(S), Move(N), Move(N), Move(S)];2
+[Pull(E,W), NoOp, Move(N), Move(E), Move(W), Move(E), NoOp, Move(W), Move(N), Move(S)];5
+[Pull(E,W), Move(N), NoOp, Move(E), Move(N), Move(E), Move(N), NoOp, Move(N), Push(S,W)];1
+[Pull(S,W), Move(E), Move(E), Move(E), NoOp, Move(E), Move(N), Move(W), Move(E), Push(W,S)];2
+[Push(N,E), Move(E), Move(N), Move(N), Move(W), Move(E), Move(N), NoOp, Push(N,E), Push(S,S)];3
+[Push(E,E), Move(E), Move(N), Move(E), Move(S), Move(N), NoOp, Move(W), Push(E,E), Push(S,E)];1
+[Push(E,E), Move(E), NoOp, Move(E), NoOp, Pull(S,N), Move(W), Move(S), Push(E,E), Push(E,E)];5
+[Push(E,E), NoOp, NoOp, Move(E), Move(N), Pull(W,N), Move(S), NoOp, Push(E,E), Push(E,E)];1
+[Push(E,E), NoOp, Move(W), Move(E), Move(E), Pull(W,E), NoOp, Move(W), NoOp, Push(E,E)];1
+[Push(E,E), Move(E), Move(N), NoOp, Move(E), Pull(W,E), Move(W), Move(N), Move(W), Push(E,E)];1
+[Push(E,E), Move(E), Move(N), NoOp, Move(E), Pull(W,E), Move(W), Move(E), Move(S), Push(E,E)];3
+[NoOp, Move(E), Move(E), NoOp, Move(E), Pull(W,E), Move(N), Move(S), Move(S), Push(E,E)];0
+[Move(W), Move(N), Move(E), NoOp, Move(E), Pull(W,E), NoOp, Move(E), Move(S), Push(E,E)];2
+[Move(W), Move(N), Move(E), NoOp, Move(E), Pull(W,E), Move(E), Move(E), NoOp, Push(E,E)];1
+[Move(W), Move(N), Move(E), Move(N), Move(E), Pull(W,E), Move(E), Move(E), Move(E), NoOp];1
+[Move(W), Move(N), Move(E), Move(W), Move(S), Pull(W,E), Move(E), Move(E), Move(E), NoOp];0
+[Move(W), Move(N), Move(E), Move(W), Move(S), Pull(W,E), Move(S), Move(E), Move(N), NoOp];0
+[Move(W), Push(N,W), Move(E), Move(W), Move(S), Pull(W,E), Move(E), Move(E), Move(N), NoOp];19
+[Move(W), Push(W,W), Move(E), Move(W), Move(S), NoOp, Move(S), Move(E), NoOp, NoOp];0
+[Move(W), Push(W,W), Move(E), Move(S), Move(S), NoOp, Move(S), Move(E), NoOp, NoOp];1
+[Move(W), NoOp, Move(E), Move(W), Move(S), Move(W), Move(S), NoOp, NoOp, NoOp];1
+[Move(W), NoOp, Move(E), Move(W), Move(E), Move(W), Move(S), Move(S), Push(N,N), Move(W)];10
+[Pull(E,N), NoOp, NoOp, Move(W), Push(S,W), NoOp, Move(S), Move(S), Push(N,E), Move(W)];8
+[Pull(E,W), NoOp, Move(W), Move(W), Pull(S,W), NoOp, Move(S), Move(E), Push(E,E), Move(W)];1
+[NoOp, NoOp, Move(S), NoOp, Pull(E,N), NoOp, NoOp, Move(E), Push(E,E), Move(W)];0
+[Move(N), NoOp, Move(S), NoOp, Pull(E,W), NoOp, Move(N), Push(S,W), Push(E,E), Move(W)];24
+[Move(N), NoOp, Move(E), Move(E), Pull(N,W), NoOp, Move(N), Push(W,W), Push(E,E), Move(W)];1
+[Move(N), NoOp, NoOp, Move(E), Pull(N,S), NoOp, Move(N), Push(W,W), Push(E,E), Move(W)];113
+[Move(N), NoOp, NoOp, Move(E), Pull(E,S), NoOp, Move(N), Push(W,N), Push(E,E), Move(W)];1
+[Move(N), NoOp, NoOp, Move(E), Pull(E,W), NoOp, NoOp, NoOp, Push(E,S), Move(N)];4
+[Move(N), NoOp, NoOp, Move(N), Pull(E,W), NoOp, Move(W), NoOp, Push(S,S), Move(N)];0
+[Move(N), NoOp, Pull(W,E), Move(N), Pull(N,W), NoOp, Move(W), NoOp, Push(S,E), Move(E)];6
+[Move(E), NoOp, Pull(W,E), Move(N), Pull(E,S), NoOp, NoOp, NoOp, Push(E,E), Move(E)];6
+[Move(E), NoOp, Pull(W,E), Move(N), Push(W,N), Move(W), Move(E), NoOp, NoOp, Move(E)];1
+[Move(E), NoOp, Pull(W,E), Move(N), Move(S), NoOp, Move(E), Pull(S,N), NoOp, Move(N)];12
+[Move(E), Push(W,W), Pull(N,E), Move(N), Move(W), NoOp, Move(S), Push(N,W), NoOp, Move(N)];4
+[Move(E), Push(W,W), NoOp, Move(W), Move(W), Move(N), Move(S), Push(W,W), NoOp, Move(N)];1
+[Move(E), Push(W,W), NoOp, Move(W), Move(W), Move(N), Move(S), Push(W,S), NoOp, Move(E)];1
+[Move(E), NoOp, NoOp, Move(W), Move(W), NoOp, Move(S), Push(S,S), NoOp, Move(N)];0
+[Move(E), NoOp, Move(W), Move(N), Move(W), NoOp, Move(E), Push(S,W), NoOp, Move(N)];2
+[Move(E), NoOp, Move(W), Move(W), Move(W), NoOp, Push(S,W), Push(W,S), NoOp, Move(N)];2
+[NoOp, NoOp, Move(N), Move(W), Move(W), NoOp, Push(W,W), Push(S,W), NoOp, Move(W)];42
+[NoOp, NoOp, NoOp, Move(W), Move(W), Push(E,E), Push(W,W), Push(W,W), Push(E,E), Move(W)];6
+[Move(W), NoOp, NoOp, Move(W), Move(S), Push(E,E), Push(W,W), Push(W,W), Push(E,E), Pull(E,N)];2
+[Move(W), NoOp, NoOp, Move(W), Move(W), NoOp, Push(W,N), Push(W,W), Push(E,E), Pull(E,W)];1
+[Move(W), NoOp, NoOp, Move(W), Move(W), NoOp, Push(N,W), Push(W,W), NoOp, Pull(S,W)];2
+[Move(S), NoOp, NoOp, Move(W), Move(W), NoOp, Push(W,N), NoOp, NoOp, Push(N,E)];2
+[Move(W), NoOp, NoOp, NoOp, NoOp, NoOp, Push(N,W), Move(S), NoOp, Push(E,E)];4
+[Move(W), Move(S), Move(W), NoOp, Move(E), NoOp, Push(W,W), Move(E), NoOp, Push(E,N)];4
+[Move(W), Move(S), NoOp, NoOp, Move(E), Move(W), Push(W,W), Move(E), NoOp, Push(N,E)];2
+[Move(W), Move(S), NoOp, NoOp, Move(S), NoOp, NoOp, Move(W), NoOp, NoOp];3
+[NoOp, NoOp, Move(E), NoOp, NoOp, Push(S,E), Move(E), Move(W), NoOp, Move(S)];5
+[NoOp, Move(W), Move(S), NoOp, NoOp, Push(E,S), Move(E), Move(W), Push(E,E), Move(S)];2
+[Move(N), Move(N), NoOp, Pull(E,W), NoOp, NoOp, Move(E), Push(N,E), Push(E,N), Move(S)];26
+[Move(W), Move(N), NoOp, Pull(E,W), NoOp, NoOp, Move(N), NoOp, Push(N,E), Move(N)];2
+[Move(W), NoOp, NoOp, Pull(E,W), NoOp, Move(W), Move(E), NoOp, Push(E,E), Move(N)];95
+[NoOp, NoOp, NoOp, NoOp, NoOp, Move(S), Move(E), NoOp, NoOp, Move(N)];1
+[NoOp, NoOp, NoOp, Move(S), Move(W), NoOp, Move(E), NoOp, NoOp, Move(S)];2
+[Move(E), NoOp, NoOp, Move(W), Move(W), NoOp, Push(S,W), Move(W), NoOp, Move(S)];9
+[Move(E), NoOp, NoOp, Move(W), Move(W), NoOp, NoOp, Move(W), NoOp, Move(S)];1
+[Move(E), NoOp, NoOp, NoOp, Move(W), NoOp, Move(N), Move(W), NoOp, Move(N)];1
+[Move(S), NoOp, NoOp, Move(E), Pull(N,W), NoOp, Move(W), Move(N), NoOp, Move(N)];1
+[Move(W), NoOp, NoOp, Move(E), Push(S,E), NoOp, Move(W), Move(N), NoOp, Move(N)];2
+[Move(N), NoOp, NoOp, Move(S), Push(E,E), NoOp, NoOp, Move(N), NoOp, NoOp];1
+[Move(W), NoOp, NoOp, Move(S), Push(E,E), NoOp, NoOp, Move(N), NoOp, NoOp];1
+[Move(W), NoOp, NoOp, Move(S), Push(E,N), NoOp, NoOp, Move(N), NoOp, NoOp];0
+[Move(W), NoOp, NoOp, NoOp, Push(N,E), NoOp, NoOp, Move(N), NoOp, NoOp];0
+[Move(S), NoOp, NoOp, Move(E), Push(E,E), NoOp, NoOp, NoOp, NoOp, NoOp];1
+[Move(S), NoOp, NoOp, Move(E), Push(E,N), Move(E), NoOp, Move(S), NoOp, Move(S)];2
+[Move(S), Push(N,N), NoOp, Move(S), Push(N,N), Move(N), NoOp, Move(S), NoOp, Move(S)];2
+[Move(S), Push(N,W), NoOp, Move(S), NoOp, Pull(W,N), NoOp, Move(S), NoOp, NoOp];6
+[NoOp, Push(W,W), NoOp, Move(S), Move(S), Push(E,S), Move(E), Move(S), NoOp, NoOp];1
+[NoOp, Push(W,W), NoOp, NoOp, Move(W), Push(S,E), NoOp, NoOp, NoOp, NoOp];129
+[NoOp, Push(W,W), Move(W), Move(W), Move(W), Push(E,E), NoOp, Move(N), NoOp, NoOp];1
+[Move(E), Push(W,W), NoOp, Move(W), Move(S), Push(E,E), NoOp, Move(N), NoOp, NoOp];0
+[Move(E), Push(W,W), NoOp, NoOp, NoOp, NoOp, Move(E), Move(N), NoOp, NoOp];1
+[NoOp, Push(W,W), NoOp, Move(E), NoOp, NoOp, Move(S), Move(N), NoOp, NoOp];4
+[NoOp, Push(W,W), NoOp, Move(E), Pull(E,W), NoOp, NoOp, NoOp, NoOp, NoOp];96
+[NoOp, Push(W,W), NoOp, Pull(W,E), Pull(E,W), NoOp, NoOp, NoOp, NoOp, NoOp];5
+[NoOp, Push(W,S), NoOp, Pull(W,E), Pull(E,W), Move(W), NoOp, NoOp, NoOp, NoOp];2
+[NoOp, NoOp, Move(E), Pull(W,E), Pull(E,W), Move(W), Move(W), NoOp, NoOp, NoOp];1
+[Move(N), Move(E), Move(E), Pull(N,E), Pull(E,W), Move(W), Move(N), NoOp, NoOp, NoOp];1
+[Move(N), Move(S), Move(N), Pull(W,S), Pull(E,W), Move(N), NoOp, NoOp, NoOp, NoOp];1
+[Move(W), NoOp, Move(E), Pull(W,E), Pull(E,W), Move(N), NoOp, Push(N,E), NoOp, NoOp];3
+[NoOp, Push(W,W), Move(S), Pull(W,E), Pull(N,W), Move(E), NoOp, Push(E,E), NoOp, NoOp];1
+[NoOp, Push(W,W), Push(S,S), Pull(S,E), Push(S,E), NoOp, NoOp, Push(E,E), NoOp, NoOp];2
+[Move(E), Push(W,W), Push(S,S), Push(N,N), Push(E,N), NoOp, NoOp, Push(E,E), NoOp, NoOp];1
+[Move(S), Push(W,W), Push(S,S), Push(N,N), Push(N,E), NoOp, NoOp, Push(E,E), NoOp, NoOp];1
+[Move(S), Push(W,W), Push(S,S), Push(N,W), Push(E,N), Move(E), NoOp, Push(E,E), NoOp, NoOp];0
+[Move(S), NoOp, Push(S,W), Move(E), Push(N,E), Move(S), NoOp, Push(E,E), NoOp, NoOp];0
+[Move(S), NoOp, Push(W,S), Move(E), NoOp, Move(E), NoOp, Push(E,S), NoOp, NoOp];1
+[Move(S), NoOp, Push(S,W), Move(E), NoOp, Move(E), NoOp, Push(S,E), NoOp, NoOp];1
+[Move(E), NoOp, Push(W,W), Move(E), NoOp, NoOp, NoOp, Push(E,E), NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(S), NoOp, NoOp, NoOp, Push(E,E), NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(S), NoOp, Move(S), Move(N), Push(E,E), NoOp, NoOp];1
+[Move(W), NoOp, NoOp, Move(E), NoOp, Move(W), Move(W), Push(E,E), NoOp, NoOp];1
+[Move(W), NoOp, NoOp, NoOp, NoOp, NoOp, Move(N), Push(E,E), NoOp, NoOp];0
+[Move(S), NoOp, NoOp, Move(E), NoOp, NoOp, Move(N), Push(E,E), NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(S), NoOp, NoOp, Move(E), Push(E,E), NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(N), Push(E,N), NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(N), Push(N,E), NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(S), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];4
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, Move(E), NoOp, NoOp, Move(E), NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, Push(E,E), NoOp, NoOp, Move(E), Move(S), NoOp, NoOp];2
+[NoOp, NoOp, NoOp, Push(E,S), NoOp, NoOp, Pull(S,E), Move(W), NoOp, NoOp];2
+[Move(E), NoOp, NoOp, Push(S,S), NoOp, NoOp, Push(N,W), Move(S), NoOp, NoOp];1
+[Move(N), NoOp, NoOp, Push(S,W), NoOp, NoOp, Push(W,W), Move(S), NoOp, NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), Move(S), NoOp, NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), Move(S), NoOp, NoOp];0
+[Move(S), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), Move(S), NoOp, NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), Move(S), NoOp, NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), Move(E), Move(W), NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), NoOp, Move(W), NoOp];73
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), NoOp, Move(W), NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), NoOp, Move(W), NoOp];0
+[Move(E), NoOp, NoOp, Push(W,W), NoOp, NoOp, Push(W,W), NoOp, Move(W), NoOp];1
+[Move(E), NoOp, NoOp, NoOp, NoOp, NoOp, Push(W,S), NoOp, Move(W), NoOp];0
+[Move(N), NoOp, Push(W,W), NoOp, NoOp, NoOp, Push(S,S), NoOp, Move(W), NoOp];1
+[Move(N), NoOp, Push(W,W), NoOp, NoOp, NoOp, Push(S,E), NoOp, Move(N), NoOp];0
+[Move(N), NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp, Move(W), NoOp];1
+[Move(N), NoOp, Push(W,N), NoOp, NoOp, NoOp, NoOp, NoOp, Move(W), NoOp];0
+[Move(N), NoOp, Push(N,N), NoOp, NoOp, NoOp, NoOp, Move(W), Move(W), NoOp];1
+[Move(N), NoOp, NoOp, NoOp, NoOp, NoOp, NoOp, Move(S), Move(W), NoOp];0
+[Move(N), NoOp, Move(W), NoOp, NoOp, NoOp, NoOp, NoOp, Pull(E,W), NoOp];1
+[Move(N), NoOp, Move(N), NoOp, Push(N,W), NoOp, NoOp, NoOp, Pull(E,W), Move(W)];3
+[NoOp, NoOp, Move(N), NoOp, Push(W,S), NoOp, NoOp, NoOp, Pull(N,W), Move(N)];1
+[NoOp, NoOp, NoOp, NoOp, Push(S,S), NoOp, NoOp, NoOp, Push(S,E), Move(N)];0
+[NoOp, NoOp, NoOp, NoOp, Push(S,W), NoOp, NoOp, NoOp, Push(E,E), Move(E)];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];1
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,W), NoOp, NoOp, NoOp, NoOp, NoOp];0
+[NoOp, NoOp, NoOp, NoOp, Push(W,N), NoOp, NoOp, NoOp, NoOp, NoOp];0
+bba1f8f55ba186a9bbf677b67f39779598fac054
+successful
+2017
+180
+090497703a44f19a1b213db960c08f847d5a1098
+1495032340880

@@ -1,0 +1,120 @@
+red:0,V
+yellow:1,D
+magenta:2,W
+orange:3,F
+green:H
++++++++++++++++++++++++++++++++
++        TEAM LIQUORICE       +
++++++++++++++++++++++++++++++++
++0          M    w           2+
++ + + + + + + + + + + + + + + +
++               H             +
++ + + + + + + + + + + + + + + +
++   H                 W       +
++ + + + + + + + + + + + + + + +
++     D                       +
++ + + + + + + + + + +H+ + + + +
++  v       d     H           V+
++ + + + + + + + + + + + + + + +
++3f              F          V1+
++++++++++++++++++++++++++++++++
++      BOMBERMAN CLASSIC      +
++++++++++++++++++++++++++++++++
+
+[Move(E), NoOp, Move(W), Move(E)];71
+[Move(E), NoOp, Move(W), Move(E)];2
+[Move(E), NoOp, Move(W), Move(E)];2
+[Move(E), NoOp, Move(W), Move(E)];1
+[Move(E), NoOp, Move(W), Move(E)];2
+[Move(E), NoOp, Move(W), Move(E)];2
+[Move(E), NoOp, Move(S), Move(E)];2
+[Move(E), NoOp, Move(S), Move(E)];1
+[Move(E), NoOp, Move(S), Move(E)];1
+[Move(E), NoOp, Move(S), Move(E)];0
+[Move(S), NoOp, Push(W,W), Move(E)];23
+[Move(S), NoOp, Push(W,N), Move(E)];1
+[Move(E), NoOp, Push(N,N), Move(E)];1
+[Move(E), NoOp, Push(N,N), Move(E)];2
+[Move(E), NoOp, Push(N,N), Move(E)];0
+[Move(E), NoOp, Push(N,W), Pull(W,E)];8
+[Move(S), NoOp, Push(W,W), Pull(W,E)];1
+[Move(S), NoOp, Push(W,W), Pull(W,E)];1
+[Move(E), NoOp, Push(W,W), Pull(N,E)];1
+[Move(E), NoOp, NoOp, Push(S,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(S), NoOp, NoOp, Push(W,W)];1
+[Move(S), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp];2
+[Move(E), NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp];1
+[Move(S), NoOp, NoOp, NoOp];1
+[Pull(N,S), NoOp, NoOp, NoOp];19
+[Pull(N,S), NoOp, NoOp, NoOp];1
+[Push(S,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,S), NoOp, NoOp, NoOp];0
+[Push(S,S), NoOp, NoOp, NoOp];1
+[Push(S,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];2
+[Push(W,W), Move(N), NoOp, NoOp];0
+[Push(W,W), Move(N), NoOp, NoOp];1
+[Push(W,W), Move(W), NoOp, NoOp];0
+[Push(W,W), Move(W), NoOp, NoOp];0
+[Push(W,W), Move(W), NoOp, NoOp];0
+[Push(W,W), Move(W), NoOp, NoOp];0
+[Push(W,W), Move(W), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];1
+[NoOp, Move(N), NoOp, NoOp];0
+[NoOp, Move(N), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Move(W), NoOp, NoOp];0
+[NoOp, Pull(N,W), NoOp, NoOp];3
+[NoOp, Push(S,S), NoOp, NoOp];1
+[NoOp, Push(S,S), NoOp, NoOp];0
+[NoOp, Push(S,E), NoOp, NoOp];1
+[NoOp, Push(E,E), NoOp, NoOp];0
+[NoOp, Push(E,E), NoOp, NoOp];1
+[NoOp, Push(E,E), NoOp, NoOp];0
+ea47c46412e7bf175bce23836de8e2b44b85274e
+successful
+184
+91
+81ce184682e63c4aeaee51104321f0a2e5cd6272
+1495032359426

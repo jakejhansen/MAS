@@ -1,0 +1,22 @@
+red: 0,A
+blue: 1,B
+cyan: 2,C
+yellow: 3,D
+pink: 4,E
+++++++++++++++++
++++++DB+B+++2+++
+++++++A+C+++B+++
+++c++          +
++cdebA CCC    0+
+++cE+          +
++++4++C+++++A+++
+++++++3+++++1+++
+++++++++++++++++
+
+[NoOp, Move(N), Move(S), Move(N), Push(N,N)];195
+8ae661aaa90eeb0fa72c272cd508e37ad5d25ee0
+unsuccessful
+195
+1
+e75fe8ca839b94fc05c39c4700108ddfaa144f3c
+1494928162603

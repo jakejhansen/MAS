@@ -1,0 +1,68 @@
++++++++++++
++AIO     0+
++LIM      +
++ASH      +
++         +
++BBBB BBBB+
++BBBB BBBB+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++AAAA AAAA+
++AAAA AAAA+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++AAAA AAAA+
++AAAA AAAA+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++         +
++BBBB BBBB+
++BBBB BBBB+
++++++ +++++
+++aaaaaaa++
++++abbbb+++
+++++bbb++++
++++++b+++++
++++++ +++++
++aiolimash+
++++++++++++
+
+[Move(W)];545
+[Move(S)];1
+[Move(S)];2
+[Move(S)];2
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(S)];1
+[Move(S)];1
+[Move(S)];0
+[Move(S)];1
+[Move(S)];1
+[Move(S)];1
+[Move(S)];1
+[Move(S)];2
+[Move(S)];1
+[Move(W)];0
+[Move(W)];1
+[Move(W)];0
+cbb0d7f66f94775b6185a6692b47fdca24a5cb1e
+unsuccessful
+560
+19
+64421bb4b3a1831eddf0095109f99ac26fd6ed4a
+1495031783852

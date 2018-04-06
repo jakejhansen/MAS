@@ -1,0 +1,27 @@
+red: 0,A,1,B
+green:2
+yellow: 3, C
+++++++++++++++++++++++++++++
++     b    1    0A B2C  a  +
++                  ++3     +
+++++++++++++++++++++++++++++
+
+[Pull(W,E), NoOp, NoOp, Move(E)];4502
+[Pull(W,E), NoOp, NoOp, Move(N)];1
+[Pull(W,E), NoOp, NoOp, Pull(S,W)];0
+[Pull(S,E), NoOp, NoOp, Pull(W,N)];1
+[Pull(E,N), NoOp, NoOp, Push(E,E)];0
+[Push(W,W), NoOp, NoOp, Push(E,E)];1
+[Move(E), NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp];3
+[Move(N), NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Push(E,E), NoOp, NoOp, NoOp];1
+31b4cdbecbcf073f278551c265e935deff5a6827
+unsuccessful
+4511
+13
+42507940e30c6ac7693bb71fc556c81425f8e982
+1495038991911

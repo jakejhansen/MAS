@@ -1,0 +1,146 @@
+blue: 0,3,A,B,E
+red: 1,4,D
+green: 2,5,C,V,G,N,M,H
+orange: F
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++a  A  +  0      1     2        FFa  A  +  3      4     5        +
++++++  +                     +++FF++++  +                     ++++
++a  A  + BA     D  D    CC      FFa  A  + BA     D   D   CC      +
+++++++ ++++a++d+++d++c++++++++++FF+++++ ++++a++d+++d++c+++++++++++
++         +b++ + + ++c++        FF         +b++ + + ++c++        +
++            +     +            FF            +     +            +
++            +D   D+            FF            +D   D+            +
++  +++++++++++D    +            FF  +++++++++++D    +            +
++A           +d   d+            FFA           +d   d+            +
++a++       + +++ +++            FFa++       + +++ +++            +
++b+B       + +++D+++            FFb+B       + +++D+++            +
++e+E       + +++d+++CVGNMH      FFe+E       + +++d+++CVGNMH      +
+++++++++++++ +++d++++++++++++++hFF+++++++++++ +++d++++++++++++++h+
++            +++     DD      ++mFF            +++     DD      ++m+
++            +++             ++nFF            +++             ++n+
++            +++     dd      ++gFF            +++     dd      ++g+
++            +++     dd      ++vFF            +++     dd      ++v+
++            +++     DD      ++cFF            +++     DD      ++c+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Move(S), Move(S), Move(S), Move(S), Move(S), Move(S)];58660
+[Move(E), Move(S), Move(S), Move(E), Move(S), Move(S)];155
+[Move(S), Move(E), Pull(W,E), Move(S), Move(N), Move(W)];464
+[Move(S), Move(S), Pull(W,E), Move(S), Move(W), Move(W)];0
+[Move(S), Move(S), Pull(S,E), Move(S), Move(W), Move(S)];1
+[Move(S), Move(S), Pull(S,N), Move(S), Move(W), Move(S)];1
+[Move(W), Move(N), Pull(S,N), Move(W), Move(W), Move(S)];85
+[Move(W), Move(N), Move(E), Move(W), Move(W), Move(S)];161
+[Move(N), Move(N), Move(S), Move(W), Move(W), Move(S)];0
+[Move(W), Move(W), Move(S), Move(W), Move(S), Move(S)];0
+[Move(W), Pull(E,W), Move(S), Move(W), Move(S), Move(S)];1
+[Move(W), Pull(S,W), Move(S), Move(W), Move(S), Move(S)];0
+[Move(N), Pull(S,N), Move(S), Move(W), Move(S), Move(W)];1029
+[Move(N), Pull(S,N), Move(E), Move(W), Move(W), Move(N)];0
+[Move(N), Pull(W,N), Move(E), Move(W), Move(W), Move(N)];1
+[Move(W), Pull(S,E), Pull(E,S), Move(W), Move(W), Move(N)];13
+[Move(N), Pull(S,N), Pull(E,W), Move(N), Move(W), Move(N)];89
+[Pull(S,W), Pull(S,N), Pull(E,W), Move(S), Move(W), Move(N)];110
+[Pull(S,N), Pull(W,N), Pull(E,W), Move(N), Move(W), Move(E)];95
+[Pull(E,N), Pull(S,E), Pull(S,W), Move(S), Move(W), Move(N)];94
+[Pull(N,W), NoOp, Pull(E,N), Move(N), Move(W), Move(N)];150
+[Push(S,S), Push(N,N), Pull(E,W), Move(S), Move(W), Move(N)];166
+[Push(S,S), Move(E), Pull(E,W), Move(N), Move(N), Move(N)];1760
+[Push(S,W), Move(N), Pull(S,W), Move(S), Move(S), Move(W)];313
+[Push(W,W), Move(N), Pull(S,N), Move(N), Move(N), Move(W)];351
+[Push(W,W), Move(N), Move(S), Move(S), Move(S), Move(W)];810
+[Push(W,S), Move(E), Move(N), Move(N), Move(N), Move(W)];737
+[Push(S,S), Move(N), Move(S), Move(S), Move(S), Move(W)];808
+[Push(S,W), Move(N), Move(N), Move(N), Move(E), Move(W)];928
+[Push(W,S), Move(N), Move(S), Move(S), Move(W), Move(W)];590
+[Push(S,S), Pull(S,E), Move(N), Move(N), Move(N), Move(W)];482
+[Move(N), Pull(S,N), Move(S), Move(S), Move(S), Move(W)];1115
+[Move(E), Pull(S,N), Move(N), Move(N), Move(E), Move(W)];467
+[Move(E), Move(W), Move(S), Move(S), Move(E), Move(S)];3928
+[Move(E), Move(W), Move(N), Move(N), Move(E), Move(S)];500
+[Move(E), Move(W), Move(S), Move(S), Move(E), Move(S)];595
+[Move(E), Move(W), Move(N), Move(N), Move(E), Move(S)];468
+[Move(E), Move(N), Move(S), Move(S), Move(E), Move(W)];593
+[Move(E), Move(N), Move(N), Move(N), Move(E), Move(S)];1626
+[Move(E), Move(N), Move(S), Move(S), Move(E), Move(W)];585
+[Move(E), Move(E), Move(N), Move(N), Move(E), Move(W)];460
+[Move(N), Move(E), Move(S), Move(S), Move(N), Move(W)];592
+[Move(N), Move(E), Move(N), Move(N), Move(N), Move(W)];462
+[Move(N), Move(E), Move(S), Move(S), Move(N), Move(W)];579
+[Move(N), Move(E), Move(N), Move(N), Move(E), Move(W)];476
+[Move(E), Move(E), Move(S), Move(S), Move(E), Move(W)];592
+[Move(E), Move(E), Move(N), Move(N), Move(E), Move(W)];461
+[Move(E), Move(E), Move(S), Move(S), Move(E), Move(W)];596
+[Move(E), Move(E), Move(N), Move(N), Pull(N,E), Move(E)];1393
+[Move(E), Move(E), Move(S), Move(S), Push(S,W), Move(N)];595
+[Move(E), Move(N), Move(N), Move(N), Push(W,S), Move(N)];3348
+[Move(E), Move(E), Move(S), Move(S), Push(S,S), Move(S)];1613
+[Move(E), Move(E), Move(N), Move(N), Push(S,S), Move(N)];1400
+[Move(E), Move(E), Move(S), Move(S), Move(N), Move(S)];1523
+[Move(E), Move(E), Move(N), Move(N), Move(N), Move(N)];1377
+[Move(E), Move(S), Move(S), Move(S), Move(E), Move(E)];2424
+[Move(E), Move(E), Move(N), Move(N), Move(E), Move(W)];453
+[Move(E), Move(E), Move(S), Move(S), Move(E), Move(S)];581
+[Move(N), Move(E), Move(N), Move(N), Move(E), NoOp];2468
+[Move(E), Move(W), Move(S), Move(S), Move(E), Move(N)];4131
+[Move(E), Move(W), Move(N), Move(N), Pull(W,E), NoOp];2322
+[Move(E), Move(W), Move(S), Move(S), Pull(S,E), Move(S)];581
+[Move(E), Move(E), Move(N), Move(N), Pull(S,N), NoOp];4885
+[Move(N), Move(E), Move(S), Move(S), Pull(S,N), Move(N)];585
+[Move(E), Move(E), Move(N), Move(N), Pull(W,N), Move(E)];2279
+[Move(E), Move(W), Move(S), Move(S), Pull(W,E), Move(W)];613
+[Move(E), Move(W), Move(N), Move(N), Pull(S,E), Move(S)];471
+[Move(W), Move(W), Move(S), Move(S), Pull(W,N), Move(E)];2606
+[Move(W), Move(W), Move(N), Move(N), Pull(S,E), Move(N)];462
+[Move(W), Move(W), Move(S), Move(S), Pull(S,N), Move(W)];596
+[Move(S), Move(N), Move(N), Move(N), Pull(E,N), Move(E)];2351
+[Move(S), Move(W), Move(S), Move(S), Push(W,W), Move(W)];585
+[Move(E), Move(W), Move(N), Move(N), Move(N), Move(S)];2503
+[Move(E), Move(W), Move(S), Move(S), Move(N), Move(N)];2394
+[Move(E), Move(W), Move(N), Move(N), Move(N), Move(E)];3254
+[Move(W), Move(W), Move(S), Move(S), Move(E), Move(W)];2293
+[Move(W), Move(W), Move(N), Move(N), Move(E), Move(S)];462
+[Move(W), Move(S), Move(S), Move(S), Move(E), Move(N)];2398
+[Move(N), Move(W), Move(N), Move(N), Move(N), Move(E)];2279
+[Move(N), Move(W), Move(S), Move(S), Move(N), Move(W)];571
+[Move(E), Move(S), Move(N), Move(N), Move(N), Move(S)];454
+[Move(E), Push(S,S), Move(S), Move(S), Move(W), NoOp];2417
+[Move(E), Push(S,W), Move(N), Move(N), Move(W), Move(N)];484
+[Move(W), Push(W,S), Move(S), Move(S), Move(W), Move(E)];2552
+[Move(W), Push(S,S), Move(N), Move(N), Move(W), Move(W)];451
+[Move(W), Push(S,S), Move(S), Move(S), Move(W), Move(S)];570
+[Move(S), Push(S,W), Move(N), Move(N), Move(W), Move(N)];2289
+[Move(S), Push(W,S), Move(S), Move(S), Move(W), NoOp];2379
+[Move(E), Push(N,N), Move(N), Move(N), Move(S), Move(S)];40746
+[Move(E), Move(E), Move(S), Move(S), Move(S), Move(N)];2443
+[Move(E), Move(E), Move(N), Move(N), Move(S), NoOp];2343
+[Move(W), Move(W), Move(S), Move(S), Move(W), Move(S)];3401
+[Move(W), Move(N), Move(N), Move(N), Move(W), NoOp];2300
+[Move(W), Move(N), Move(S), Move(S), Move(W), Move(N)];575
+[Move(N), Move(E), Move(N), Move(N), Move(W), NoOp];2323
+[Move(N), Move(N), Move(S), Move(S), Move(W), Move(S)];567
+[Move(E), Move(N), Move(N), Move(N), Move(W), Move(N)];2274
+[Move(E), Move(N), Move(S), Move(S), Move(W), NoOp];2396
+[Move(E), Move(E), Move(N), Move(N), Move(W), Move(S)];471
+[Move(W), Move(E), Move(S), Move(S), Move(E), Move(N)];2529
+[Move(W), Move(E), Move(N), Move(N), Move(E), Move(E)];2296
+[Move(W), Move(E), Move(S), Move(S), Move(E), Move(W)];563
+[Move(S), Move(E), Move(N), Move(N), Move(E), Move(S)];461
+[Move(S), Move(E), Move(S), Move(S), Move(E), NoOp];2401
+[Move(E), Move(N), Move(N), Move(N), Move(E), Move(N)];3240
+[Move(E), Move(E), Move(S), Move(S), Move(E), Move(E)];2478
+[Move(E), Move(E), Move(N), Move(N), Move(E), Move(W)];454
+[Move(W), Move(E), Move(S), Move(S), Move(N), Move(S)];773
+[Move(W), Move(E), Move(N), Move(N), Move(N), Move(E)];2383
+[Move(W), Move(N), Move(S), Move(S), Move(N), Move(N)];3826
+[Move(N), Move(E), Move(N), Move(N), Move(E), Move(W)];553
+[Move(N), Move(E), Move(S), Move(S), Move(E), Move(E)];2795
+[Move(E), Move(E), Move(N), Move(N), Move(E), Move(W)];459
+[Move(E), NoOp, NoOp, NoOp, NoOp, NoOp];6718
+[Move(W), NoOp, NoOp, NoOp, NoOp, NoOp];9262
+ced3614253d5f258466b8503c00d2f80b92ba780
+unsuccessful
+250571
+115
+423d3a854cd6546fac42a105cf40802892aa2c2b
+1495030364358

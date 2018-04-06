@@ -1,0 +1,542 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++    B+    B+    B+    B+    B+    B+    B+    B+    B+    B+    B++ +
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ A+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
++ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B +B + +
+++0+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+ B+
+++a++   B +   B +   B +   B +   B +   B +   B +   B +   B +   B +    +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Push(N,E)];4438
+[Push(N,W)];977
+[Push(N,E)];871
+[Push(N,W)];711
+[Push(N,E)];683
+[Push(N,W)];702
+[Push(N,E)];764
+[Push(N,W)];787
+[Push(N,E)];671
+[Push(N,W)];686
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];702
+[Push(N,W)];717
+[Push(N,E)];687
+[Push(N,W)];717
+[Push(N,E)];702
+[Push(N,W)];734
+[Push(N,E)];670
+[Push(N,W)];687
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];648
+[Push(N,W)];686
+[Push(N,E)];687
+[Push(N,W)];686
+[Push(N,E)];765
+[Push(N,W)];686
+[Push(N,E)];717
+[Push(N,W)];687
+[Push(N,E)];715
+[Push(N,W)];702
+[Push(N,E)];649
+[Push(N,W)];701
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];687
+[Push(N,W)];717
+[Push(N,E)];687
+[Push(N,W)];733
+[Push(N,E)];702
+[Push(N,W)];686
+[Push(N,E)];686
+[Push(N,W)];687
+[Push(N,E)];702
+[Push(N,W)];686
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];702
+[Push(N,W)];733
+[Push(N,E)];686
+[Push(N,W)];687
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];717
+[Push(N,W)];702
+[Push(N,E)];686
+[Push(N,W)];702
+[Push(N,E)];702
+[Push(N,W)];749
+[Push(N,E)];718
+[Push(N,W)];670
+[Push(N,E)];687
+[Push(N,W)];702
+[Push(N,E)];802
+[Move(N)];1554
+[Move(E)];0
+[Move(E)];0
+[Pull(W,E)];0
+[Pull(W,E)];0
+[Pull(S,E)];0
+[Push(N,W)];0
+[Move(E)];757
+[Move(E)];0
+[Move(E)];0
+[Push(S,E)];0
+[Push(S,W)];764
+[Push(S,E)];740
+[Push(S,W)];702
+[Push(S,E)];718
+[Push(S,W)];748
+[Push(S,E)];756
+[Push(S,W)];702
+[Push(S,E)];702
+[Push(S,W)];717
+[Push(S,E)];718
+[Push(S,W)];755
+[Push(S,E)];702
+[Push(S,W)];718
+[Push(S,E)];676
+[Push(S,W)];702
+[Push(S,E)];802
+[Push(S,W)];702
+[Push(S,E)];749
+[Push(S,W)];686
+[Push(S,E)];702
+[Push(S,W)];702
+[Push(S,E)];702
+[Push(S,W)];718
+[Push(S,E)];733
+[Push(S,W)];786
+[Push(S,E)];755
+[Push(S,W)];718
+[Push(S,E)];702
+[Push(S,W)];733
+[Push(S,E)];702
+[Push(S,W)];787
+[Push(S,E)];677
+[Push(S,W)];640
+[Push(S,E)];764
+[Push(S,W)];702
+[Push(S,E)];755
+[Push(S,W)];732
+[Push(S,E)];702
+[Push(S,W)];718
+[Push(S,E)];771
+[Push(S,W)];702
+[Push(S,E)];764
+[Push(S,W)];640
+[Push(S,E)];702
+[Push(S,W)];717
+[Push(S,E)];686
+[Push(S,W)];702
+[Push(S,E)];702
+[Push(S,W)];702
+[Push(S,E)];718
+[Push(S,W)];718
+[Push(S,E)];670
+[Push(S,W)];702
+[Push(S,E)];702
+[Push(S,W)];765
+[Push(S,E)];755
+[Push(S,W)];718
+[Push(S,E)];702
+[Push(S,W)];733
+[Push(S,E)];702
+[Push(S,W)];802
+[Push(S,E)];756
+[Push(S,W)];717
+[Push(S,E)];702
+[Push(S,W)];718
+[Move(S)];755
+[Move(E)];0
+[Move(E)];0
+[Move(N)];0
+[Pull(S,E)];0
+[Push(E,E)];733
+[Move(N)];0
+[Push(N,E)];0
+[Push(N,W)];718
+[Push(N,E)];755
+[Push(N,W)];718
+[Push(N,E)];786
+[Push(N,W)];765
+[Push(N,E)];755
+[Push(N,W)];787
+[Push(N,E)];833
+[Push(N,W)];771
+[Push(N,E)];702
+[Push(N,W)];718
+[Push(N,E)];733
+[Push(N,W)];655
+[Push(N,E)];788
+[Push(N,W)];733
+[Push(N,E)];755
+[Push(N,W)];718
+[Push(N,E)];718
+[Push(N,W)];717
+[Push(N,E)];655
+[Push(N,W)];718
+[Push(N,E)];686
+[Push(N,W)];803
+[Push(N,E)];802
+[Push(N,W)];733
+[Push(N,E)];671
+[Push(N,W)];599
+[Push(N,E)];724
+[Push(N,W)];718
+[Push(N,E)];786
+[Push(N,W)];734
+[Push(N,E)];802
+[Push(N,W)];787
+[Push(N,E)];733
+[Push(N,W)];755
+[Push(N,E)];702
+[Push(N,W)];750
+[Push(N,E)];654
+[Push(N,W)];764
+[Push(N,E)];756
+[Push(N,W)];717
+[Push(N,E)];702
+[Push(N,W)];771
+[Push(N,E)];718
+[Push(N,W)];733
+[Push(N,E)];794
+[Push(N,W)];724
+[Push(N,E)];637
+[Push(N,W)];718
+[Push(N,E)];717
+[Push(N,W)];755
+[Push(N,E)];749
+[Push(N,W)];718
+[Push(N,E)];755
+[Push(N,W)];734
+[Push(N,E)];755
+[Push(N,W)];702
+[Push(N,E)];664
+[Push(N,W)];756
+[Push(N,E)];733
+[Push(N,W)];717
+[Push(N,E)];640
+[Push(N,W)];733
+[Push(N,E)];733
+[Move(N)];1643
+[Move(E)];0
+[Move(E)];0
+[Pull(W,E)];0
+[Pull(W,E)];0
+[Pull(S,E)];0
+[Push(N,W)];0
+[Move(E)];733
+[Move(E)];0
+[Move(E)];0
+[Push(S,E)];0
+[Push(S,W)];818
+[Push(S,E)];655
+[Push(S,W)];717
+[Push(S,E)];687
+[Push(S,W)];802
+[Push(S,E)];648
+[Push(S,W)];656
+[Push(S,E)];748
+[Push(S,W)];671
+[Push(S,E)];802
+[Push(S,W)];687
+[Push(S,E)];764
+[Push(S,W)];700
+[Push(S,E)];733
+[Push(S,W)];633
+[Push(S,E)];771
+[Push(S,W)];670
+[Push(S,E)];749
+[Push(S,W)];655
+[Push(S,E)];733
+[Push(S,W)];671
+[Push(S,E)];618
+[Push(S,W)];646
+[Push(S,E)];733
+[Push(S,W)];733
+[Push(S,E)];740
+[Push(S,W)];764
+[Push(S,E)];740
+[Push(S,W)];718
+[Push(S,E)];648
+[Push(S,W)];640
+[Push(S,E)];749
+[Push(S,W)];655
+[Push(S,E)];818
+[Push(S,W)];648
+[Push(S,E)];756
+[Push(S,W)];686
+[Push(S,E)];765
+[Push(S,W)];739
+[Push(S,E)];755
+[Push(S,W)];740
+[Push(S,E)];733
+[Push(S,W)];671
+[Push(S,E)];651
+[Push(S,W)];734
+[Push(S,E)];633
+[Push(S,W)];670
+[Push(S,E)];671
+[Push(S,W)];648
+[Push(S,E)];756
+[Push(S,W)];733
+[Push(S,E)];771
+[Push(S,W)];633
+[Push(S,E)];648
+[Push(S,W)];664
+[Push(S,E)];664
+[Push(S,W)];656
+[Push(S,E)];686
+[Push(S,W)];672
+[Push(S,E)];749
+[Push(S,W)];655
+[Push(S,E)];719
+[Push(S,W)];621
+[Push(S,E)];655
+[Push(S,W)];702
+[Move(S)];717
+[Move(E)];0
+[Move(E)];0
+[Move(N)];0
+[Pull(S,E)];0
+[Push(E,E)];749
+[Move(N)];0
+[Push(N,E)];0
+[Push(N,W)];671
+[Push(N,E)];633
+[Push(N,W)];655
+[Push(N,E)];686
+[Push(N,W)];649
+[Push(N,E)];771
+[Push(N,W)];648
+[Push(N,E)];658
+[Push(N,W)];686
+[Push(N,E)];686
+[Push(N,W)];655
+[Push(N,E)];633
+[Push(N,W)];687
+[Push(N,E)];686
+[Push(N,W)];664
+[Push(N,E)];671
+[Push(N,W)];671
+[Push(N,E)];648
+[Push(N,W)];687
+[Push(N,E)];686
+[Push(N,W)];718
+[Push(N,E)];702
+[Push(N,W)];617
+[Push(N,E)];655
+[Push(N,W)];649
+[Push(N,E)];655
+[Push(N,W)];702
+[Push(N,E)];648
+[Push(N,W)];655
+[Push(N,E)];718
+[Push(N,W)];686
+[Push(N,E)];649
+[Push(N,W)];670
+[Push(N,E)];707
+[Push(N,W)];664
+[Push(N,E)];639
+[Push(N,W)];649
+[Push(N,E)];617
+[Push(N,W)];655
+[Push(N,E)];687
+[Push(N,W)];648
+[Push(N,E)];671
+[Push(N,W)];702
+[Push(N,E)];648
+[Push(N,W)];640
+[Push(N,E)];649
+[Push(N,W)];654
+[Push(N,E)];702
+[Push(N,W)];702
+[Push(N,E)];649
+[Push(N,W)];686
+[Push(N,E)];671
+[Push(N,W)];633
+[Push(N,E)];648
+[Push(N,W)];671
+[Push(N,E)];655
+[Push(N,W)];648
+[Push(N,E)];655
+[Push(N,W)];702
+[Push(N,E)];702
+[Push(N,W)];633
+[Push(N,E)];633
+[Push(N,W)];740
+[Push(N,E)];633
+[Move(N)];1673
+[Move(E)];0
+[Move(E)];0
+[Pull(W,E)];0
+[Pull(W,E)];0
+[Pull(S,E)];0
+[Push(N,W)];0
+[Move(E)];649
+[Move(E)];0
+[Move(E)];0
+[Push(S,E)];0
+[Push(S,W)];655
+[Push(S,E)];649
+[Push(S,W)];717
+[Push(S,E)];660
+[Push(S,W)];633
+[Push(S,E)];670
+[Push(S,W)];649
+[Push(S,E)];718
+[Push(S,W)];639
+[Push(S,E)];633
+[Push(S,W)];638
+[Push(S,E)];656
+[Push(S,W)];686
+[Push(S,E)];665
+[Push(S,W)];654
+[Push(S,E)];633
+[Push(S,W)];740
+[Push(S,E)];633
+[Push(S,W)];633
+[Push(S,E)];670
+[Push(S,W)];661
+[Push(S,E)];702
+[Push(S,W)];633
+[Push(S,E)];635
+[Push(S,W)];737
+[Push(S,E)];633
+[Push(S,W)];671
+[Push(S,E)];648
+[Push(S,W)];718
+[Push(S,E)];639
+[Push(S,W)];680
+[Push(S,E)];639
+[Push(S,W)];649
+[Push(S,E)];671
+[Push(S,W)];670
+[Push(S,E)];665
+[Push(S,W)];639
+[Push(S,E)];692
+[Push(S,W)];666
+[Push(S,E)];669
+[Push(S,W)];670
+[Push(S,E)];633
+[Push(S,W)];718
+[Push(S,E)];655
+[Push(S,W)];664
+[Push(S,E)];613
+[Push(S,W)];604
+[Push(S,E)];633
+[Push(S,W)];670
+[Push(S,E)];687
+[Push(S,W)];633
+[Push(S,E)];670
+[Push(S,W)];702
+[Push(S,E)];633
+[Push(S,W)];633
+[Push(S,E)];671
+[Push(S,W)];671
+[Push(S,E)];664
+[Push(S,W)];639
+[Push(S,E)];803
+[Push(S,W)];632
+[Push(S,E)];633
+[Push(S,W)];640
+[Push(S,E)];658
+[Push(S,W)];655
+[Move(S)];702
+[Move(E)];0
+[Move(E)];0
+[Move(N)];0
+[Pull(S,E)];0
+[Push(E,E)];618
+[Move(N)];0
+[Push(N,E)];0
+[Push(N,W)];648
+[Push(N,E)];640
+[Push(N,W)];702
+[Push(N,E)];702
+[Push(N,W)];648
+[Push(N,E)];655
+[Push(N,W)];664
+[Push(N,E)];640
+[Push(N,W)];649
+[Push(N,E)];717
+[Push(N,W)];671
+[Push(N,E)];671
+[Push(N,W)];633
+[Push(N,E)];670
+[Push(N,W)];649
+[Push(N,E)];671
+[Push(N,W)];633
+[Push(N,E)];691
+[Push(N,W)];756
+[Push(N,E)];633
+6e95714da896a37da21b5d80b4f36b460d82aa68
+unsuccessful
+299624
+465
+42ebcdeae76d6351a654ef211aa144e3dc0419da
+1495036893948

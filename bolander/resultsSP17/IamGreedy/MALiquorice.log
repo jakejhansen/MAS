@@ -1,0 +1,131 @@
+red:0,V
+yellow:1,D
+magenta:2,W
+orange:3,F
+green:H
++++++++++++++++++++++++++++++++
++        TEAM LIQUORICE       +
++++++++++++++++++++++++++++++++
++0          M    w           2+
++ + + + + + + + + + + + + + + +
++               H             +
++ + + + + + + + + + + + + + + +
++   H                 W       +
++ + + + + + + + + + + + + + + +
++     D                       +
++ + + + + + + + + + +H+ + + + +
++  v       d     H           V+
++ + + + + + + + + + + + + + + +
++3f              F          V1+
++++++++++++++++++++++++++++++++
++      BOMBERMAN CLASSIC      +
++++++++++++++++++++++++++++++++
+
+[Move(S), NoOp, Move(S), Move(E)];1007
+[Move(S), NoOp, Move(S), Move(E)];1
+[Move(S), NoOp, Move(W), Move(E)];1
+[Move(S), NoOp, Move(W), Move(E)];1
+[Move(E), NoOp, Move(W), Move(E)];1
+[Move(E), NoOp, Move(W), Move(E)];0
+[Move(S), NoOp, Move(S), Move(E)];1
+[Move(S), NoOp, Move(S), Move(E)];1
+[Move(E), NoOp, Move(W), Move(E)];0
+[Move(E), NoOp, Move(W), Move(E)];1
+[Move(S), NoOp, Push(W,W), Move(E)];0
+[Move(S), NoOp, Push(W,W), Move(E)];0
+[Move(E), NoOp, Push(W,W), Move(E)];1
+[Move(E), NoOp, Push(W,N), Move(E)];0
+[Move(E), NoOp, Push(N,N), Move(E)];1
+[Move(E), NoOp, Push(N,W), Pull(W,E)];1
+[Move(E), NoOp, Push(W,W), Pull(N,E)];0
+[Move(E), NoOp, Push(W,N), Push(S,W)];0
+[Move(E), NoOp, Push(N,N), Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(N), NoOp, NoOp, Push(W,W)];1
+[Move(N), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];1
+[Move(E), NoOp, NoOp, Push(W,W)];0
+[Move(E), NoOp, NoOp, NoOp];1
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(S), NoOp, NoOp, NoOp];1
+[Move(S), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];0
+[Move(E), NoOp, NoOp, NoOp];1
+[Pull(W,E), NoOp, NoOp, NoOp];0
+[Pull(N,E), NoOp, NoOp, NoOp];0
+[Push(S,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,N), NoOp, NoOp, NoOp];0
+[Push(N,N), NoOp, NoOp, NoOp];0
+[Push(N,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,S), NoOp, NoOp, NoOp];0
+[Push(S,S), NoOp, NoOp, NoOp];0
+[Push(S,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Push(W,W), NoOp, NoOp, NoOp];1
+[Push(W,W), NoOp, NoOp, NoOp];0
+[Move(E), Move(N), NoOp, NoOp];0
+[Move(E), Move(N), NoOp, NoOp];1
+[Move(E), Move(N), NoOp, NoOp];0
+[Move(E), Move(N), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(S), Move(W), NoOp, NoOp];1
+[Move(S), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];0
+[Move(E), Move(W), NoOp, NoOp];1
+[Pull(W,E), Move(W), NoOp, NoOp];0
+[Push(E,N), Pull(N,W), NoOp, NoOp];1
+[Push(N,N), Push(S,S), NoOp, NoOp];0
+[Push(N,W), Push(S,S), NoOp, NoOp];1
+[Push(W,W), Push(S,E), NoOp, NoOp];1
+[Push(W,W), Push(E,E), NoOp, NoOp];2
+[Push(W,W), Push(E,E), NoOp, NoOp];0
+[Push(W,W), Push(E,E), NoOp, NoOp];0
+c4877d23311a9f1bb9a94a27e2cb2ec193c1d24e
+successful
+1049
+102
+7919198048e573ede0c49e5e9a7ea420a02b501e
+1495032284388

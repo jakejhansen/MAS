@@ -1,0 +1,37 @@
+red: 0,B,C,D,E
+green: 1,A,F,G,H,I,J
+++++++++++++
++     fghij+
++  0  ++++++
++     FGHIJ+
++A+E+a++++++
++B+ +b+
++C+ +c+
++D+1+d+
++++++++
+
+[Move(S), NoOp];169
+[Pull(W,S), NoOp];0
+[Pull(W,E), NoOp];0
+[Push(E,N), NoOp];0
+[Push(N,N), NoOp];0
+[NoOp, Move(N)];202
+[NoOp, Move(N)];0
+[NoOp, Move(N)];1
+[NoOp, Move(N)];1
+[NoOp, Move(W)];1
+[NoOp, Move(W)];1
+[NoOp, Pull(E,S)];1
+[NoOp, Push(W,N)];0
+[NoOp, Pull(S,N)];1
+[NoOp, Push(N,E)];1
+[NoOp, Push(E,E)];1
+[NoOp, Push(E,E)];2
+[NoOp, Push(E,E)];1
+[NoOp, Push(E,S)];0
+a4a9e222b70ab32f4a2fa60eec777a68ea0e23ff
+unsuccessful
+382
+19
+73470a582949c0898dfa5cf2a0d70ed9933b7d65
+1495026505001

@@ -1,0 +1,91 @@
++++++++
++  0  +
++Y+ +a+
++W+ +b+
++U+ +c+
++S+ +d+
++Q+ +e+
++O+ +f+
++M+ +g+
++K+ +h+
++I+ +i+
++G+ +j+
++E+ +k+
++C+ +l+
++B+ +m+
++D+ +n+
++F+ +o+
++H+ +p+
++J+ +q+
++L+ +r+
++N+ +s+
++P+ +t+
++R+ +u+
++T+ +v+
++V+ +w+
++X+ +x+
++Z+ +y+
++++ +z+
++++++A+
++++++++
+
+[Move(E)];8
+[Move(E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];1
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];1
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+[Pull(N,S)];0
+b3fe5a33763cf8b9f35669a7b75737b1dac8dbdb
+unsuccessful
+11
+54
+cdbe88f4adf004aa6cc02ae4cc56d32737afadfe
+1494960666028

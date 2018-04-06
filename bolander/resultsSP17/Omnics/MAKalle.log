@@ -1,0 +1,27 @@
+red: 0,A
+green: 1,2,3,4,5
+blue: 6,B
++++++++++++
++6       a+
++++++B+++++
++         +
++ +++3+++ +
++ +     + +
++ + +++ + +
++ + 102 +5+
++ + +++ + +
++ +     + +
++ +++4+++ +
++    A    +
++++++++++++
+
+[NoOp, NoOp, NoOp, NoOp, Move(N), NoOp, NoOp];241
+[NoOp, NoOp, NoOp, NoOp, Move(E), NoOp, NoOp];1
+[NoOp, Move(W), NoOp, NoOp, NoOp, NoOp, NoOp];1
+[NoOp, Move(N), NoOp, NoOp, NoOp, NoOp, NoOp];0
+c276a9e5329350f5ca341e52e5e3ad07d6781bc1
+unsuccessful
+243
+4
+9698964bd6634b4fe65712027cf0d6ace746d2f4
+1495025029524

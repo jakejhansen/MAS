@@ -1,0 +1,25 @@
+red: 0,A
+blue: 1,B
+cyan: 2,C
+yellow: 3,D
+pink: 4,E
+++++++++++++++++
++++++DB+B+++2+++
+++++++A+C+++B+++
+++c++          +
++cdebA CCC    0+
+++cE+          +
++++4++C+++++A+++
+++++++3+++++1+++
+++++++++++++++++
+
+[Move(W), NoOp, NoOp, NoOp, Push(N,N)];185
+[Move(W), NoOp, NoOp, NoOp, NoOp];1
+[Move(W), NoOp, NoOp, NoOp, NoOp];0
+[Move(W), NoOp, NoOp, NoOp, NoOp];1
+8ae661aaa90eeb0fa72c272cd508e37ad5d25ee0
+unsuccessful
+187
+4
+6d4845cb4f87bd1a076887d6c5ba0908e7ab408f
+1495031411415
