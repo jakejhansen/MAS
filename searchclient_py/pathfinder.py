@@ -1,59 +1,22 @@
 import numpy as np
+from heapq import *
 import time
-
-LEVELS_PATH = "../levels/"
-
-def import_level(filename):
-    '''
-    Imports .lvl text files to numpy arrays.
-    Only imports walls right now. If position [x,y] is a wall, then walls[x,y]
-    is 1, otherwise 0.
-    INPUT: filename of level [string]
-    OUTPUT: numpy.array [numpy.ndarray]
-
-    '''
-    walls = []
-    with open(LEVELS_PATH+filename, 'r') as f:
-        rows = 0
-        for line in f:
-            cols = len(line) # give correct result on last iteration
-            rows += 1
-
-            wall_line = []
-            for char in line:
-                if char == '\n':
-                    continue
-                elif char == '+':
-                    wall_line = np.append(wall_line, '1')
-                else:
-                    wall_line = np.append(wall_line, '0')
-
-            wall_line = np.array(wall_line)
-            walls.append(wall_line)
-
-        walls = np.array(walls)
-        return walls
-
-walls = import_level('pathfinderTest.lvl')
-
-# def pathfinder(walls):
-
-
 
 # Author: Christian Careaga (christian.careaga7@gmail.com)
 # A* Pathfinding in Python (2.7)
 # Please give credit if used
 # https://github.com/ActiveState/code/blob/master/recipes/Python/578919_PythPathfinding_Binary/recipe-578919.py
 
-
-import numpy
-from heapq import *
-
+# EDIT: Updated by Gandalf Saxe
+# Made compatile with Python 3 (just a print -> print())
 
 def heuristic(a, b):
     return (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2
 
-def astar(array, start, goal):
+def pathfinding(array, start, goal):
+    '''
+    Find shortest path between `start` and `goal` using A* search.
+    '''
 
     # neighbors = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
     neighbors = [(0,1),(0,-1),(1,0),(-1,0)]
@@ -104,80 +67,91 @@ def astar(array, start, goal):
                 
     return False
 
-'''Here is an example of using my algo with a numpy array,
-   astar(array, start, destination)
-   astar function returns a list of points (shortest path)'''
-
-nmap = numpy.array([
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
-
-# x = astar(nmap, (0,0), (10,13))
-# 5*(11 + 2) + 2 = 67 as expected
 
 def path_and_length(array, start, goal):
-    path = astar(array, start, goal)
+    path = pathfinding(array, start, goal)
     return (len(path), path)
 
-test = path_and_length(nmap, (0,0), (10,13))
+
+if __name__ == "__main__":
+
+    # Testing pathfinding()
+
+    nmap = np.array([
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
+
+    print(pathfinding(nmap, (0,0), (10,13)))
+    print()
+    # 5*(11 + 2) + 2 = 67 as expected
+
+    # Testing path_and_length
+    print(path_and_length(nmap, (0,0), (10,13)))
 
 
-rows, cols = nmap.shape
 
 
 
-paths = numpy.empty([rows, cols], dtype=np.ndarray)
 
-t0 = time.time()
+# Below is unfinished / unused code for pre-processing an all-paths matrix.
+# ------------------------------------------------------------------------------
 
-for x in range(rows):
-    for y in range(cols):
-        start = (x,y)
-        if nmap[x,y] == 1:
-            continue
-        paths_from_start = numpy.empty([rows, cols], dtype=tuple)
-        for i in range(rows):
-            for j in range(cols):
-                goal = (i, j)
-                # don't calculate path from start to start (distance is 0)
-                if start == goal:
-                    continue
-                # don't calculate path from start to a wall
-                elif nmap[goal] == 1:
-                    continue
-                else:
-                    # re-use path if already calculated from (i,j) to start
-                    if 0 != 0:
-                        pass # TODO re-use calculation here!
-                    else:
-                        # calculate path from start to (i,j)
-                        paths_from_start[goal] = path_and_length(nmap, start, goal)
-        paths[start] = paths_from_start
-t1 = time.time()
+# rows, cols = nmap.shape
 
-total = t1-t0
-print(total)
+# paths = numpy.zeros([rows, cols], dtype=np.ndarray)
 
-# Testing that path is the same both ways
+# t0 = time.time()
 
-test1 = paths[0,0][10,13]
-trim1 = np.delete(test1[1],0,0)
-trim1 = np.delete(test1[1],-1,0)
-test1 = (test1[0], trim1)
+# for x in range(rows):
+#     for y in range(cols):
+#         start = (x,y)
+#         if nmap[x,y] == 1:
+#             continue
+#         paths_from_start = numpy.zeros([rows, cols], dtype=tuple)
+#         for i in range(rows):
+#             for j in range(cols):
+#                 goal = (i, j)
+#                 # don't calculate path from start to start (distance is 0)
+#                 if start == goal:
+#                     continue
+#                 # don't calculate path from start to a wall
+#                 elif nmap[goal] == 1:
+#                     continue
+#                 # get shortest path from start to goal
+#                 else:
+#                     # if paths[goal] == 0:
+#                     if np.array_equal(paths[goal], 0):
+#                         paths_from_start[goal] = path_and_length(nmap, start, goal)
+#                     # re-use path if already calculated from goal to start
+#                     else:
+#                         paths_from_start[goal] = paths[goal][start]
 
-test2 = paths[10,13][0,0]
-trim2 = np.delete(test2[1],0,0)
-trim2 = np.delete(test2[1],-1,0)
-trim2 = np.flip(trim2, axis=0)
-test2 = (test2[0], trim2)
+#         paths[start] = paths_from_start
+# t1 = time.time()
 
-numpy.testing.assert_equal(test1, test2)
+# total = t1-t0
+# print(total)
+
+# # Testing that path is the same both ways
+
+# test1 = paths[0,0][10,13]
+# trim1 = np.delete(test1[1],0,0)
+# trim1 = np.delete(test1[1],-1,0)
+# test1 = (test1[0], trim1)
+
+# test2 = paths[10,13][0,0]
+# trim2 = np.delete(test2[1],0,0)
+# trim2 = np.delete(test2[1],-1,0)
+# trim2 = np.flip(trim2, axis=0)
+# test2 = (test2[0], trim2)
+
+# numpy.testing.assert_equal(test1, test2)
