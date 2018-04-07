@@ -29,19 +29,33 @@ class Heuristic(metaclass=ABCMeta):
         return tot_dist
 
     def h2(self, state: 'State') -> 'int':
+
+        w = np.array(state.walls) != False
+        b = np.array(state.boxes) != None
+
+        condensed = np.array(w | b, dtype=int)
+
+
+
         goals = np.array(state.goals)
         goals_loc = np.argwhere(goals)
         boxes = np.array(state.boxes)
         boxes_loc = np.argwhere(boxes)
+
 
         #Find reachability of goals to boxes:
         reach = 0
         for goal in goals_loc:
             for box in boxes_loc:
                 if boxes[box[0]][box[1]].lower() == goals[goal[0], goal[1]]:
-                    path = pathfinder((box[0], box[1]), (goal[0], goal[1]))
+                    condensed2 = np.copy(condensed)
+                    condensed2[box[0], box[1]] = 0
+                    condensed2[goal[0], goal[1]] = 0
+                    path = pathfinder(condensed2, (box[0], box[1]), (goal[0], goal[1]))
+
+
                     if path:
-                        reach += path
+                        reach += len(path)
                     else:
                         reach += 100
 
@@ -49,10 +63,12 @@ class Heuristic(metaclass=ABCMeta):
         goals_to_boxes = self.h(state)
 
         #Add them all together:
-        tot_dist = goals_to_boxes + reach
-
+        tot_dist = reach
+        print(tot_dist)
         import IPython
         IPython.embed()
+
+
 
         return tot_dist
 
@@ -91,7 +107,7 @@ class Greedy(Heuristic):
         super().__init__(initial_state)
     
     def f(self, state: 'State') -> 'int':
-        return self.h(state)
+        return self.h2(state)
     
     def __repr__(self):
         return 'Greedy evaluation'

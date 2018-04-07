@@ -1,7 +1,5 @@
 import numpy as np
 
-LEVELS_PATH = "../levels/"
-
 def import_level(filename):
     '''
     Imports .lvl text files to numpy arrays.
@@ -33,10 +31,6 @@ def import_level(filename):
         walls = np.array(walls)
         return walls
 
-walls = import_level('pathfinderTest.lvl')
-
-# def pathfinder(walls):
-
 
 
 # Author: Christian Careaga (christian.careaga7@gmail.com)
@@ -49,10 +43,9 @@ import numpy
 from heapq import *
 
 
-def heuristic(a, b):
-    return (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2
-
-def astar(array, start, goal):
+def pathfinder(array, start, goal):
+    def heuristic(a, b):
+        return (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2
 
     # neighbors = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
     neighbors = [(0,1),(0,-1),(1,0),(-1,0)]
@@ -106,51 +99,51 @@ def astar(array, start, goal):
 '''Here is an example of using my algo with a numpy array,
    astar(array, start, destination)
    astar function returns a list of points (shortest path)'''
+if __name__ == "__main__":
+    nmap = numpy.array([
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
 
-nmap = numpy.array([
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,0,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
+    # x = astar(nmap, (0,0), (10,13))
+    # 5*(11 + 2) + 2 = 67 as expected
 
-# x = astar(nmap, (0,0), (10,13))
-# 5*(11 + 2) + 2 = 67 as expected
+    def path_and_length(array, start, goal):
+        path = astar(array, start, goal)
+        return (len(path), path)
 
-def path_and_length(array, start, goal):
-    path = astar(array, start, goal)
-    return (len(path), path)
-
-x = path_and_length(nmap, (0,0), (10,13))
-
-
-rows, cols = nmap.shape
+    x = path_and_length(nmap, (0,0), (10,13))
 
 
+    rows, cols = nmap.shape
 
-paths = numpy.empty([rows, cols], dtype=np.ndarray)
 
-start = (0,0)
-paths_from_start = numpy.empty([rows, cols], dtype=tuple)
-for i in range(rows):
-    for j in range(cols):
-        # don't calculate path from start to start (distance is 0)
-        if start == (i, j):
-            continue
-        # don't calculate path from start to a wall
-        elif nmap[i,j] == 1:
-            continue
-        else:
-            # re-use path if already calculated from (i,j) to start
-            if 0 != 0:
-                pass # TODO re-use calculation here!
+
+    paths = numpy.empty([rows, cols], dtype=np.ndarray)
+
+    start = (0,0)
+    paths_from_start = numpy.empty([rows, cols], dtype=tuple)
+    for i in range(rows):
+        for j in range(cols):
+            # don't calculate path from start to start (distance is 0)
+            if start == (i, j):
+                continue
+            # don't calculate path from start to a wall
+            elif nmap[i,j] == 1:
+                continue
             else:
-                # calculate path from start to (i,j)
-                paths_from_start[i,j] = path_and_length(nmap, start, (i, j))
+                # re-use path if already calculated from (i,j) to start
+                if 0 != 0:
+                    pass # TODO re-use calculation here!
+                else:
+                    # calculate path from start to (i,j)
+                    paths_from_start[i,j] = path_and_length(nmap, start, (i, j))
 

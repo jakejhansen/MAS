@@ -10,19 +10,22 @@ import numpy as np
 from action import ALL_ACTIONS, ActionType
 
 class Info:
-    def __init__(self, dims):
+    def __init__(self, dims, agent = [None, None]):
         self.dims = dims
         self.MAX_ROW, self.MAX_COL = dims
 
         self.walls = [[False for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
         self.goals = [[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
 
+        self.agent = agent
+
 
 class State:
     _RANDOM = random.Random(1)
     MAX_ROW = 70
     MAX_COL = 70
-    
+
+
     def __init__(self, copy: 'State' = None, dims = [70, 70], info = None):
         '''
         If copy is None: Creates an empty State.
@@ -44,29 +47,31 @@ class State:
         State.MAX_ROW, State.MAX_COL = self.dims
         self.walls = info.walls
         self.goals = info.goals
+        self.desired_agent = info.agent
         self.info = info
         self._hash = None
         if copy is None:
             self.agent_row = None
             self.agent_col = None
-            
+
             self.boxes = [[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)]
 
             self.parent = None
             self.action = None
-            
+
             self.g = 0
         else:
             self.agent_row = copy.agent_row
             self.agent_col = copy.agent_col
-            
+
             self.boxes = [row[:] for row in copy.boxes]
 
             self.parent = copy.parent
             self.action = copy.action
-            
+
             self.g = copy.g
-    
+
+
     def get_children(self) -> '[State, ...]':
         '''
         Returns a list of child states attained from applying every applicable action in the current state.
@@ -77,7 +82,7 @@ class State:
             # Determine if action is applicable.
             new_agent_row = self.agent_row + action.agent_dir.d_row
             new_agent_col = self.agent_col + action.agent_dir.d_col
-            
+
             if action.action_type is ActionType.Move:
                 if self.is_free(new_agent_row, new_agent_col):
                     child = State(self, self.dims, self.info)
@@ -115,14 +120,18 @@ class State:
                         child.action = action
                         child.g += 1
                         children.append(child)
-        
+
         State._RANDOM.shuffle(children)
         return children
-    
+
+
     def is_initial_state(self) -> 'bool':
         return self.parent is None
-    
+
+
     def is_goal_state(self) -> 'bool':
+
+        """ #Original Code
         for row in range(State.MAX_ROW):
             for col in range(State.MAX_COL):
                 goal = self.goals[row][col]
@@ -130,13 +139,36 @@ class State:
                 if goal is not None and (box is None or goal != box.lower()):
                     return False
         return True
-    
+        """
+
+        #Convert arrays to np and filter out fields with goals and boxes
+        #ontop of goal fields.
+        g = np.array(self.goals)
+        b = np.array(self.boxes)
+        g_list = g[g != None]
+        b_list = b[g != None]
+
+        #Agent is not at desired location
+        if self.desired_agent[0] != None:
+            if not(self.agent_row == self.desired_agent[0] and self.agent_col == self.desired_agent[1]):
+                return False
+
+        #If any goal does not have a box, we havn't reached the goal state
+        if not(np.any(np.equal(b_list, None))):
+            if np.sum(g_list) == np.sum(b_list).lower():
+                return True
+
+        return False
+
+
     def is_free(self, row: 'int', col: 'int') -> 'bool':
         return not self.walls[row][col] and self.boxes[row][col] is None
-    
+
+
     def box_at(self, row: 'int', col: 'int') -> 'bool':
         return self.boxes[row][col] is not None
-    
+
+
     def extract_plan(self) -> '[State, ...]':
         plan = []
         state = self
@@ -145,7 +177,8 @@ class State:
             state = state.parent
         plan.reverse()
         return plan
-    
+
+
     def __hash__(self):
         if self._hash is None:
             prime = 31
@@ -157,7 +190,8 @@ class State:
             _hash = _hash * prime + hash(tuple(tuple(row) for row in self.walls))
             self._hash = _hash
         return self._hash
-    
+
+
     def __eq__(self, other):
         if self is other: return True
         if not isinstance(other, State): return False
@@ -167,7 +201,8 @@ class State:
         if self.goals != other.goals: return False
         if self.walls != other.walls: return False
         return True
-    
+
+
     def __repr__(self):
         lines = []
         for row in range(State.MAX_ROW):
@@ -185,6 +220,7 @@ class State:
                     line.append(' ')
             lines.append(''.join(line))
         return '\n'.join(lines)
+
 
     def __lt__(self, other):
         return True

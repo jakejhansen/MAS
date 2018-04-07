@@ -113,6 +113,8 @@ class State:
         return self.parent is None
     
     def is_goal_state(self) -> 'bool':
+        import IPython
+        IPython.embed()
         for row in range(State.MAX_ROW):
             for col in range(State.MAX_COL):
                 goal = self.goals[row][col]
@@ -120,6 +122,9 @@ class State:
                 if goal is not None and (box is None or goal != box.lower()):
                     return False
         return True
+
+    def is_goal_state2(self) -> 'bool':
+        pass
     
     def is_free(self, row: 'int', col: 'int') -> 'bool':
         return not self.walls[row][col] and self.boxes[row][col] is None
