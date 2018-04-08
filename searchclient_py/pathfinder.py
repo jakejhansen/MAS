@@ -13,7 +13,7 @@ import time
 def heuristic(a, b):
     return (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2
 
-def pathfinding(array, start, goal):
+def pathfinder(array, start, goal):
     '''
     Find shortest path between `start` and `goal` using A* search.
     '''
@@ -69,13 +69,13 @@ def pathfinding(array, start, goal):
 
 
 def path_and_length(array, start, goal):
-    path = pathfinding(array, start, goal)
+    path = pathfinder(array, start, goal)
     return (len(path), path)
 
 
 if __name__ == "__main__":
 
-    # Testing pathfinding()
+    # Testing pathfinder()
 
     nmap = np.array([
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         [1,1,1,1,1,1,1,1,1,1,1,1,0,1],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0]])
 
-    print(pathfinding(nmap, (0,0), (10,13)))
+    print(pathfinder(nmap, (0,0), (10,13)))
     print()
     # 5*(11 + 2) + 2 = 67 as expected
 

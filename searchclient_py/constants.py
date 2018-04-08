@@ -1,0 +1,1 @@
+LEVELS_PATH = "../levels/"
