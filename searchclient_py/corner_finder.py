@@ -15,7 +15,7 @@ def corner_finder(filename, print_corners=False):
 		INPUT:
 			- filename: filename of level [string]
 			- print_corners: if true, then prints level for X for corners
-		OUTPUT: tuple of list of tuples with coordinates: (corners,corner_goals)
+		OUTPUT: tuple of list of coordinates: (corners,corner_goals)
 	'''
 
 	walls = import_level(filename, elementtype='walls')
@@ -23,12 +23,7 @@ def corner_finder(filename, print_corners=False):
 
 
 	rows, cols = walls.shape
-	print('rows = {}'.format(rows))
-	print('cols = {} \n'.format(cols))
-	# print("walls:\n")
-	# print(walls)
-	# print()
-
+	
 	corners = []
 	corner_goals = []
 
@@ -102,6 +97,9 @@ def corner_finder(filename, print_corners=False):
 						walls[i,j] = 0  # remove temp wall at corner candidate
 
 	if print_corners:
+		print('rows = {}'.format(rows))
+		print('cols = {} \n'.format(cols))
+
 		raw = import_level(filename, elementtype='raw', printmap=True)
 		for point in corners:
 			x, y = point
@@ -127,7 +125,8 @@ if __name__ == "__main__":
 	# corner_finder('pathfinderTest.lvl', print_corners=True)
 	# corner_finder('SAlabyrinth.lvl', print_corners=True)
 	# corner_finder('SAsimple3.lvl', print_corners=True)
-	corner_finder('SAsokobanLevel96.lvl', print_corners=True)
+	# corner_finder('SAsokobanLevel96.lvl', print_corners=True)
+	test = corner_finder('SAsokobanLevel96.lvl', print_corners=False)
 
 
 
