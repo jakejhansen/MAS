@@ -150,3 +150,9 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/macos,windows,pycharm,sublimetext
 
 *.pyc
+
+# Extra PyCharm stuff
+.idea/modules.xml
+.idea/vcs.xml
+.idea/MAS.iml
+.idea/misc.xml
