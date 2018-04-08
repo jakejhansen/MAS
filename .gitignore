@@ -157,3 +157,5 @@ $RECYCLE.BIN/
 .idea/MAS.iml
 .idea/misc.xml
 .idea/other.xml
+
+.idea/*
