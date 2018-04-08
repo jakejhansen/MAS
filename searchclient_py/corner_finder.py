@@ -15,7 +15,7 @@ def corner_finder(filename, print_corners=False):
 		INPUT:
 			- filename: filename of level [string]
 			- print_corners: if true, then prints level for X for corners
-		OUTPUT: list of corner coordinates
+		OUTPUT: tuple of list of tuples with coordinates: (corners,corner_goals)
 	'''
 
 	walls = import_level(filename, elementtype='walls')
@@ -119,6 +119,7 @@ def corner_finder(filename, print_corners=False):
 		print("Corner-goals:")
 		print(corner_goals)
 		print()
+	return (corners, corner_goals)
 
 
 
