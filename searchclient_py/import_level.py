@@ -1,7 +1,6 @@
 import numpy as np
 from constants import *
-from pathfinder import pathfinder
-from pprint import pprint
+
 
 def print_level(level):
     '''
@@ -13,18 +12,21 @@ def print_level(level):
         print('')
 
 
-def import_level(filename, elementtype='raw', printmap=False):
+def import_level(filename, printout=[0,0,0,0,0]):
     '''
-    Imports .lvl text files to numpy arrays.
-    Only imports walls right now. If position [x,y] is a wall, then walls[x,y]
-    is 1, otherwise 0.
+    Imports .lvl text files to color dict and numpy arrays.
+    If position [x,y] is a wall, then walls[x,y] is 1, otherwise 0. etc.
     INPUT:
-        - filename [string]: filename of level 
-        - type [string]: type of level element to import, must be one of
-            {'walls', agents, boxes, goals} (DEFAULT: 'walls')
-        - printmap: If true, prints the whole map before import and after import
-            [bool] (DEFAULT: 'False')
-    OUTPUT: numpy.array [numpy.ndarray]
+        - filename (string): filename of level
+        - printout ([string]): list of ints that specifies which level elements to print.
+            e.g. [1,1,1,1] will print [raw level & colors, walls, goals, agents, boxes]
+    OUTPUT: tuple with 5 elements:
+                tuple[0]: colors of elements ({color:elements})
+                tuple[1]: walls (numpy.ndarray)
+                tuple[2]: goals (numpy.ndarray)
+                tuple[3]: agents (numpy.ndarray)
+                tuple[4]: boxes (numpy.ndarray)
+                tuple[5]: raw map ([string])
     '''
 
     with open(LEVELS_PATH + filename, 'r') as f:
@@ -65,67 +67,83 @@ def import_level(filename, elementtype='raw', printmap=False):
         raw = np.array(raw)
 
 
-    if elementtype == 'raw':
-        if printmap:
-            print_level(raw)
-        return (colors, raw)
+    # Element types
+    wall_chars = ['+']
 
-    elif elementtype == 'walls':
-        keys = ['+']
+    goal_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', \
+                  'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z']
 
-    elif elementtype == 'agents':
-        keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    agent_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-    elif elementtype == 'boxes':
-        keys = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', \
-            'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
+    box_chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', \
+                   'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
 
-    elif elementtype == 'goals':
-        keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', \
-            'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z']
+    walls = np.zeros((nrows, ncols), dtype=int)
+    goals = np.zeros((nrows, ncols), dtype=int)
+    agents = np.zeros((nrows, ncols), dtype=int)
+    boxes = np.zeros((nrows, ncols), dtype=int)
 
-    else:
-        raise Exception('Invalid type parameter')
+    for i, row in enumerate(raw):
+        for j, char in enumerate(row):
 
-    if elementtype != 'raw':
-        level = np.zeros((nrows,ncols), dtype=int)
+            if char in wall_chars:
+                walls[i, j] = 1
 
-        for i, row in enumerate(raw):
-            for j, char in enumerate(row):
-                if char in keys:
-                    level[i,j] = 1
+            elif char in goal_chars:
+                goals[i, j] = 1
 
-        if printmap:
-            print(level)
+            elif char in agent_chars:
+                agents[i, j] = 1
 
-        return (colors, level)
+            elif char in box_chars:
+                boxes[i, j] = 1
+
+            elif char == ' ':
+                continue
+
+            else:
+                raise Exception('Invalid character in .lvl file: {}'.format(char))
+
+    if printout[0]:
+        print('ROWS: {}'.format(nrows))
+        print('COLUMNS: {}'.format(ncols))
+        print()
+        print("COLORS:")
+        for color in colors:
+            print("{}: {}".format(color, colors[color]))
+        print()
+        print('RAW:')
+        print_level(raw)
+        print()
+
+    if printout[1]:
+        print('WALLS:')
+        print(walls)
+        print()
+
+    if printout[2]:
+        print('GOALS:')
+        print(goals)
+        print()
+
+    if printout[3]:
+        print('AGENTS:')
+        print(agents)
+        print()
+
+    if printout[4]:
+        print('BOXES:')
+        print(boxes)
+        print()
+
+    return (colors, walls, goals, agents, boxes, raw)
 
 
-if __name__ == "__main__":
-    # test_level = 'pathfinderTest.lvl'
-    # test_level = 'SAsokobanLevel96.lvl'
-    test_level = 'MAtbsAppartment.lvl'
-
-    print('RAW:')
-    raw = import_level(test_level, elementtype='raw', printmap=True)
-    print()
-
-    print('WALLS:')
-    walls = import_level(test_level, elementtype='walls', printmap=True)
-    print()
-    
-    print('GOALS:')
-    goals = import_level(test_level, elementtype='goals', printmap=True)
-
-    print('BOXES:')
-    goals = import_level(test_level, elementtype='boxes', printmap=True)
-
-
-
-
-
-
-
-
-
-
+#
+# if __name__ == "__main__":
+#     # test_level = 'pathfinderTest.lvl'
+#     test_level = 'SAsokobanLevel96.lvl'
+#     # test_level = 'MAtbsAppartment.lvl'
+#
+#     level = import_level(test_level, printout=[1,1,1,1,1])
+#     colors, walls, goals, agents, boxes, raw = level
