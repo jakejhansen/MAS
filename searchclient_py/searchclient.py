@@ -68,8 +68,8 @@ class SearchClient:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
             self.info
-            import IPython
-            IPython.embed()
+            #import IPython
+            #IPython.embed()
 
     def search(self, strategy: 'Strategy') -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -131,7 +131,8 @@ def main(strat, lvl):
         strategy = StrategyBestFirst(WAStar(client.initial_state, 5)) # You can test other W values than 5, but use 5 for the report.
     elif strat == "greedy":
         strategy = StrategyBestFirst(Greedy(client.initial_state))
-    
+
+
     solution = client.search(strategy)
     if solution is None:
         print(strategy.search_status(), file=sys.stderr, flush=True)
@@ -149,8 +150,8 @@ def main(strat, lvl):
                 print('Server responsed with "{}" to the action "{}" applied in:\n{}\n'.format(response, state.action, state), file=sys.stderr, flush=True)
                 break
 
-    import IPython
-    IPython.embed()
+    #import IPython
+    #IPython.embed()
 
 if __name__ == '__main__':
     # Program arguments.
