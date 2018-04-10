@@ -10,12 +10,12 @@ import numpy as np
 from action import ALL_ACTIONS, ActionType
 
 class Info:
-    def __init__(self, dims, agent = [None, None]):
+    def __init__(self, dims, agent = None):
         self.dims = dims
         self.MAX_ROW, self.MAX_COL = dims
 
-        self.walls = [[False for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
-        self.goals = [[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)]
+        self.walls = np.array([[False for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)])
+        self.goals = np.array([[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)])
 
         self.agent = agent
 
@@ -30,7 +30,6 @@ class State:
         '''
         If copy is None: Creates an empty State.
         If copy is not None: Creates a copy of the copy state.
-        
         The lists walls, boxes, and goals are indexed from top-left of the level, row-major order (row, col).
                Col 1  Col 2  Col 3  Col 4
         Row 0: (0,0)  (0,1)  (0,2)  (0,3)  ...
@@ -54,7 +53,7 @@ class State:
             self.agent_row = None
             self.agent_col = None
 
-            self.boxes = [[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)]
+            self.boxes = np.array([[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)])
 
             self.parent = None
             self.action = None
@@ -64,7 +63,7 @@ class State:
             self.agent_row = copy.agent_row
             self.agent_col = copy.agent_col
 
-            self.boxes = [row[:] for row in copy.boxes]
+            self.boxes = np.copy(copy.boxes)
 
             self.parent = copy.parent
             self.action = copy.action
@@ -141,15 +140,14 @@ class State:
         return True
         """
 
+
         #Convert arrays to np and filter out fields with goals and boxes
         #ontop of goal fields.
-        g = np.array(self.goals)
-        b = np.array(self.boxes)
-        g_list = g[g != None]
-        b_list = b[g != None]
+        g_list = self.goals[self.goals != None]
+        b_list = self.boxes[self.goals != None]
 
         #Agent is not at desired location
-        if self.desired_agent[0] != None:
+        if self.desired_agent != None:
             if not(self.agent_row == self.desired_agent[0] and self.agent_col == self.desired_agent[1]):
                 return False
 
@@ -185,23 +183,32 @@ class State:
             _hash = 1
             _hash = _hash * prime + self.agent_row
             _hash = _hash * prime + self.agent_col
-            _hash = _hash * prime + hash(tuple(tuple(row) for row in self.boxes))
-            _hash = _hash * prime + hash(tuple(tuple(row) for row in self.goals))
-            _hash = _hash * prime + hash(tuple(tuple(row) for row in self.walls))
+            _hash = _hash * prime + hash(self.boxes.tostring())
+            _hash = _hash * prime + hash(self.goals.tostring())
+            _hash = _hash * prime + hash(self.walls.tostring())
             self._hash = _hash
         return self._hash
 
 
     def __eq__(self, other):
+        #import IPython
+        #IPython.embed()
+        #"""
+
+        if self._hash == other._hash:
+            return True
+        return False
+
+        """
         if self is other: return True
         if not isinstance(other, State): return False
         if self.agent_row != other.agent_row: return False
         if self.agent_col != other.agent_col: return False
-        if self.boxes != other.boxes: return False
-        if self.goals != other.goals: return False
-        if self.walls != other.walls: return False
+        if np.any(self.boxes != other.boxes): return False
+        if np.any(self.goals != other.goals): return False
+        if np.any(self.walls != other.walls): return False
         return True
-
+        """
 
     def __repr__(self):
         lines = []

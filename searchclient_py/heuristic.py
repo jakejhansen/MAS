@@ -65,8 +65,8 @@ class Heuristic(metaclass=ABCMeta):
         #Add them all together:
         tot_dist = reach
         print(tot_dist)
-        import IPython
-        IPython.embed()
+        #import IPython
+        #IPython.embed()
 
 
 
