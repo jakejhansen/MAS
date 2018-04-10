@@ -13,7 +13,7 @@ def print_level(level):
         print('')
 
 
-def import_level(filename, elementtype='walls', printmap=False):
+def import_level(filename, elementtype='raw', printmap=False):
     '''
     Imports .lvl text files to numpy arrays.
     Only imports walls right now. If position [x,y] is a wall, then walls[x,y]
@@ -30,10 +30,23 @@ def import_level(filename, elementtype='walls', printmap=False):
     with open(LEVELS_PATH + filename, 'r') as f:
         raw = f.readlines()
 
-        # Remove \n at end of every line (except last)
+        # Remove \n at end of every line
         for i, line in enumerate(raw):
             raw[i] = line[:-1]
-        
+
+        # Pop all lines about colors before level
+        colors_raw = []
+        while '+' not in raw[0]:
+            colors_raw.append(raw.pop(0))
+
+        # Make dict of {colors:elements}
+        colors = {}
+        for line in colors_raw:
+            line = "".join(line.split()) # strip all whitespace
+            color, elements = line.split(':')
+            elements = elements.split(',')
+            colors[color] = elements
+
         # Determine number of rows (nrows) and longest row length (ncols) of level
         nrows = len(raw)
         ncols = 0
@@ -55,7 +68,7 @@ def import_level(filename, elementtype='walls', printmap=False):
     if elementtype == 'raw':
         if printmap:
             print_level(raw)
-        return raw
+        return (colors, raw)
 
     elif elementtype == 'walls':
         keys = ['+']
@@ -85,12 +98,13 @@ def import_level(filename, elementtype='walls', printmap=False):
         if printmap:
             print(level)
 
-        return level
+        return (colors, level)
 
 
 if __name__ == "__main__":
     # test_level = 'pathfinderTest.lvl'
-    test_level = 'SAsokobanLevel96.lvl'
+    # test_level = 'SAsokobanLevel96.lvl'
+    test_level = 'MAtbsAppartment.lvl'
 
     print('RAW:')
     raw = import_level(test_level, elementtype='raw', printmap=True)
