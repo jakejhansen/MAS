@@ -152,6 +152,11 @@ $RECYCLE.BIN/
 *.pyc
 
 # Extra PyCharm stuff
+.idea/modules.xml
+.idea/vcs.xml
+.idea/MAS.iml
+.idea/misc.xml
+.idea/other.xml
+
+.idea/inspectionProfiles/Project_Default.xml
 .idea/*
-searchclient_py/.idea/*
-/.idea/inspectionProfiles/Project_Default.xml
