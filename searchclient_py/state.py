@@ -8,6 +8,7 @@ import random
 import sys
 import numpy as np
 from action import ALL_ACTIONS, ActionType
+from copy import deepcopy
 
 class Info:
     def __init__(self, dims, agent = None):
@@ -49,6 +50,8 @@ class State:
         self.desired_agent = info.agent
         self.info = info
         self._hash = None
+        self.goal_list = []
+        self.box_list = []
         if copy is None:
             self.agent_row = None
             self.agent_col = None
@@ -68,7 +71,26 @@ class State:
             self.parent = copy.parent
             self.action = copy.action
 
+            self.box_list = deepcopy(copy.box_list)
+            self.goal_list = copy.goal_list
+
             self.g = copy.g
+
+
+
+    def make_list_representation(self):
+        loc = np.argwhere(self.goals != None)
+        for l in loc:
+            self.goal_list.append([l[0], l[1], self.goals[l[0]][l[1]]])
+
+        loc = np.argwhere(self.boxes != None)
+        for l in loc:
+            self.box_list.append([l[0], l[1], self.boxes[l[0]][l[1]].lower()])
+
+    def get_index_from_list(self, obj, row, col):
+        for i, v in enumerate(obj):
+            if v[0] == row and v[1] == col:
+                return i
 
 
     def get_children(self) -> '[State, ...]':
@@ -104,7 +126,12 @@ class State:
                         child.parent = self
                         child.action = action
                         child.g += 1
+
+                        idx = self.get_index_from_list(child.box_list, new_agent_row, new_agent_col)
+                        child.box_list[idx][0] = new_box_row
+                        child.box_list[idx][1] = new_box_col
                         children.append(child)
+
             elif action.action_type is ActionType.Pull:
                 if self.is_free(new_agent_row, new_agent_col):
                     box_row = self.agent_row + action.box_dir.d_row
@@ -118,6 +145,10 @@ class State:
                         child.parent = self
                         child.action = action
                         child.g += 1
+
+                        idx = self.get_index_from_list(child.box_list, box_row, box_col)
+                        child.box_list[idx][0] = self.agent_row
+                        child.box_list[idx][1] = self.agent_col
                         children.append(child)
 
         State._RANDOM.shuffle(children)
@@ -191,9 +222,6 @@ class State:
 
 
     def __eq__(self, other):
-        #import IPython
-        #IPython.embed()
-        #"""
 
         if self._hash == other._hash:
             return True

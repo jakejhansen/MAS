@@ -136,3 +136,14 @@ class StrategyBestFirst(Strategy):
     def __repr__(self):
         return 'Best-first Search (PriorityQueue) using {}'.format(self.heuristic)
 
+
+class Custom():
+    def __init__(self, init_state):
+        self.init_state = init_state
+        self.state = init_state
+
+
+    def initStrategy(self):
+        subgoals = []
+        goals = self.state.goals
+

@@ -68,8 +68,9 @@ class SearchClient:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
             self.info
-            #import IPython
-            #IPython.embed()
+
+
+        self.initial_state.make_list_representation()
 
     def search(self, strategy: 'Strategy') -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -115,7 +116,7 @@ def main(strat, lvl):
     # Read level and create the initial state of the problem.
     client = SearchClient(server_messages)
 
-    c2 = SearchClient(server_messages=None, init_state=client.initial_state)
+    #c2 = SearchClient(server_messages=None, init_state=client.initial_state)
     
     if strat == "BFS":
         strategy = StrategyBFS()

@@ -64,7 +64,7 @@ class Heuristic(metaclass=ABCMeta):
 
         #Add them all together:
         tot_dist = reach
-        print(tot_dist)
+        #print(tot_dist)
         #import IPython
         #IPython.embed()
 
@@ -84,7 +84,7 @@ class AStar(Heuristic):
         super().__init__(initial_state)
     
     def f(self, state: 'State') -> 'int':
-        return state.g + self.h2(state)
+        return state.g + self.h(state)
     
     def __repr__(self):
         return 'A* evaluation'
@@ -107,7 +107,7 @@ class Greedy(Heuristic):
         super().__init__(initial_state)
     
     def f(self, state: 'State') -> 'int':
-        return self.h2(state)
+        return self.h(state)
     
     def __repr__(self):
         return 'Greedy evaluation'
