@@ -10,7 +10,8 @@ from time import perf_counter
 
 import memory
 import heapq
-
+import numpy as np
+import copy
 
 class Strategy(metaclass=ABCMeta):
     def __init__(self):
@@ -141,9 +142,84 @@ class Custom():
     def __init__(self, init_state):
         self.init_state = init_state
         self.state = init_state
+        self.subgoals = self.initStrategy()
+
+        self.solution = self.solve_subgoals()
+
 
 
     def initStrategy(self):
         subgoals = []
-        goals = self.state.goals
+        goals = self.state.goal_list
+        boxes = self.state.box_list
+        b_array = np.array(boxes)
 
+
+        def find_best_box(goal, boxes, taken):
+            """Finds the best box for a given goal"""
+            goal_row = goal[0]
+            goal_col = goal[1]
+            goal_type = goal[2]
+
+            best_dist = 1000
+            best_box = None
+
+            for i, b in enumerate(boxes):
+                if b[2].lower() == goal_type and i not in taken:
+                    dist = manhatten_dist(b[0], b[1], goal_row, goal_col)
+                    if dist < best_dist:
+                        best_box = i
+                        best_dist = dist
+
+            return best_box
+
+
+        def manhatten_dist(row0, col0, row1, col1):
+            """Find the manhatten distance between two points"""
+            return np.abs(row0 - row1) + np.abs(col0 - col1)
+
+        #Goal Assignment
+        taken = []
+        gb_pair = []
+        for i, goal in enumerate(goals):
+            goal_row = goal[0]
+            goal_col = goal[1]
+            goal_type = goal[2]
+
+            #Find best box for the goal
+            b = find_best_box(goal, boxes, taken)
+            taken.append(b) #Mark the box as taken
+
+            gb_pair.append([b, i]) #
+
+        subgoals.append(gb_pair)
+
+        return subgoals
+
+    def solve_subgoals(self):
+        #Search for solution to the subgoals
+
+        total_plan = []
+        state = self.state
+        for i, subgoal in enumerate(self.subgoals[0]):
+            if i > 0:
+                break
+            import searchclient
+            import strategy
+            import heuristic
+            client = searchclient.SearchClient(server_messages = None, init_state =
+            copy.deepcopy(state))
+            strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+            solution, state = client.search2(strategy, self.subgoals[0])
+            state.parent = None
+            #state.action = None
+            total_plan.append(solution)
+
+        return total_plan
+
+    def return_solution(self):
+        tot_sol = []
+        for subsol in self.solution:
+            for state in subsol:
+                tot_sol.append(state)
+        return tot_sol

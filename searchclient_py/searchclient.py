@@ -11,7 +11,7 @@ import sys
 import memory
 from state import State
 from state import Info
-from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst
+from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst, Custom
 from heuristic import AStar, WAStar, Greedy
 
 
@@ -91,7 +91,7 @@ class SearchClient:
             
             leaf = strategy.get_and_remove_leaf()
             
-            if leaf.is_goal_state() or 2 == 3:
+            if leaf.is_goal_state():
                 return leaf.extract_plan()
             
             strategy.add_to_explored(leaf)
@@ -99,6 +99,35 @@ class SearchClient:
                 if not strategy.is_explored(child_state) and not strategy.in_frontier(child_state):
                     strategy.add_to_frontier(child_state)
             
+            iterations += 1
+
+    def search2(self, strategy: 'Strategy', goalstate) -> '[State, ...]':
+        print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
+        strategy.add_to_frontier(self.initial_state)
+
+        iterations = 0
+        while True:
+            if iterations == 1000:
+                print(strategy.search_status(), file=sys.stderr, flush=True)
+                iterations = 0
+
+            if memory.get_usage() > memory.max_usage:
+                print('Maximum memory usage exceeded.', file=sys.stderr, flush=True)
+                return None
+
+            if strategy.frontier_empty():
+                return None
+
+            leaf = strategy.get_and_remove_leaf()
+
+            if leaf.is_goal_state2(goalstate):
+                return leaf.extract_plan(), leaf
+
+            strategy.add_to_explored(leaf)
+            for child_state in leaf.get_children():
+                if not strategy.is_explored(child_state) and not strategy.in_frontier(child_state):
+                    strategy.add_to_frontier(child_state)
+
             iterations += 1
 
 
@@ -133,8 +162,15 @@ def main(strat, lvl):
     elif strat == "greedy":
         strategy = StrategyBestFirst(Greedy(client.initial_state))
 
+    elif strat == "custom":
+        strategy = Custom(client.initial_state)
 
-    solution = client.search(strategy)
+
+    if strat != "custom":
+        solution = client.search(strategy)
+    else:
+        solution = strategy.return_solution()
+
     if solution is None:
         print(strategy.search_status(), file=sys.stderr, flush=True)
         print('Unable to solve level.', file=sys.stderr, flush=True)
@@ -142,7 +178,7 @@ def main(strat, lvl):
     else:
         print('\nSummary for {}.'.format(strategy), file=sys.stderr, flush=True)
         print('Found solution of length {}.'.format(len(solution)), file=sys.stderr, flush=True)
-        print('{}.'.format(strategy.search_status()), file=sys.stderr, flush=True)
+        #print('{}.'.format(strategy.search_status()), file=sys.stderr, flush=True)
         
         for state in solution:
             print(state.action, flush=True)

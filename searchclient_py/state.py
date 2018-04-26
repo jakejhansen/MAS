@@ -189,6 +189,21 @@ class State:
 
         return False
 
+    def is_goal_state2(self, goal_state) -> 'bool':
+        """ Second iteration of finding goal by using the box_list
+
+            Input: goal_state - List of box_index and desired location
+        """
+
+        for subgoal in goal_state:
+            target_box = self.box_list[subgoal[0]]
+            target_goal = self.goal_list[subgoal[1]]
+
+            if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
+                return False
+
+        return True
+
 
     def is_free(self, row: 'int', col: 'int') -> 'bool':
         return not self.walls[row][col] and self.boxes[row][col] is None
