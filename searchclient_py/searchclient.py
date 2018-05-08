@@ -7,8 +7,13 @@
 import argparse
 import re
 import sys
+import time
+from time import gmtime, strftime
+
+from tabulate import tabulate
 
 import memory
+import shutil
 from state import State
 from state import Info
 from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst, Custom
@@ -32,10 +37,12 @@ class SearchClient:
                 line_save = []
 
                 row_dim = 0
-                col_dim = len(line)
+                col_dim = 0
                 while line:
                     line_save.append(line) #Save current line
                     row_dim += 1
+                    if len(line) > col_dim:
+                        col_dim = len(line)
                     line = server_messages.readline().rstrip()
 
 
@@ -107,7 +114,14 @@ class SearchClient:
 
         iterations = 0
         while True:
-            if iterations == 1000:
+
+
+            # if iterations >= 1:
+            #     print("\033[H\033[J")
+            #     print(leaf)
+            #     input()
+
+            if iterations > 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
                 iterations = 0
 
@@ -126,12 +140,15 @@ class SearchClient:
             strategy.add_to_explored(leaf)
             for child_state in leaf.get_children():
                 if not strategy.is_explored(child_state) and not strategy.in_frontier(child_state):
-                    strategy.add_to_frontier(child_state)
+                    strategy.add_to_frontier(child_state, goalstate)
 
             iterations += 1
 
 
-def main(strat, lvl):
+def main(strat, lvl, log):
+    logName = strftime("%Y-%m-%d-%H-%M", gmtime())
+    start = time.time()
+
     # Read server messages from stdin.
     if lvl == "":
         server_messages = sys.stdin
@@ -175,7 +192,7 @@ def main(strat, lvl):
         print(strategy.search_status(), file=sys.stderr, flush=True)
         print('Unable to solve level.', file=sys.stderr, flush=True)
         sys.exit(0)
-    else:
+    elif log == False:
         print('\nSummary for {}.'.format(strategy), file=sys.stderr, flush=True)
         print('Found solution of length {}.'.format(len(solution)), file=sys.stderr, flush=True)
         #print('{}.'.format(strategy.search_status()), file=sys.stderr, flush=True)
@@ -186,9 +203,14 @@ def main(strat, lvl):
             if response == 'false':
                 print('Server responsed with "{}" to the action "{}" applied in:\n{}\n'.format(response, state.action, state), file=sys.stderr, flush=True)
                 break
-
-    #import IPython
-    #IPython.embed()
+    else:
+        #Log info
+        print('Found solution of length {}.'.format(len(solution)), file=sys.stderr, flush=True)
+        with open("logs/" + logName, "a") as myfile:
+            myfile.write(tabulate([[lvl.ljust(22), format(len(solution)),
+                                          "{0:.2f}".format(time.time() - start)]],
+                                        tablefmt="plain") + "\n")
+        shutil.copy2('strategy.py', "logs/" +  logName + "_strategy")
 
 if __name__ == '__main__':
     # Program arguments.
@@ -196,6 +218,7 @@ if __name__ == '__main__':
     parser.add_argument('--max_memory', metavar='<MB>', type=float, default=512.0, help='The maximum memory usage allowed in MB (soft limit, default 512).')
     parser.add_argument('--strategy', default = "BFS", help='The chosen strategy BFS | DFS | ASTAR | WASTAR | GREEDY')
     parser.add_argument('--lvl', default = "", help="Choose to input lvl, mode made when running without server")
+    parser.add_argument('--log', default = False, help="Log to file")
     args = parser.parse_args()
     
     # Set max memory usage allowed (soft limit).
@@ -203,7 +226,7 @@ if __name__ == '__main__':
     strat = args.strategy
 
     # Run client.
-    main(strat, args.lvl)
+    main(strat, args.lvl, args.log)
 
 
 

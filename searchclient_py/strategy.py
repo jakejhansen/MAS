@@ -7,11 +7,11 @@
 from abc import ABCMeta, abstractmethod
 from collections import deque
 from time import perf_counter
+from scipy.spatial.distance import cityblock
 
 import memory
 import heapq
 import numpy as np
-import copy
 
 class Strategy(metaclass=ABCMeta):
     def __init__(self):
@@ -121,8 +121,11 @@ class StrategyBestFirst(Strategy):
         self.frontier_set.remove(leaf)
         return leaf
     
-    def add_to_frontier(self, state: 'State'):
-        heapq.heappush(self.frontier, (self.heuristic.f(state), state))
+    def add_to_frontier(self, state: 'State', goalstate = None):
+        if goalstate is None:
+            heapq.heappush(self.frontier, (self.heuristic.f(state), state))
+        else:
+            heapq.heappush(self.frontier, (self.heuristic.f(state, goalstate), state))
         self.frontier_set.add(state)
     
     def in_frontier(self, state: 'State') -> 'bool':
@@ -143,6 +146,7 @@ class Custom():
         self.init_state = init_state
         self.state = init_state
         self.subgoals = self.initStrategy()
+
 
         self.solution = self.solve_subgoals()
 
@@ -199,18 +203,16 @@ class Custom():
     def solve_subgoals(self):
         #Search for solution to the subgoals
 
+        #TODO: RANK SUBGOAL ORDER
         total_plan = []
         state = self.state
         for i, subgoal in enumerate(self.subgoals[0]):
-            if i > 0:
-                break
             import searchclient
             import strategy
             import heuristic
-            client = searchclient.SearchClient(server_messages = None, init_state =
-            copy.deepcopy(state))
-            strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
-            solution, state = client.search2(strategy, self.subgoals[0])
+            client = searchclient.SearchClient(server_messages = None, init_state = state)
+            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+            solution, state = client.search2(strategy, self.subgoals[0][:i+1])
             state.parent = None
             #state.action = None
             total_plan.append(solution)

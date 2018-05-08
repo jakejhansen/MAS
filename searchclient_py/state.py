@@ -71,7 +71,8 @@ class State:
             self.parent = copy.parent
             self.action = copy.action
 
-            self.box_list = deepcopy(copy.box_list)
+
+            self.box_list = deepcopy(copy.box_list) #TODO: MORE EFFICIENT SOLUTION.
             self.goal_list = copy.goal_list
 
             self.g = copy.g
@@ -262,7 +263,7 @@ class State:
                     line.append(self.boxes[row][col])
                 elif self.goals[row][col] is not None:
                     line.append(self.goals[row][col])
-                elif self.walls[row][col] is True:
+                elif self.walls[row][col] == True:
                     line.append('+')
                 elif self.agent_row == row and self.agent_col == col:
                     line.append('0')
