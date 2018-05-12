@@ -156,7 +156,7 @@ class Custom():
         subgoals = []
         goals = self.state.goal_list
         boxes = self.state.box_list
-        b_array = np.array(boxes)
+        boxes = boxes.tolist()
 
 
         def find_best_box(goal, boxes, taken):

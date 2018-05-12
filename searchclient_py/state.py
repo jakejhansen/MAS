@@ -23,8 +23,6 @@ class Info:
 
 class State:
     _RANDOM = random.Random(1)
-    MAX_ROW = 70
-    MAX_COL = 70
 
 
     def __init__(self, copy: 'State' = None, dims = [70, 70], info = None):
@@ -72,7 +70,7 @@ class State:
             self.action = copy.action
 
 
-            self.box_list = deepcopy(copy.box_list) #TODO: MORE EFFICIENT SOLUTION.
+            self.box_list = copy.box_list.copy()
             self.goal_list = copy.goal_list
 
             self.g = copy.g
@@ -87,6 +85,8 @@ class State:
         loc = np.argwhere(self.boxes != None)
         for l in loc:
             self.box_list.append([l[0], l[1], self.boxes[l[0]][l[1]].lower()])
+
+        self.box_list = np.array(self.box_list, dtype = "object")
 
     def get_index_from_list(self, obj, row, col):
         for i, v in enumerate(obj):

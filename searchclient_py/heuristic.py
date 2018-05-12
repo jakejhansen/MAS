@@ -8,6 +8,7 @@ from abc import ABCMeta, abstractmethod
 from state import State
 from pathfinder import pathfinder
 import numpy as np
+import action
 import sys
 from scipy.spatial.distance import cityblock
 
@@ -89,6 +90,11 @@ class Heuristic(metaclass=ABCMeta):
 
         #TODO: MAKE BETTER HEURISTIC.. Test on SAthomasappartment
         tot_dist = 0
+
+        target_boxes = []
+        for g in goalstate:
+            target_boxes.append([g[0]])
+
         for i, subgoal in enumerate(goalstate):
             target_box = state.box_list[subgoal[0]]
             target_goal = state.goal_list[subgoal[1]]
@@ -96,6 +102,12 @@ class Heuristic(metaclass=ABCMeta):
                                         target_goal[1])
 
             tot_dist += (1*dist)
+
+            act = state.action.action_type
+            if(act != action.ActionType.Move):
+                moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
+                if moved_box not in target_boxes:
+                    tot_dist += 1
 
             #If goal is not fulfilled, add the distance from agent to unresolved box.
             if dist > 0:

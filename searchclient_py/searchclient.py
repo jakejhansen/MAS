@@ -71,13 +71,13 @@ class SearchClient:
                 print('Error parsing level: {}.'.format(repr(ex)), file=sys.stderr, flush=True)
                 sys.exit(1)
 
+            self.initial_state.make_list_representation()
+
         else:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
-            self.info
 
 
-        self.initial_state.make_list_representation()
 
     def search(self, strategy: 'Strategy') -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -121,7 +121,7 @@ class SearchClient:
             #     print(leaf)
             #     input()
 
-            if iterations > 1000:
+            if iterations >= 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
                 iterations = 0
 
