@@ -5,13 +5,16 @@
 
 
 from abc import ABCMeta, abstractmethod
-from collections import deque
+from collections import deque, defaultdict
 from time import perf_counter
-from scipy.spatial.distance import cityblock
+from pathfinder import pathfinder
+from corner_finder import corner_finder
 
 import memory
 import heapq
 import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
 
 class Strategy(metaclass=ABCMeta):
     def __init__(self):
@@ -145,8 +148,9 @@ class Custom():
     def __init__(self, init_state):
         self.init_state = init_state
         self.state = init_state
-        self.subgoals = self.initStrategy()
+        self.corner_list = corner_finder(self.state.walls.astype('int'), self.state.goals)[0]
 
+        self.subgoals = self.initStrategy()
 
         self.solution = self.solve_subgoals()
 
@@ -158,30 +162,52 @@ class Custom():
         boxes = self.state.box_list
         boxes = boxes.tolist()
 
+        G, labels = self.construct_graph()
 
-        def find_best_box(goal, boxes, taken):
-            """Finds the best box for a given goal"""
-            goal_row = goal[0]
-            goal_col = goal[1]
-            goal_type = goal[2]
+        def print_nmap(nmap):
+            for row in nmap:
+                for col in row:
+                    if col == 1:
+                        print("1", end="")
+                    else:
+                        print(" ", end="")
+                print("")
 
-            best_dist = 1000
-            best_box = None
+        completeable_boxes = defaultdict(set)
+        #Run through goals in graph
+        for i in G:
+            goal = self.state.goal_list[i]
+            #Check if completing the goal will block the completion of other goals
+            nmap = self.state.walls.astype('int')
+            nmap[goal[0]][goal[1]] = 1
+            for j, other_goal in enumerate(self.state.goal_list):
+                if j != i:
+                    goal_completable = False
+                    for b_n, box in enumerate(boxes):
+                        if box[2] == other_goal[2]: #same type
+                            v = pathfinder(nmap, (box[0], box[1]), (other_goal[0], other_goal[1]))
+                            if v:
+                                goal_completable = True
+                                completeable_boxes[j].add(b_n) #Append the index of the box\
+                                                                  # to the dict
 
-            for i, b in enumerate(boxes):
-                if b[2].lower() == goal_type and i not in taken:
-                    dist = manhatten_dist(b[0], b[1], goal_row, goal_col)
-                    if dist < best_dist:
-                        best_box = i
-                        best_dist = dist
-
-            return best_box
+                    if goal_completable == False:
+                        G.add_edge(j, i)
 
 
-        def manhatten_dist(row0, col0, row1, col1):
-            """Find the manhatten distance between two points"""
-            return np.abs(row0 - row1) + np.abs(col0 - col1)
+        #Goal Assignment (on graph)
+        taken = [] #List of taken boxes, initialy empty
+        gb_pair = [] #List of goal-box pairs
+        for i in list(nx.topological_sort(G)): #TODO: Create own topological sort function
+            goal = self.state.goal_list[i]
+            box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
+            taken.append(box)  # Mark the box as taken
+            gb_pair.append([box, i])
 
+        subgoals.append(gb_pair)
+
+
+        """
         #Goal Assignment
         taken = []
         gb_pair = []
@@ -191,14 +217,75 @@ class Custom():
             goal_type = goal[2]
 
             #Find best box for the goal
-            b = find_best_box(goal, boxes, taken)
-            taken.append(b) #Mark the box as taken
-
-            gb_pair.append([b, i]) #
+            box = self.find_best_box(goal, boxes, taken)
+            taken.append(box) #Mark the box as taken
+            gb_pair.append([box, i]) #
 
         subgoals.append(gb_pair)
+        """
+
+        #Route the agent to go to the target box
+        subgoals[0] = self.subgoal_routing(subgoals, boxes)
 
         return subgoals
+
+
+    def draw_graph(self, G, labels):
+        pos = nx.spring_layout(G)  # positions for all nodes
+        nx.draw(G, pos=pos, labels=labels, with_labels=True, node_size=800, width = 3)
+        plt.show()
+
+    def construct_graph(self):
+        n_goals = len(self.state.goal_list)
+
+        labels = {}
+        G = nx.DiGraph()
+        for i in range(n_goals):
+            G.add_node(i)
+            labels[i] = str(i) + ' ' + self.state.goal_list[i][2]
+
+        return [G, labels]
+
+    def subgoal_routing(self, subgoals, boxes):
+        routed_solution = []
+        for goal in subgoals[0]:
+            box_row = boxes[goal[0]][0]
+            box_col = boxes[goal[0]][1]
+            goal_pos = [[box_row - 1, box_col],
+                        [box_row +1, box_col],
+                        [box_row, box_col + 1],
+                        [box_row, box_col - 1]]
+            routed_solution.append(goal_pos)
+            routed_solution.append(goal)
+
+        return routed_solution
+
+    #Route the subgoals
+
+    def find_best_box(self, goal, boxes, taken):
+        """Finds the best box for a given goal"""
+        goal_row = goal[0]
+        goal_col = goal[1]
+        goal_type = goal[2]
+
+        best_dist = 1000
+        best_box = None
+
+        for i, box in enumerate(boxes):
+            if box[2].lower() == goal_type and i not in taken:
+                dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
+                if dist < best_dist:
+                    best_box = i
+                    best_dist = dist
+
+        return best_box
+
+
+    def manhatten_dist(self, row0, col0, row1, col1):
+        """Find the manhatten distance between two points"""
+        return np.abs(row0 - row1) + np.abs(col0 - col1)
+
+
 
     def solve_subgoals(self):
         #Search for solution to the subgoals
@@ -211,10 +298,15 @@ class Custom():
             import strategy
             import heuristic
             client = searchclient.SearchClient(server_messages = None, init_state = state)
-            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+            if len(subgoal) > 2:
+                client.initial_state.desired_agent = subgoal
+
+            strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
             solution, state = client.search2(strategy, self.subgoals[0][:i+1])
+            if len(subgoal) > 2:
+                state.desired_agent = None
+
             state.parent = None
-            #state.action = None
             total_plan.append(solution)
 
         return total_plan
