@@ -1,7 +1,7 @@
-'''
+"""
     Author: Mathias Kaas-Olsen
     Date:   2016-02-11
-'''
+"""
 
 
 import argparse
@@ -28,27 +28,30 @@ class SearchClient:
 
             colors_re = re.compile(r'^[a-z]+:\s*[0-9A-Z](\s*,\s*[0-9A-Z])*\s*$')
             try:
-                # Read lines for colors. There should be none of these in warmup levels.
+                # Read lines for colors
                 line = server_messages.readline().rstrip()
-                if colors_re.fullmatch(line) is not None:
-                    print('Invalid level (client does not support colors).', file=sys.stderr, flush=True)
+                if colors_re.fullmatch(line) is not None:  # TODO implement colors (merge import.py)
+                    print('Invalid level (client does not support colors).',
+                          file=sys.stderr,
+                          flush=True)
                     sys.exit(1)
 
+                # Read in level, line by line, and detect level size
                 line_save = []
 
                 row_dim = 0
                 col_dim = 0
                 while line:
-                    line_save.append(line) #Save current line
+                    line_save.append(line)  # Save current line
                     row_dim += 1
-                    if len(line) > col_dim:
+                    if len(line) > col_dim:  # Get max width of level (necessary if not rectangular)
                         col_dim = len(line)
                     line = server_messages.readline().rstrip()
 
 
                 # Read lines for level.
-                self.info = Info(dims = [row_dim, col_dim])
-                self.initial_state = State(dims = [row_dim, col_dim], info = self.info)
+                self.info = Info(dims=[row_dim, col_dim])
+                self.initial_state = State(dims=[row_dim, col_dim], info=self.info)
 
                 row = 0
                 for line in line_save:
@@ -57,7 +60,9 @@ class SearchClient:
                             self.info.walls[row][col] = True
                         elif char in "0123456789":
                             if self.initial_state.agent_row is not None:
-                                print('Error, encoutered a second agent (client only supports one agent).', file=sys.stderr, flush=True)
+                                print('Error, encountered a second agent (client only supports one agent).',
+                                      file=sys.stderr,
+                                      flush=True)
                                 sys.exit(1)
                             self.initial_state.agent_row = row
                             self.initial_state.agent_col = col
@@ -163,19 +168,19 @@ def main(strat, lvl, log):
     client = SearchClient(server_messages)
 
     #c2 = SearchClient(server_messages=None, init_state=client.initial_state)
-    
+
     if strat == "BFS":
         strategy = StrategyBFS()
     # Ex. 1:
     elif strat == "DFS":
         strategy = StrategyDFS()
-    
+
     # Ex. 3:
 
     elif strat == "astar":
         strategy = StrategyBestFirst(AStar(client.initial_state))
     elif strat == "wstar":
-        strategy = StrategyBestFirst(WAStar(client.initial_state, 5)) # You can test other W values than 5, but use 5 for the report.
+        strategy = StrategyBestFirst(WAStar(client.initial_state, 5))  # You can test other W values than 5, but use 5 for the report.
     elif strat == "greedy":
         strategy = StrategyBestFirst(Greedy(client.initial_state))
 
@@ -216,8 +221,8 @@ if __name__ == '__main__':
     # Program arguments.
     parser = argparse.ArgumentParser(description='Simple client based on state-space graph search.')
     parser.add_argument('--max_memory', metavar='<MB>', type=float, default=512.0, help='The maximum memory usage allowed in MB (soft limit, default 512).')
-    parser.add_argument('--strategy', default = "BFS", help='The chosen strategy BFS | DFS | ASTAR | WASTAR | GREEDY')
-    parser.add_argument('--lvl', default = "", help="Choose to input lvl, mode made when running without server")
+    parser.add_argument('--strategy', default="BFS", help='The chosen strategy BFS | DFS | ASTAR | WASTAR | GREEDY')
+    parser.add_argument('--lvl', default="", help="Choose to input lvl, mode made when running without server")
     parser.add_argument('--log', default = False, help="Log to file")
     args = parser.parse_args()
     

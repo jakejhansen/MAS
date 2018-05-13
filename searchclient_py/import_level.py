@@ -3,17 +3,17 @@ from constants import *
 
 
 def print_level(level):
-    '''
+    """
     Print a raw level formatted as a list of strings, without \n.
-    '''
+    """
     for row in range(len(level)):
         for col in range(len(level[0])):
             print(level[row][col], end='')
         print('')
 
 
-def import_level(filename, printout=[0,0,0,0,0]):
-    '''
+def import_level(filename, printout=(0, 0, 0, 0, 0)):
+    """
     Imports .lvl text files to color dict and numpy arrays.
     If position [x,y] is a wall, then walls[x,y] is 1, otherwise 0. etc.
     INPUT:
@@ -21,13 +21,12 @@ def import_level(filename, printout=[0,0,0,0,0]):
         - printout ([string]): list of ints that specifies which level elements to print.
             e.g. [1,1,1,1] will print [raw level & colors, walls, goals, agents, boxes]
     OUTPUT: tuple with 5 elements:
-                tuple[0]: colors of elements ({color:elements})
+                tuple[0]: raw map ([string])
                 tuple[1]: walls (numpy.ndarray)
                 tuple[2]: goals (numpy.ndarray)
                 tuple[3]: agents (numpy.ndarray)
                 tuple[4]: boxes (numpy.ndarray)
-                tuple[5]: raw map ([string])
-    '''
+    """
 
     with open(LEVELS_PATH + filename, 'r') as f:
         raw = f.readlines()
@@ -44,7 +43,7 @@ def import_level(filename, printout=[0,0,0,0,0]):
         # Make dict of {colors:elements}
         colors = {}
         for line in colors_raw:
-            line = "".join(line.split()) # strip all whitespace
+            line = "".join(line.split())  # strip all whitespace
             color, elements = line.split(':')
             elements = elements.split(',')
             colors[color] = elements
@@ -66,17 +65,16 @@ def import_level(filename, printout=[0,0,0,0,0]):
 
         raw = np.array(raw)
 
-
     # Element types
     wall_chars = ['+']
 
-    goal_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', \
+    goal_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
                   'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z']
 
     agent_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-    box_chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', \
-                   'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
+    box_chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+                 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
 
     walls = np.zeros((nrows, ncols), dtype=int)
     goals = np.zeros((nrows, ncols), dtype=int)
@@ -136,14 +134,15 @@ def import_level(filename, printout=[0,0,0,0,0]):
         print(boxes)
         print()
 
-    return (colors, walls, goals, agents, boxes, raw)
+    return colors, walls, goals, agents, boxes, raw
 
 
-#
-# if __name__ == "__main__":
-#     # test_level = 'pathfinderTest.lvl'
-#     test_level = 'SAsokobanLevel96.lvl'
-#     # test_level = 'MAtbsAppartment.lvl'
-#
-#     level = import_level(test_level, printout=[1,1,1,1,1])
-#     colors, walls, goals, agents, boxes, raw = level
+# noinspection SpellCheckingInspection
+if __name__ == "__main__":
+    # test_level = "pathfinderTest.lvl"
+    # noinspection SpellCheckingInspection
+    test_level = "SAsokobanLevel96.lvl"
+    # test_level = "MAtbsAppartment.lvl"
+
+    level = import_level(test_level, printout=[1, 1, 1, 1, 1])
+    colors, walls, goals, agents, boxes, raw = level
