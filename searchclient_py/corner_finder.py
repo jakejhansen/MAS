@@ -3,7 +3,7 @@ from constants import *
 from import_level import *
 from pathfinder import pathfinder
 
-def corner_finder(filename, print_corners=False):
+def corner_finder(walls, goals, print_corners=False):
     '''Find all corners of a level.
     A corner is defined: cell c with the property that if there is a path from
     A to B (with A ≠ c and B ≠ c) in the level, then there is a path that
@@ -17,9 +17,8 @@ def corner_finder(filename, print_corners=False):
             - print_corners: if true, then prints level for X for corners
         OUTPUT: tuple of list of coordinates: (corners,corner_goals)
     '''
-    print("HEJ1")
-    _, walls, goals, _, _, raw = import_level(filename)
-    print("HEJ2")
+
+    raw = np.zeros_like(walls, dtype='object')
 
     nrows, ncols = walls.shape
 

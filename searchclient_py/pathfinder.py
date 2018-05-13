@@ -11,7 +11,7 @@ import time
 # Made compatile with Python 3 (just a print -> print())
 
 def heuristic(a, b):
-    return (b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2
+    return np.abs(b[0] - a[0]) + np.abs(b[1] - a[1])
 
 def pathfinder(array, start, goal):
     '''
