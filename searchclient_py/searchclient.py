@@ -119,10 +119,10 @@ class SearchClient:
         iterations = 0
         while True:
 
-            # if iterations >= 1:
-            #     print("\033[H\033[J")
-            #     print(leaf)
-            #     input()
+            if iterations >= 1:
+                print("\033[H\033[J") #Stack overflow to clear screen
+                print(leaf) #Print state
+                input() #Wait for user input
 
             if iterations >= 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
@@ -161,7 +161,7 @@ def main(strat, lvl, log):
     # Use stderr to print to console through server.
     print('SearchClient initializing. I am sending this using the error output stream.',
           file=sys.stderr, flush=True)
-
+    
     # Read level and create the initial state of the problem.
     client = SearchClient(server_messages)
 

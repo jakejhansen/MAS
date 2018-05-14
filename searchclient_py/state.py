@@ -196,12 +196,19 @@ class State:
             Input: goal_state - List of box_index and desired location
         """
 
-        for subgoal in goal_state:
-            target_box = self.box_list[subgoal[0]]
-            target_goal = self.goal_list[subgoal[1]]
+        if goal_state is not None:
+            for subgoal in goal_state:
+                if len(subgoal) <= 2:
+                    target_box = self.box_list[subgoal[0]]
+                    target_goal = self.goal_list[subgoal[1]]
 
-            if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
-                return False
+                    if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
+                        return False
+
+        if self.desired_agent is not None:
+            for pos in self.desired_agent:
+                if self.agent_row != pos[0] and self.agent_col != pos[1]:
+                    return False
 
         return True
 

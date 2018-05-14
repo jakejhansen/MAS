@@ -93,28 +93,35 @@ class Heuristic(metaclass=ABCMeta):
 
         target_boxes = []
         for g in goalstate:
-            target_boxes.append([g[0]])
+            if len(g) <= 2:
+                target_boxes.append([g[0]])
 
         for i, subgoal in enumerate(goalstate):
-            target_box = state.box_list[subgoal[0]]
-            target_goal = state.goal_list[subgoal[1]]
-            dist = self.manhatten_dist(target_box[0], target_box[1], target_goal[0],
-                                        target_goal[1])
+            if len(subgoal) <= 2:
+                target_box = state.box_list[subgoal[0]]
+                target_goal = state.goal_list[subgoal[1]]
+                dist = self.manhatten_dist(target_box[0], target_box[1], target_goal[0],
+                                            target_goal[1])
 
-            tot_dist += (1*dist)
+                tot_dist += (1*dist)
 
-            act = state.action.action_type
-            if(act != action.ActionType.Move):
-                moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
-                if moved_box not in target_boxes:
-                    tot_dist += 1
+                act = state.action.action_type
+                if(act != action.ActionType.Move):
+                    moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
+                    if moved_box not in target_boxes:
+                        tot_dist += 1
 
-            #If goal is not fulfilled, add the distance from agent to unresolved box.
-            if dist > 0:
-                dist_agent_box = self.manhatten_dist(target_box[0], target_box[1], state.agent_row,
-                                                state.agent_col)
+                #If goal is not fulfilled, add the distance from agent to unresolved box.
+                if dist > 0:
+                    dist_agent_box = self.manhatten_dist(target_box[0], target_box[1], state.agent_row,
+                                                    state.agent_col)
 
-                tot_dist += dist_agent_box
+                    tot_dist += dist_agent_box
+
+            elif i == len(goalstate)-1:
+                tot_dist += self.manhatten_dist(subgoal[0][0] + 1, subgoal[0][1],
+                                                   state.agent_row, state.agent_col)
+                act = state.action.action_type
 
         return tot_dist
 
