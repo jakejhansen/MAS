@@ -15,6 +15,7 @@ import heapq
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
+import pickle
 
 class Strategy(metaclass=ABCMeta):
     def __init__(self):
@@ -34,7 +35,15 @@ class Strategy(metaclass=ABCMeta):
         return perf_counter() - self.start_time
     
     def search_status(self) -> 'str':
-        return '#Explored: {:4}, #Frontier: {:3}, Time: {:3.2f} s, Alloc: {:4.2f} MB, MaxAlloc: {:4.2f} MB'.format(self.explored_count(), self.frontier_count(), self.time_spent(), memory.get_usage(), memory.max_usage)
+        return '#Explored: {:4},' \
+               '#Frontier: {:3},' \
+               'Time: {:3.2f} s,' \
+               'Alloc: {:4.2f} MB,' \
+               'MaxAlloc: {:4.2f} MB'.format(self.explored_count(),
+                                             self.frontier_count(),
+                                             self.time_spent(),
+                                             memory.get_usage(),
+                                             memory.max_usage)
     
     @abstractmethod
     def get_and_remove_leaf(self) -> 'State': raise NotImplementedError
@@ -179,26 +188,38 @@ class Custom():
             goal = self.state.goal_list[i]
             #Check if completing the goal will block the completion of other goals
             nmap = self.state.walls.astype('int')
-            nmap[goal[0]][goal[1]] = 1
+            nmap[goal[0]][goal[1]] = 1 # Pretend that current goal i is occupied -> make into wall
+            # For every other goal than goal[i], see if it's achievable when goal[i] is occupied
             for j, other_goal in enumerate(self.state.goal_list):
                 if j != i:
                     goal_completable = False
                     for b_n, box in enumerate(boxes):
-                        if box[2] == other_goal[2]: #same type
+                        if box[2] == other_goal[2]: # same type
                             v = pathfinder(nmap, (box[0], box[1]), (other_goal[0], other_goal[1]))
                             if v:
-                                goal_completable = True
-                                completeable_boxes[j].add(b_n) #Append the index of the box\
-                                                                  # to the dict
-
+                                goal_completable = True  # goal achievable by *some* box of same type
+                                completeable_boxes[j].add(b_n) # Goal of index j can be achieved
+                                                                # specifically by box of index b_n
                     if goal_completable == False:
                         G.add_edge(j, i)
+
+        # Fix completable_goals to also include corner goals that can be missed / excluded otherwise
+        # (such as bottom goal in boxesOfHanoi.lvl), i.e. candidate goals have zero in-degree
+        nmap = self.state.walls.astype('int')
+        for in_degree, i in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
+            if in_degree == 0:
+                goal = goals[i]
+                for b_n, box in enumerate(boxes):
+                    if box[2] == goal[2]:
+                        v = pathfinder(nmap, (box[0], box[1]), (goal[0], goal[1]))
+                        if v:
+                            completeable_boxes[j].add(b_n)
 
 
         #Goal Assignment (on graph)
         taken = [] #List of taken boxes, initialy empty
         gb_pair = [] #List of goal-box pairs
-        for i in list(nx.topological_sort(G)): #TODO: Create own topological sort function
+        for in_degree, i in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
             goal = self.state.goal_list[i]
             box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
             taken.append(box)  # Mark the box as taken
