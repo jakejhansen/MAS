@@ -219,7 +219,7 @@ class Custom():
         #Goal Assignment (on graph)
         taken = [] #List of taken boxes, initialy empty
         gb_pair = [] #List of goal-box pairs
-        for in_degree, i in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
+        for i, in_degree in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
             goal = self.state.goal_list[i]
             box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
             taken.append(box)  # Mark the box as taken
