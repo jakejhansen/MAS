@@ -233,14 +233,20 @@ class State:
 
     def __hash__(self):
         if self._hash is None:
-            prime = 31
-            _hash = 1
-            _hash = _hash * prime + self.agent_row
-            _hash = _hash * prime + self.agent_col
-            _hash = _hash * prime + hash(self.boxes.tostring())
-            _hash = _hash * prime + hash(self.goals.tostring())
-            _hash = _hash * prime + hash(self.walls.tostring())
-            self._hash = _hash
+            # prime = 31
+            # _hash = 1
+            # _hash = _hash * prime + self.agent_row
+            # _hash = _hash * prime + self.agent_col
+            # _hash = _hash * prime + hash(self.boxes.tostring())
+            # _hash = _hash * prime + hash(self.goals.tostring())
+            # _hash = _hash * prime + hash(self.walls.tostring())
+            # self._hash = _hash
+            # Hash a tuple of all the relevant parameters, no risk of overflow.
+            self._hash = hash(( self.agent_row,
+                                self.agent_col,
+                                self.boxes.tostring(),
+                                self.goals.tostring(),
+                                self.walls.tostring() ))
         return self._hash
 
 
