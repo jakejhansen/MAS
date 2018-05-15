@@ -225,6 +225,9 @@ class Custom():
         for i in completed_goals_index:
             goal = self.state.goal_list[i]
             box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
+
+            self.find_path_with_blocking(goal, self.state.box_list[box], self.state, subgoals)
+
             taken.append(box)  # Mark the box as taken
             gb_pair.append([box, i])
 
@@ -232,10 +235,40 @@ class Custom():
 
 
 
+
         #Route the agent to go to the target box
         subgoals[0] = self.subgoal_routing(subgoals, boxes)
 
         return subgoals
+
+
+    def find_path_with_blocking(self, goal, box, state, subgoals):
+        import searchclient
+        import strategy
+        import heuristic
+        client = searchclient.SearchClient(server_messages=None, init_state=state)
+        client.initial_state.boxes[client.initial_state.boxes != None] = None
+        client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
+        client.initial_state.box_list = np.array([box], dtype="object")
+
+        client.initial_state.agent_row = int(box[0]-1)
+        client.initial_state.agent_col = int(box[1])
+
+
+        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        #solution, state = client.search2(strategy, subgoals[0][:1])
+        solution, state = client.search2(strategy, [[0, 5]])
+
+        path = np.zeros_like(state.walls, dtype = "int")
+        for sol in solution:
+            box_row = sol.box_list[0][0]
+            box_col = sol.box_list[0][1]
+            path[box_row][box_col] = 1
+            path[sol.agent_row][sol.agent_col] = 1
+
+
+
+        return solution, state, path
 
 
     def topological_sort_with_cycles(self, G, labels):
