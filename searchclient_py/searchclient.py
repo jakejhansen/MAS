@@ -119,10 +119,10 @@ class SearchClient:
         iterations = 0
         while True:
 
-            if iterations >= 1:
-                print("\033[H\033[J") #Stack overflow to clear screen
-                print(leaf) #Print state
-                input() #Wait for user input
+            # if iterations >= 1:
+            #     print("\033[H\033[J") #Stack overflow to clear screen
+            #     print(leaf) #Print state
+            #     input() #Wait for user input
 
             if iterations >= 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)

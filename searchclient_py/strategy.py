@@ -183,54 +183,45 @@ class Custom():
                 print("")
 
         completeable_boxes = defaultdict(set)
+        completed_goals = []
+        completed_goals_index = []
         #Run through goals in graph
-        for i in G:
-            goal = self.state.goal_list[i]
-            #Check if completing the goal will block the completion of other goals
-            nmap = self.state.walls.astype('int')
-            nmap[goal[0]][goal[1]] = 1 # Pretend that current goal i is occupied -> make into wall
-            # For every other goal than goal[i], see if it's achievable when goal[i] is occupied
-            for j, other_goal in enumerate(self.state.goal_list):
-                if j != i:
-                    goal_completable = False
-                    for b_n, box in enumerate(boxes):
-                        if box[2] == other_goal[2]: # same type
-                            v = pathfinder(nmap, (box[0], box[1]), (other_goal[0], other_goal[1]))
-                            if v:
-                                goal_completable = True  # goal achievable by *some* box of same type
-                                completeable_boxes[j].add(b_n) # Goal of index j can be achieved
-                                                                # specifically by box of index b_n
-                    if goal_completable == False:
-                        G.add_edge(j, i)
-
-        def topological_sort_with_cycles(G):
-            sorted_nodes = []
-            while list(G.nodes):
-                i, in_degree = sorted(G.in_degree, key=lambda x: x[1], reverse=False)[0]
-                G.remove_node(i)
-                sorted_nodes.append(i)
-            return sorted_nodes
-
-        sorted_nodes = topological_sort_with_cycles(G)
+        while len(completed_goals) != len(G.nodes):
+            for i in G:
+                if i not in completed_goals_index:
+                    goal = self.state.goal_list[i]
+                    #Check if completing the goal will block the completion of other goals
+                    nmap = self.state.walls.astype('int')
+                    nmap[goal[0]][goal[1]] = 1 # Pretend that current goal i is occupied -> make into wall
+                    for g in completed_goals:
+                        nmap[g[0]][g[1]] = 1
+                    all_goals_completeable = True
+                    for j, other_goal in enumerate(self.state.goal_list):
+                        if j != i and j not in completed_goals_index:
+                            goal_completable = False
+                            for b_n, box in enumerate(boxes):
+                                if box[2] == other_goal[2]: # same type
+                                    v = pathfinder(nmap, (box[0], box[1]), (other_goal[0], other_goal[1]))
+                                    if v:
+                                        goal_completable = True  # goal achievable by *some* box of same type
+                                        completeable_boxes[j].add(b_n) # Goal of index j can be achieved
+                                                                        # specifically by box of index b_n
+                            if goal_completable == False:
+                                G.add_edge(j, i)
+                                all_goals_completeable = False
 
 
-        # Fix completable_goals to also include corner goals that can be missed / excluded otherwise
-        # (such as bottom goal in boxesOfHanoi.lvl), i.e. candidate goals have zero in-degree
-        nmap = self.state.walls.astype('int')
-        for i, in_degree in sorted(G.in_degree, key=lambda x: x[1], reverse=False):
-            if in_degree == 0:
-                goal = goals[i]
-                for b_n, box in enumerate(boxes):
-                    if box[2] == goal[2]:
-                        v = pathfinder(nmap, (box[0], box[1]), (goal[0], goal[1]))
-                        if v:
-                            completeable_boxes[j].add(b_n)
+                    if all_goals_completeable:
+                        completed_goals.append(goal)
+                        completed_goals_index.append(i)
 
+
+        sorted_nodes, labels = self.topological_sort_with_cycles(G, labels)
 
         #Goal Assignment (on graph)
         taken = [] #List of taken boxes, initialy empty
         gb_pair = [] #List of goal-box pairs
-        for i in sorted_nodes:
+        for i in completed_goals_index:
             goal = self.state.goal_list[i]
             box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
             taken.append(box)  # Mark the box as taken
@@ -239,28 +230,20 @@ class Custom():
         subgoals.append(gb_pair)
 
 
-        """
-        #Goal Assignment
-        taken = []
-        gb_pair = []
-        for i, goal in enumerate(goals):
-            goal_row = goal[0]
-            goal_col = goal[1]
-            goal_type = goal[2]
-
-            #Find best box for the goal
-            box = self.find_best_box(goal, boxes, taken)
-            taken.append(box) #Mark the box as taken
-            gb_pair.append([box, i]) #
-
-        subgoals.append(gb_pair)
-        """
 
         #Route the agent to go to the target box
         subgoals[0] = self.subgoal_routing(subgoals, boxes)
 
         return subgoals
 
+    def topological_sort_with_cycles(self, G, labels):
+        sorted_nodes = []
+        while list(G.nodes):
+            i, in_degree = sorted(G.in_degree, key=lambda x: x[1], reverse=False)[0]
+            G.remove_node(i)
+            labels.pop(i)
+            sorted_nodes.append(i)
+        return sorted_nodes, labels
 
     def draw_graph(self, G, labels):
         pos = nx.spring_layout(G)  # positions for all nodes
