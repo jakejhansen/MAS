@@ -201,7 +201,8 @@ class Custom():
                             goal_completable = False
                             for b_n, box in enumerate(boxes):
                                 if box[2] == other_goal[2]: # same type
-                                    v = pathfinder(nmap, (box[0], box[1]), (other_goal[0], other_goal[1]))
+                                    v = pathfinder(nmap, (box[0], box[1]),
+                                                   (other_goal[0], other_goal[1]))
                                     if v:
                                         goal_completable = True  # goal achievable by *some* box of same type
                                         completeable_boxes[j].add(b_n) # Goal of index j can be achieved
@@ -236,6 +237,7 @@ class Custom():
 
         return subgoals
 
+
     def topological_sort_with_cycles(self, G, labels):
         sorted_nodes = []
         while list(G.nodes):
@@ -245,12 +247,18 @@ class Custom():
             sorted_nodes.append(i)
         return sorted_nodes, labels
 
+
     def draw_graph(self, G, labels):
         pos = nx.spring_layout(G)  # positions for all nodes
         nx.draw(G, pos=pos, labels=labels, with_labels=True, node_size=800, width = 3)
         plt.show()
 
+
     def construct_graph(self):
+        """
+        Constructs the graph with no edges
+        :return: Graph and labels (for plotting)
+        """
         n_goals = len(self.state.goal_list)
 
         labels = {}
@@ -261,7 +269,14 @@ class Custom():
 
         return [G, labels]
 
+
     def subgoal_routing(self, subgoals, boxes):
+        """
+        Routes the agent between the different subgoals
+        :param subgoals: List of subgoals (goal-box) pars [(g1,b1)..(gn,bn)]
+        :param boxes: List of boxes [[b1x,b1y,b1type],...]
+        :return: Routed solution [[route0],[subgoal0],route[1],...]
+        """
         routed_solution = []
         for goal in subgoals[0]:
             box_row = boxes[goal[0]][0]
@@ -275,10 +290,15 @@ class Custom():
 
         return routed_solution
 
-    #Route the subgoals
 
     def find_best_box(self, goal, boxes, taken):
-        """Finds the best box for a given goal"""
+        """
+        Finds the best box for a given goal
+        :param goal: Target goal
+        :param boxes: List of boxes [[b1x,b1y,b1type],...]
+        :param taken: List of index of taken boxes [taken0, taken1,...]
+        :return: Index of best box
+        """
         goal_row = goal[0]
         goal_col = goal[1]
         goal_type = goal[2]
@@ -301,8 +321,12 @@ class Custom():
         return np.abs(row0 - row1) + np.abs(col0 - col1)
 
 
-
     def solve_subgoals(self):
+        """
+        Use the search-client to find solution to individual subgoals, while not breaking already
+        completed subgoals
+        :return:Total plan of solutions to individual subgoals.
+        """
         #Search for solution to the subgoals
 
         #TODO: RANK SUBGOAL ORDER
@@ -326,7 +350,12 @@ class Custom():
 
         return total_plan
 
+
     def return_solution(self):
+        """
+        Flattens the total_plan into a single list of states
+        :return: The single list of states the constitutes the final plan
+        """
         tot_sol = []
         for subsol in self.solution:
             for state in subsol:
