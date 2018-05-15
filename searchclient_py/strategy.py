@@ -203,10 +203,21 @@ class Custom():
                     if goal_completable == False:
                         G.add_edge(j, i)
 
+        def topological_sort_with_cycles(G):
+            sorted_nodes = []
+            while list(G.nodes):
+                i, in_degree = sorted(G.in_degree, key=lambda x: x[1], reverse=False)[0]
+                G.remove_node(i)
+                sorted_nodes.append(i)
+            return sorted_nodes
+
+        sorted_nodes = topological_sort_with_cycles(G)
+
+
         # Fix completable_goals to also include corner goals that can be missed / excluded otherwise
         # (such as bottom goal in boxesOfHanoi.lvl), i.e. candidate goals have zero in-degree
         nmap = self.state.walls.astype('int')
-        for in_degree, i in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
+        for i, in_degree in sorted(G.in_degree, key=lambda x: x[1], reverse=False):
             if in_degree == 0:
                 goal = goals[i]
                 for b_n, box in enumerate(boxes):
@@ -219,7 +230,7 @@ class Custom():
         #Goal Assignment (on graph)
         taken = [] #List of taken boxes, initialy empty
         gb_pair = [] #List of goal-box pairs
-        for i, in_degree in sorted(G.in_degree, key=lambda x: x[1], reverse=True):
+        for i in sorted_nodes:
             goal = self.state.goal_list[i]
             box = self.find_best_box(goal, boxes, taken) #TODO: MAKE IT USE THE COMPLETEABLE BOXES
             taken.append(box)  # Mark the box as taken
