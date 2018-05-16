@@ -62,7 +62,7 @@ class SearchClient:
                 self.initial_state = State(dims=[row_dim, col_dim], info=self.info)
 
                 if colors:
-                    self.initial_state.colors = colors
+                    self.info.colors = colors
 
                 row = 0
                 for line in line_save:
