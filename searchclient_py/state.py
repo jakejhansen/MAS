@@ -25,7 +25,7 @@ class State:
     _RANDOM = random.Random(1)
 
 
-    def __init__(self, copy: 'State' = None, dims = [70, 70], info = None):
+    def __init__(self, copy: 'State' = None, dims = [50, 50], info = None):
         '''
         If copy is None: Creates an empty State.
         If copy is not None: Creates a copy of the copy state.
