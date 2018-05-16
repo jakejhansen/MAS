@@ -11,10 +11,11 @@ from action import ALL_ACTIONS, ActionType
 from copy import deepcopy
 
 class Info:
-    def __init__(self, dims, agent = None):
+    def __init__(self, dims, colors=None, agent=None):
         self.dims = dims
         self.MAX_ROW, self.MAX_COL = dims
 
+        self.colors = colors
         self.walls = np.array([[False for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)])
         self.goals = np.array([[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)])
 
@@ -25,7 +26,7 @@ class State:
     _RANDOM = random.Random(1)
 
 
-    def __init__(self, copy: 'State' = None, dims = [70, 70], info = None):
+    def __init__(self, copy: 'State' = None, dims = [50, 50], info = None):
         '''
         If copy is None: Creates an empty State.
         If copy is not None: Creates a copy of the copy state.
@@ -43,6 +44,7 @@ class State:
         '''
         self.dims = dims
         State.MAX_ROW, State.MAX_COL = self.dims
+        self.colors = info.colors
         self.walls = info.walls
         self.goals = info.goals
         self.desired_agent = info.agent

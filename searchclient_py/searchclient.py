@@ -27,15 +27,23 @@ class SearchClient:
         if server_messages is not None:
             self.initial_state = None
 
-            colors_re = re.compile(r'^[a-z]+:\s*[0-9A-Z](\s*,\s*[0-9A-Z])*\s*$')
             try:
-                # Read lines for colors
+
                 line = server_messages.readline().rstrip()
-                if colors_re.fullmatch(line) is not None:  # TODO implement colors (merge import.py)
-                    print('Invalid level (client does not support colors).',
-                          file=sys.stderr,
-                          flush=True)
-                    sys.exit(1)
+
+                # Pop all lines about colors before level
+                colors_list = []
+                while '+' not in line: # Test if row is a color information row
+                    colors_list.append(line)
+                    line = server_messages.readline().rstrip()
+
+                # Make dict of {colors:elements}
+                colors = {}
+                for color_line in colors_list:
+                    color_line = "".join(color_line.split())  # strip all whitespace
+                    color, elements = color_line.split(':')
+                    elements = elements.split(',')
+                    colors[color] = elements
 
                 # Read in level, line by line, and detect level size
                 line_save = []
@@ -49,9 +57,12 @@ class SearchClient:
                         col_dim = len(line)
                     line = server_messages.readline().rstrip()
 
-                # Read lines for level.
+                # Write level info into initial state
                 self.info = Info(dims=[row_dim, col_dim])
                 self.initial_state = State(dims=[row_dim, col_dim], info=self.info)
+
+                if colors:
+                    self.info.colors = colors
 
                 row = 0
                 for line in line_save:
