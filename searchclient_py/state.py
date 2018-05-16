@@ -43,6 +43,7 @@ class State:
         '''
         self.dims = dims
         State.MAX_ROW, State.MAX_COL = self.dims
+        self.colors = None
         self.walls = info.walls
         self.goals = info.goals
         self.desired_agent = info.agent
