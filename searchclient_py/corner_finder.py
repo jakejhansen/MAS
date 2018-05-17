@@ -110,6 +110,7 @@ if __name__ == "__main__":
     filename = 'SAsimple3.lvl'
     # filename = 'SAsokobanLevel96.lvl'# import_level()
 
-    _, test_walls, test_goals, _, _, test_raw = import_level(filename, printout=[1, 0, 0, 0, 0])
+    _, test_walls, test_goals, _, _, test_raw = import_level(filename,
+                                                             printout=[1, 0, 0, 0, 0])
 
     test = corner_finder(test_walls, test_goals, print_corners=True)

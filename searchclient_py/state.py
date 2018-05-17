@@ -77,6 +77,8 @@ class State:
 
             self.g = copy.g
 
+            self.desired_agent = copy.desired_agent
+
 
 
     def make_list_representation(self):
@@ -201,15 +203,8 @@ class State:
         if goal_state is not None:
                 for subgoal in goal_state:
                     if len(subgoal) <= 2:
-                        if type(subgoal[1]) == int:
-                            target_box = self.box_list[subgoal[0]]
-                            target_goal = self.goal_list[subgoal[1]]
 
-
-                            if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
-                                return False
-
-                        elif type(subgoal[1]) == list:
+                        if type(subgoal[1]) == list:
                             target_box = self.box_list[subgoal[0]]
                             target_goal = subgoal[1]
                             if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
@@ -217,16 +212,16 @@ class State:
 
                         else:
                             target_box = self.box_list[subgoal[0]]
-                            assert (self.boxes[target_box[0], target_box[1]] == target_box[
-                                2].upper())
                             path = subgoal[1]
                             if path[target_box[0],target_box[1]] == 1:
                                 return False
 
         if self.desired_agent is not None:
             for pos in self.desired_agent:
-                if self.agent_row != pos[0] and self.agent_col != pos[1]:
-                    return False
+                if self.agent_row == pos[0] and self.agent_col == pos[1]:
+                    return True
+
+            return False
 
         return True
 

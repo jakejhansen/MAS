@@ -158,6 +158,43 @@ class SearchClient:
 
             iterations += 1
 
+    def search3(self, strategy, goalstate) -> '[State, ...]':
+        print('Starting search with strategy {}.'.format(strategy), file=sys.stderr,
+              flush=True)
+        strategy.add_to_frontier(self.initial_state)
+
+        iterations = 0
+        while True:
+
+            if iterations >= 1:
+                print("\033[H\033[J") #Stack overflow to clear screen
+                print(leaf) #Print state
+                input() #Wait for user input
+
+            if iterations >= 1000:
+                print(strategy.search_status(), file=sys.stderr, flush=True)
+                iterations = 0
+
+            if memory.get_usage() > memory.max_usage:
+                print('Maximum memory usage exceeded.', file=sys.stderr, flush=True)
+                return None
+
+            if strategy.frontier_empty():
+                return None
+
+            leaf = strategy.get_and_remove_leaf()
+
+            if leaf.is_goal_state2(goalstate):
+                return leaf.extract_plan(), leaf
+
+            strategy.add_to_explored(leaf)
+            for child_state in leaf.get_children():
+                if not strategy.is_explored(child_state) and not strategy.in_frontier(
+                        child_state):
+                    strategy.add_to_frontier(child_state, goalstate)
+
+            iterations += 1
+
 
 def main(strat, lvl, log):
     log_name = strftime("%Y-%m-%d-%H-%M", gmtime())
