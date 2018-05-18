@@ -93,7 +93,7 @@ class Heuristic(metaclass=ABCMeta):
 
         target_boxes = []
         for g in goalstate:
-            if len(g) <= 2 and type(g[1]) == int:
+            if len(g) <= 2 and type(g[1]) == list:
                 target_boxes.append([g[0]])
 
         for i, subgoal in enumerate(goalstate):
@@ -107,11 +107,11 @@ class Heuristic(metaclass=ABCMeta):
 
                     tot_dist += (1 * dist)
 
-                    # act = state.action.action_type
-                    # if (act != action.ActionType.Move):
-                    #     moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
-                    #     if moved_box not in target_boxes:
-                    #         tot_dist += 1
+                    act = state.action.action_type
+                    if (act != action.ActionType.Move):
+                        moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
+                        if moved_box not in target_boxes:
+                            tot_dist += 1
 
                     # If goal is not fulfilled, add the distance from agent to unresolved box.
 
@@ -132,6 +132,10 @@ class Heuristic(metaclass=ABCMeta):
                 tot_dist += self.manhatten_dist(subgoal[0][0] + 1, subgoal[0][1],
                                                    state.agent_row, state.agent_col)
                 act = state.action.action_type
+                if (act != action.ActionType.Move):
+                    moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
+                    if moved_box not in target_boxes:
+                        tot_dist += 1
 
         return tot_dist
 

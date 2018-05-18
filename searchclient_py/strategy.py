@@ -223,14 +223,15 @@ class Custom():
             box_id = self.find_best_box(goal, boxes, taken)
             box = self.state.box_list.tolist()[box_id]
 
-            #Move agent to box
+            #Move agent to box, imaginarily.
             subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
-            solution, self.state = self.move_agt_next_to_box(self.state,
+            solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
                                                              box,
                                                              subgoals)
-            tot_solution.append(solution)
+            #tot_solution.append(solution)
 
-            if not self.path_is_clear([self.state.agent_row, self.state.agent_col],
+            if not self.path_is_clear(state_imaginary,
+                                      [state_imaginary.agent_row, state_imaginary.agent_col],
                                       goal,
                                       box_ignore = box):
 
@@ -250,7 +251,6 @@ class Custom():
                     agent_positions = []
                     for block_box in blocking_boxes[::-1]:
 
-                        #Find out where to place the agent
 
                         pos, path, path_order, agent_pos = self.find_pos_blocks(block_box,
                                                                    blocking_boxes,
@@ -299,9 +299,9 @@ class Custom():
 
         return tot_solution
 
-    def path_is_clear(self, start, finish, box_ignore = None):
-        nmap = self.state.walls.astype('int')
-        nmap[self.state.boxes != None] = 1
+    def path_is_clear(self, state, start, finish, box_ignore = None):
+        nmap = state.walls.astype('int')
+        nmap[state.boxes != None] = 1
         if box_ignore:
             nmap[box_ignore[0]][box_ignore[1]] = 1
 
@@ -350,7 +350,7 @@ class Custom():
 
             client = searchclient.SearchClient(server_messages=None, init_state=state)
 
-            strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
             solution, state = client.search2(strategy, pos[:i+1])
             state.parent = None
             for sol in solution:
@@ -381,9 +381,11 @@ class Custom():
         path = np.zeros_like(state.walls, dtype="int")
         path_order = []
 
-        path[box[0]][box[1]] = 1
+        if box:
+            path[box[0]][box[1]] = 1
+            path_order.append([box[0], box[1]])
+
         path[agent_row][agent_col] = 1
-        path_order.append([box[0], box[1]])
         path_order.append([agent_row, agent_col])
 
         import searchclient
@@ -398,26 +400,28 @@ class Custom():
         if config == "wall":
             client.initial_state.walls[client.initial_state.boxes != None] = 1
 
-        client.initial_state.boxes[client.initial_state.boxes != None] = None
-        client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
-        client.initial_state.box_list = np.array([box], dtype="object")
+        if box:
+            client.initial_state.boxes[client.initial_state.boxes != None] = None
+            client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
+            client.initial_state.box_list = np.array([box], dtype="object")
 
         #Place the agent if there is an agent_input, else agent_loc is defined from state
         client.initial_state.agent_row = agent_row
         client.initial_state.agent_col = agent_col
 
 
-        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
         solution, state = client.search2(strategy, [[0, goal[:2]]])
 
         for sol in solution:
-            box_row = sol.box_list[0][0]
-            box_col = sol.box_list[0][1]
-            path[box_row][box_col] = 1
-            path[sol.agent_row][sol.agent_col] = 1
+            if box:
+                box_row = sol.box_list[0][0]
+                box_col = sol.box_list[0][1]
+                path[box_row][box_col] = 1
+                if [box_row, box_col] not in path_order:
+                    path_order.append([box_row, box_col])
 
-            if [box_row, box_col] not in path_order:
-                path_order.append([box_row, box_col])
+            path[sol.agent_row][sol.agent_col] = 1
             if [sol.agent_row, sol.agent_col] not in path_order:
                 path_order.append([sol.agent_row, sol.agent_col])
 
@@ -429,9 +433,9 @@ class Custom():
         blocking_boxes = []
         for row, col in path_order[1:]:
             for i, box in enumerate(box_list):
-                if box[0] == row and box[1] == col and row != ignore_box[0] and col != \
-                        ignore_box[1]:
-                    blocking_boxes.append(i)
+                if box != ignore_box:
+                    if box[0] == row and box[1] == col and row != ignore_box[0]:
+                        blocking_boxes.append(i)
 
         return blocking_boxes
 
@@ -469,7 +473,7 @@ class Custom():
         client.initial_state.agent_row = agent_row
         client.initial_state.agent_col = agent_col
 
-        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
         solution, state = client.search2(strategy, [[block_box, path]])
 
         for sol in solution:

@@ -213,6 +213,9 @@ class State:
                         else:
                             target_box = self.box_list[subgoal[0]]
                             path = subgoal[1]
+                            if self.action:
+                                if self.action.action_type == ActionType.Pull:
+                                    return False
                             if path[target_box[0],target_box[1]] == 1:
                                 return False
 
