@@ -260,8 +260,14 @@ def main(strat, lvl, log):
                 break
     else:
         # Log info
+
+        directory = "logs/"
+
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
         print('Found solution of length {}.'.format(len(solution)), file=sys.stderr, flush=True)
-        with open("logs/" + log_name, "a") as myfile:
+        with open(directory + log_name, "a") as myfile:
             myfile.write(tabulate([[lvl.ljust(22), format(len(solution)),
                                     "{0:.2f}".format(time.time() - start)]],
                                   tablefmt="plain") + "\n")
