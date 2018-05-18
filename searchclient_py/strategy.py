@@ -306,7 +306,10 @@ class Custom():
             client.initial_state.boxes[client.initial_state.boxes != None] = None
             client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
             client.initial_state.box_list = np.array([box], dtype="object")
-            if False:
+            if self.path_is_clear(client.initial_state,
+                                  [box[0], box[1]],
+                                  goal[:2],
+                                  box_ignore=box):
                 solution, temp_state = client.search2(strategy, [[0, goal[:2]]])
 
                 #Remove old pos
