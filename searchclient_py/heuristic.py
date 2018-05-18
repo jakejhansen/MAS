@@ -39,43 +39,6 @@ class Heuristic(metaclass=ABCMeta):
                     
         return tot_dist
 
-    def h2(self, state: 'State') -> 'int':
-
-        w = np.array(state.walls) != False
-        b = np.array(state.boxes) != None
-
-        condensed = np.array(w | b, dtype=int)
-
-
-        goals = np.array(state.goals)
-        goals_loc = np.argwhere(goals)
-        boxes = np.array(state.boxes)
-        boxes_loc = np.argwhere(boxes)
-
-
-        #Find reachability of goals to boxes:
-        reach = 0
-        for goal in goals_loc:
-            for box in boxes_loc:
-                if boxes[box[0]][box[1]].lower() == goals[goal[0], goal[1]]:
-                    condensed2 = np.copy(condensed)
-                    condensed2[box[0], box[1]] = 0
-                    condensed2[goal[0], goal[1]] = 0
-                    path = pathfinder(condensed2, (box[0], box[1]), (goal[0], goal[1]))
-
-
-                    if path:
-                        reach += len(path)
-                    else:
-                        reach += 100
-
-        #Find distance from goals to boxes:
-        goals_to_boxes = self.h(state)
-
-        #Add them all together:
-        tot_dist = reach
-
-        return tot_dist
 
     def h3(self, state, goalstate):
         """
