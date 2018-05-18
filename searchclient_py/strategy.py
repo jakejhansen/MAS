@@ -210,6 +210,7 @@ class Custom():
                     if all_goals_completeable:
                         completed_goals.append(goal)
                         completed_goals_index.append(i)
+
             counter += 1
             if counter > 100:
                 completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
@@ -294,15 +295,51 @@ class Custom():
             import searchclient
             import strategy
             import heuristic
-            client = searchclient.SearchClient(server_messages=None, init_state=self.state)
+
+            client = searchclient.SearchClient(server_messages=None, init_state=deepcopy(self.state))
             strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-            solution, self.state = client.search2(strategy, subgoals)
-            self.state.parent = None
+            #Set other to walls
+            init_backup = deepcopy(client.initial_state)
+            init_backup.parent = None
+            client.initial_state.walls[client.initial_state.boxes != None] = 1
+            client.initial_state.walls[box[0]][box[1]] = 0
+            client.initial_state.boxes[client.initial_state.boxes != None] = None
+            client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
+            client.initial_state.box_list = np.array([box], dtype="object")
+            if False:
+                solution, temp_state = client.search2(strategy, [[0, goal[:2]]])
+
+                #Remove old pos
+                init_backup.boxes[init_backup.box_list[box_id][0]][
+                    init_backup.box_list[box_id][1]] = None
+                #Put at new pos
+                init_backup.boxes[temp_state.box_list[0][0]][temp_state.box_list[0][1]] = \
+                temp_state.box_list[0][
+                    2].upper()
+
+                init_backup.box_list[box_id] = temp_state.box_list[0]
+                init_backup.agent_col = temp_state.agent_col
+                init_backup.agent_row = temp_state.agent_row
+                temp_state = init_backup
+
+            #Else do the normal thingie and hope it works
+            else:
+                import searchclient
+                import strategy
+                import heuristic
+                client = searchclient.SearchClient(server_messages=None,
+                                                   init_state=deepcopy(self.state))
+                strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+                solution, temp_state = client.search2(strategy, subgoals, display=False)
+                temp_state.parent = None
+
             tot_solution.append(solution)
+            self.state = temp_state
 
             taken.append(box_id)
 
         return tot_solution
+
 
     def path_is_clear(self, state, start, finish, box_ignore = None):
         nmap = state.walls.astype('int')
@@ -335,7 +372,7 @@ class Custom():
         import heuristic
         client = searchclient.SearchClient(server_messages=None, init_state=state)
         client.initial_state.desired_agent = subgoals[-1] #Last subgoal is to move the agent
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
         solution, state = client.search2(strategy, subgoals)
         state.desired_agent = None
         state.parent = None
@@ -377,7 +414,7 @@ class Custom():
             input() #Wait for user input
 
     def find_path_with_blocking(self, goal, box, state, subgoals, agent_row = None, agent_col =
-        None):
+        None, config = "remove"):
 
         if agent_row is None:
             agent_row = state.agent_row
