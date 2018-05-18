@@ -180,6 +180,7 @@ class Custom():
         completed_goals_index = []
 
         #Run through goals in graph
+        counter = 0
         while len(completed_goals) != len(G.nodes):
             for i in G:
                 if i not in completed_goals_index:
@@ -209,9 +210,13 @@ class Custom():
                     if all_goals_completeable:
                         completed_goals.append(goal)
                         completed_goals_index.append(i)
+            counter += 1
+            if counter > 100:
+                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
+                break
 
 
-        sorted_nodes, labels = self.topological_sort_with_cycles(G, labels)
+        #sorted_nodes, labels = self.topological_sort_with_cycles(G, labels)
 
         taken = []
         subgoals = []
@@ -290,7 +295,7 @@ class Custom():
             import strategy
             import heuristic
             client = searchclient.SearchClient(server_messages=None, init_state=self.state)
-            strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
             solution, self.state = client.search2(strategy, subgoals)
             self.state.parent = None
             tot_solution.append(solution)
@@ -303,7 +308,7 @@ class Custom():
         nmap = state.walls.astype('int')
         nmap[state.boxes != None] = 1
         if box_ignore:
-            nmap[box_ignore[0]][box_ignore[1]] = 1
+            nmap[box_ignore[0]][box_ignore[1]] = 0
 
         v = pathfinder(nmap, (start[0], start[1]),
                        (finish[0], finish[1]))
@@ -330,7 +335,7 @@ class Custom():
         import heuristic
         client = searchclient.SearchClient(server_messages=None, init_state=state)
         client.initial_state.desired_agent = subgoals[-1] #Last subgoal is to move the agent
-        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
         solution, state = client.search2(strategy, subgoals)
         state.desired_agent = None
         state.parent = None
