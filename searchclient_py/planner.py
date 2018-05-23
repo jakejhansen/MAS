@@ -107,83 +107,8 @@ class Custom():
             tot_solution.append(solution)
 
             subgoals.append([box_id, goal[:2]])
-            # Move box to goal
-            import searchclient
-            import strategy
-            import heuristic
-
-            len_wall = 10000
-            len_normal = 10000
-
-            #Calculate length of solution with other boxes set to walls
-            client = searchclient.SearchClient(server_messages=None,
-                                               init_state=deepcopy(self.state))
-            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-            # Set other to walls
-            init_backup = deepcopy(client.initial_state)
-            init_backup.parent = None
-            client.initial_state.walls[client.initial_state.boxes != None] = 1
-            client.initial_state.walls[box[0]][box[1]] = 0
-            client.initial_state.boxes[client.initial_state.boxes != None] = None
-            client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
-            client.initial_state.box_list = np.array([box], dtype="object")
-
-            solution_wall = None #Flag for use later
-            if self.path_is_clear(client.initial_state,
-                                  [box[0], box[1]],
-                                  goal[:2],
-                                  box_ignore=box):
-                solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
-                                                      msg="Box {} to Goal {} - No other "
-                                                          "boxes".format(goal,
-                                                          box))
-
-                len_wall = len(solution_wall)
-
-                # Remove old pos
-                init_backup.boxes[init_backup.box_list[box_id][0]][
-                    init_backup.box_list[box_id][1]] = None
-                # Put at new pos
-                init_backup.boxes[temp_state_wall.box_list[0][0]][temp_state_wall.box_list[0][1]]\
-                    = \
-                    temp_state_wall.box_list[0][
-                        2].upper()
-
-                init_backup.box_list[box_id] = temp_state_wall.box_list[0]
-                init_backup.agent_col = temp_state_wall.agent_col
-                init_backup.agent_row = temp_state_wall.agent_row
-                temp_state_wall = init_backup
-
-            #Do the other search
-            import searchclient
-            import strategy
-            import heuristic
-            client = searchclient.SearchClient(server_messages=None,
-                                               init_state=deepcopy(self.state))
-            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-            if solution_wall == None:
-                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
-                                                                    msg="Box {} to Goal{} - With other "
-                                                                        "boxes".format(goal, box))
-
-            else:
-                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
-                                                      msg = "Box {} to Goal{} - With other "
-                                                            "boxes".format(goal, box),
-                                                                    max_time=5)
-
-            if solution_normal:
-                len_normal = len(solution_normal)
-                temp_state_normal.parent = None
-
-
-            if len_wall < (1.5 * len_normal) and solution_wall:
-                solution = solution_wall
-                temp_state = temp_state_wall
-
-            else:
-                solution = solution_normal
-                temp_state = temp_state_normal
+            box = self.state.box_list.tolist()[box_id]
+            solution, temp_state = self.box_to_goal(box, box_id, goal, subgoals)
 
             tot_solution.append(solution)
             self.state = temp_state
@@ -191,6 +116,86 @@ class Custom():
             taken.append(box_id)
 
         return tot_solution
+
+    def box_to_goal(self, box, box_id, goal, subgoals):
+        # Move box to goal
+        import searchclient
+        import strategy
+        import heuristic
+
+        len_wall = 10000
+        len_normal = 10000
+
+        # Calculate length of solution with other boxes set to walls
+        client = searchclient.SearchClient(server_messages=None,
+                                           init_state=deepcopy(self.state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        # Set other to walls
+        init_backup = deepcopy(client.initial_state)
+        init_backup.parent = None
+        client.initial_state.walls[client.initial_state.boxes != None] = 1
+        client.initial_state.walls[box[0]][box[1]] = 0
+        client.initial_state.boxes[client.initial_state.boxes != None] = None
+        client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
+        client.initial_state.box_list = np.array([box], dtype="object")
+
+        solution_wall = None  # Flag for use later
+        if self.path_is_clear(client.initial_state,
+                              [box[0], box[1]],
+                              goal[:2],
+                              box_ignore=box):
+            solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
+                                                            msg="Box {} to Goal {} - No other "
+                                                                "boxes".format(goal,
+                                                                               box))
+
+            len_wall = len(solution_wall)
+
+            # Remove old pos
+            init_backup.boxes[init_backup.box_list[box_id][0]][
+                init_backup.box_list[box_id][1]] = None
+            # Put at new pos
+            init_backup.boxes[temp_state_wall.box_list[0][0]][temp_state_wall.box_list[0][1]] \
+                = \
+                temp_state_wall.box_list[0][
+                    2].upper()
+
+            init_backup.box_list[box_id] = temp_state_wall.box_list[0]
+            init_backup.agent_col = temp_state_wall.agent_col
+            init_backup.agent_row = temp_state_wall.agent_row
+            temp_state_wall = init_backup
+
+        # Do the other search
+        import searchclient
+        import strategy
+        import heuristic
+        client = searchclient.SearchClient(server_messages=None,
+                                           init_state=deepcopy(self.state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        if solution_wall == None:
+            solution_normal, temp_state_normal = client.search2(strategy, subgoals,
+                                                                msg="Box {} to Goal{} - With other "
+                                                                    "boxes".format(goal, box))
+
+        else:
+            solution_normal, temp_state_normal = client.search2(strategy, subgoals,
+                                                                msg="Box {} to Goal{} - With other "
+                                                                    "boxes".format(goal, box),
+                                                                max_time=5)
+
+        if solution_normal:
+            len_normal = len(solution_normal)
+            temp_state_normal.parent = None
+
+        if len_wall < (1.5 * len_normal) and solution_wall:
+            solution = solution_wall
+            temp_state = temp_state_wall
+
+        else:
+            solution = solution_normal
+            temp_state = temp_state_normal
+
+        return solution, temp_state
 
 
     def compute_goalgraph_edges(self, state, G, labels, completed_goals, completed_goals_index,
@@ -281,7 +286,9 @@ class Custom():
             client = searchclient.SearchClient(server_messages=None, init_state=state)
 
             strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-            solution, state = client.search2(strategy, pos[:i + 1])
+            solution, state = client.search2(strategy, pos[:i + 1], allow_pull=False,
+                                             msg="Box {} out of path".format(self.state.box_list[
+                                                                                 p[0]]))
             state.parent = None
             for sol in solution:
                 total_plan.append(sol)
@@ -402,7 +409,8 @@ class Custom():
         client.initial_state.agent_col = agent_col
 
         strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-        solution, state = client.search2(strategy, [[block_box, path]])
+        solution, state = client.search2(strategy, [[block_box, path]],
+                                         msg="Blocking box {} new position".format(block_box))
 
         for sol in solution:
             box_row = sol.box_list[block_box][0]
