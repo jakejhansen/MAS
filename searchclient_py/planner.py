@@ -139,7 +139,6 @@ class Custom():
 
             # Go back to box
             box = self.state.box_list.tolist()[box_id]
-            subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
             solution, self.state = self.move_agt_next_to_box(self.state,
                                                              box,
                                                              subgoals)
@@ -166,7 +165,10 @@ class Custom():
                                   [box[0], box[1]],
                                   goal[:2],
                                   box_ignore=box):
-                solution, temp_state = client.search2(strategy, [[0, goal[:2]]])
+                solution, temp_state = client.search2(strategy, [[0, goal[:2]]],
+                                                      msg="Box {} to Goal {} - No other "
+                                                          "boxes".format(goal,
+                                                          box))
 
                 # Remove old pos
                 init_backup.boxes[init_backup.box_list[box_id][0]][
@@ -189,7 +191,9 @@ class Custom():
                 client = searchclient.SearchClient(server_messages=None,
                                                    init_state=deepcopy(self.state))
                 strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-                solution, temp_state = client.search2(strategy, subgoals, display=False)
+                solution, temp_state = client.search2(strategy, subgoals,
+                                                      msg = "Box {} to Goal{} - With other "
+                                                            "boxes".format(goal, box))
                 temp_state.parent = None
 
             tot_solution.append(solution)
@@ -217,7 +221,7 @@ class Custom():
         Moves the agent next to a given box [row, col, type]
         Args:
             state: current state
-            box: target box [row, col, type
+            box: target box [row, col, type]
 
         Returns:
             state: new state
@@ -226,10 +230,11 @@ class Custom():
         import searchclient
         import strategy
         import heuristic
+        subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
         client = searchclient.SearchClient(server_messages=None, init_state=state)
         client.initial_state.desired_agent = subgoals[-1]  # Last subgoal is to move the agent
         strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
-        solution, state = client.search2(strategy, subgoals)
+        solution, state = client.search2(strategy, subgoals, msg = "Agent to box {}".format(box))
         state.desired_agent = None
         state.parent = None
 
