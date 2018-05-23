@@ -9,6 +9,7 @@ import heapq
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
+from copy import deepcopy
 
 class Custom():
     def __init__(self, init_state):
@@ -28,57 +29,19 @@ class Custom():
         boxes = self.state.box_list
         boxes = boxes.tolist()
 
+        #Make graph and find edges
         G, labels = self.construct_graph()
-
-        completeable_boxes = defaultdict(set)
         completed_goals = []
         completed_goals_index = []
+        G, completed_goals, completed_goals_index = \
+            self.compute_goalgraph_edges(self.state, G, labels, completed_goals, completed_goals_index, boxes)
 
-        # Run through goals in graph
-        counter = 0
-        while len(completed_goals) != len(G.nodes):
-            for i in G:
-                if i not in completed_goals_index:
-                    goal = self.state.goal_list[i]
-                    # Check if completing the goal will block the completion of other goals
-                    nmap = self.state.walls.astype('int')
-                    nmap[goal[0]][
-                        goal[1]] = 1  # Pretend that current goal i is occupied -> make into wall
-                    for g in completed_goals:
-                        nmap[g[0]][g[1]] = 1
-                    all_goals_completeable = True
-                    for j, other_goal in enumerate(self.state.goal_list):
-                        if j != i and j not in completed_goals_index:
-                            goal_completable = False
-                            for b_n, box in enumerate(boxes):
-                                if box[2] == other_goal[2]:  # same type
-                                    v = pathfinder(nmap, (box[0], box[1]),
-                                                   (other_goal[0], other_goal[1]))
-                                    if v:
-                                        goal_completable = True  # goal achievable by *some* box of same type
-                                        completeable_boxes[j].add(
-                                            b_n)  # Goal of index j can be achieved
-                                        # specifically by box of index b_n
-                            if goal_completable == False:
-                                G.add_edge(j, i)
-                                all_goals_completeable = False
-
-                    if all_goals_completeable:
-                        completed_goals.append(goal)
-                        completed_goals_index.append(i)
-
-            counter += 1
-            if counter > 100:
-                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
-                break
-
-        # sorted_nodes, labels = self.topological_sort_with_cycles(G, labels)
 
         taken = []
         subgoals = []
         tot_solution = []
-        from copy import deepcopy
 
+        #Start to solve the subgoals
         for i in completed_goals_index:
             goal = self.state.goal_list[i]
             box_id = self.find_best_box(goal, boxes, taken)
@@ -202,6 +165,46 @@ class Custom():
             taken.append(box_id)
 
         return tot_solution
+
+
+    def compute_goalgraph_edges(self, state, G, labels, completed_goals, completed_goals_index,
+                                boxes):
+        counter = 0
+        while len(completed_goals) != len(G.nodes):
+            for i in G:
+                if i not in completed_goals_index:
+                    goal = state.goal_list[i]
+                    # Check if completing the goal will block the completion of other goals
+                    nmap = state.walls.astype('int')
+                    nmap[goal[0]][
+                        goal[1]] = 1  # Pretend that current goal is occupied -> make into wall
+                    for g in completed_goals:
+                        nmap[g[0]][g[1]] = 1
+                    all_goals_completeable = True
+                    for j, other_goal in enumerate(state.goal_list):
+                        if j != i and j not in completed_goals_index:
+                            goal_completable = False
+                            for b_n, box in enumerate(boxes):
+                                if box[2] == other_goal[2]:  # same type
+                                    v = pathfinder(nmap, (box[0], box[1]),
+                                                   (other_goal[0], other_goal[1]))
+                                    if v:
+                                        goal_completable = True  # goal achievable by *some* box of same type
+
+                            if goal_completable == False:
+                                G.add_edge(j, i)
+                                all_goals_completeable = False
+
+                    if all_goals_completeable:
+                        completed_goals.append(goal)
+                        completed_goals_index.append(i)
+
+            counter += 1
+            if counter > 100:
+                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
+                break
+
+        return G, completed_goals, completed_goals_index
 
     def path_is_clear(self, state, start, finish, box_ignore=None):
         nmap = state.walls.astype('int')
