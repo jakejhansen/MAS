@@ -125,8 +125,16 @@ class SearchClient:
 
             iterations += 1
 
-    def search2(self, strategy, goalstate, display=False) -> '[State, ...]':
-        print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
+    def search2(self, strategy, goalstate, display=False, msg="") -> '[State, ...]':
+
+        if msg == "":
+            print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
+
+        else:
+            search_method = strategy.__repr__()[strategy.__repr__().find("using"):]
+            print('Starting search for: ' + msg + " | " + search_method, file=sys.stderr,
+                  flush=True)
+
         strategy.add_to_frontier(self.initial_state)
 
         iterations = 0
