@@ -4,7 +4,6 @@
 """
 
 import argparse
-import re
 import sys
 import os
 import time
@@ -35,7 +34,7 @@ class SearchClient:
 
                 # Pop all lines about colors before level
                 colors_list = []
-                while '+' not in line: # Test if row is a color information row
+                while '+' not in line:  # Test if row is a color information row
                     colors_list.append(line)
                     line = server_messages.readline().rstrip()
 
@@ -134,9 +133,9 @@ class SearchClient:
 
             if display:
                 if iterations >= 1:
-                    print("\033[H\033[J") #Stack overflow to clear screen
-                    print(leaf) #Print state
-                    input() #Wait for user input
+                    print("\033[H\033[J")  # Stack overflow to clear screen
+                    print(leaf)  # Print state
+                    input()  # Wait for user input
 
             if iterations >= 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
@@ -170,9 +169,9 @@ class SearchClient:
         while True:
 
             if iterations >= 1:
-                print("\033[H\033[J") #Stack overflow to clear screen
-                print(leaf) #Print state
-                input() #Wait for user input
+                print("\033[H\033[J")  # Stack overflow to clear screen
+                print(leaf)  # Print state
+                input()  # Wait for user input
 
             if iterations >= 1000:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
@@ -212,7 +211,7 @@ def main(strat, lvl, log):
     # Use stderr to print to console through server.
     print('SearchClient initializing. I am sending this using the error output stream.',
           file=sys.stderr, flush=True)
-    
+
     # Read level and create the initial state of the problem.
     client = SearchClient(server_messages)
 
