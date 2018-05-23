@@ -8,7 +8,6 @@ import os
 import shutil
 import sys
 import time
-from time import localtime, strftime
 
 from tabulate import tabulate
 
@@ -151,7 +150,6 @@ class SearchClient:
 
 
 def main(strat, lvl, log):
-    log_name = strftime("%Y-%m-%d-%H-%M", localtime())
     start = time.time()
 
     # Read server messages from stdin.
@@ -215,17 +213,14 @@ def main(strat, lvl, log):
     else:
         # Log info
 
-        directory = "logs/"
-
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+        log_name = log
 
         print('Found solution of length {}.'.format(len(solution)), file=sys.stderr, flush=True)
-        with open(directory + log_name, "a") as myfile:
+        with open(log_name, "a") as myfile:
             myfile.write(tabulate([[lvl.ljust(22), format(len(solution)),
                                     "{0:.2f}".format(time.time() - start)]],
                                   tablefmt="plain") + "\n")
-        shutil.copy2('planner.py', "logs/" + log_name + "_planner")
+        shutil.copy2('planner.py',log_name + "_planner")
 
 
 if __name__ == '__main__':
@@ -238,6 +233,7 @@ if __name__ == '__main__':
     parser.add_argument('--lvl', default="",
                         help="Choose to input lvl, mode made when running without server")
     parser.add_argument('--log', default=False, help="Log to file")
+
     args = parser.parse_args()
 
     # Set max memory usage allowed (soft limit).
