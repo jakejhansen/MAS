@@ -1,7 +1,7 @@
-'''
+"""
     Author: Mathias Kaas-Olsen
     Date:   2016-02-11
-'''
+"""
 
 import random
 import numpy as np

@@ -1,16 +1,16 @@
-'''
+"""
     Author: Mathias Kaas-Olsen
     Date:   2016-02-11
-'''
+"""
 
 
 from abc import ABCMeta, abstractmethod
-from state import State
-from pathfinder import pathfinder
+
 import numpy as np
+
 import action
-import sys
-from scipy.spatial.distance import cityblock
+from state import State
+
 
 class Heuristic(metaclass=ABCMeta):
     def __init__(self, initial_state: 'State'):
