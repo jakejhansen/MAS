@@ -16,7 +16,8 @@ import memory
 import shutil
 from state import State
 from state import Info
-from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst, Custom
+from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst
+from planner import Custom
 from heuristic import AStar, WAStar, Greedy
 
 
@@ -279,7 +280,7 @@ def main(strat, lvl, log):
 if __name__ == '__main__':
     # Program arguments.
     parser = argparse.ArgumentParser(description='Simple client based on state-space graph search.')
-    parser.add_argument('--max_memory', metavar='<MB>', type=float, default=512.0,
+    parser.add_argument('--max_memory', metavar='<MB>', type=float, default=3500.0,
                         help='The maximum memory usage allowed in MB (soft limit, default 512).')
     parser.add_argument('--strategy', default="BFS",
                         help='The chosen strategy BFS | DFS | ASTAR | WASTAR | GREEDY')
