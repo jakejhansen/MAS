@@ -7,7 +7,7 @@ import argparse
 import sys
 import os
 import time
-from time import gmtime, strftime
+from time import localtime, strftime
 
 from tabulate import tabulate
 
@@ -199,7 +199,7 @@ class SearchClient:
 
 
 def main(strat, lvl, log):
-    log_name = strftime("%Y-%m-%d-%H-%M", gmtime())
+    log_name = strftime("%Y-%m-%d-%H-%M", time.localtime())
     start = time.time()
 
     # Read server messages from stdin.
