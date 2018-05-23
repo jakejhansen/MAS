@@ -1,6 +1,7 @@
-import numpy as np
 from heapq import *
-import time
+
+import numpy as np
+
 
 # Author: Christian Careaga (christian.careaga7@gmail.com)
 # A* Pathfinding in Python (2.7)

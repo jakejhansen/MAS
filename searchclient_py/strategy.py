@@ -1,20 +1,17 @@
-'''
+"""
     Author: Mathias Kaas-Olsen
     Date:   2016-02-11
-'''
+"""
 
-
+import heapq
 from abc import ABCMeta, abstractmethod
-from collections import deque, defaultdict
+from collections import deque
 from time import perf_counter
-from pathfinder import pathfinder
-from corner_finder import corner_finder
 
 import memory
-import heapq
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
+from state import State
+from heuristic import Heuristic
+
 
 class Strategy(metaclass=ABCMeta):
     def __init__(self):
@@ -45,10 +42,10 @@ class Strategy(metaclass=ABCMeta):
                                              memory.max_usage)
 
     @abstractmethod
-    def get_and_remove_leaf(self) -> 'State': raise NotImplementedError
+    def add_to_frontier(self, state: 'State'): raise NotImplementedError
 
     @abstractmethod
-    def add_to_frontier(self, state: 'State'): raise NotImplementedError
+    def get_and_remove_leaf(self) -> 'State': raise NotImplementedError
 
     @abstractmethod
     def in_frontier(self, state: 'State') -> 'bool': raise NotImplementedError
@@ -64,19 +61,25 @@ class Strategy(metaclass=ABCMeta):
 
 
 class StrategyBFS(Strategy):
+    """
+    add_to_frontier - adds to right
+    get_and_remove_leaf - pops from left
+
+    i.e. acts as a (FIFO) queue
+    """
     def __init__(self):
         super().__init__()
         self.frontier = deque()
         self.frontier_set = set()
 
+    def add_to_frontier(self, state: 'State'):
+        self.frontier.append(state)
+        self.frontier_set.add(state)
+
     def get_and_remove_leaf(self) -> 'State':
         leaf = self.frontier.popleft()
         self.frontier_set.remove(leaf)
         return leaf
-
-    def add_to_frontier(self, state: 'State'):
-        self.frontier.append(state)
-        self.frontier_set.add(state)
 
     def in_frontier(self, state: 'State') -> 'bool':
         return state in self.frontier_set
@@ -92,19 +95,25 @@ class StrategyBFS(Strategy):
 
 
 class StrategyDFS(Strategy):
+    """
+    add_to_frontier - adds to right
+    get_and_remove_leaf - pops from right
+
+    i.e. acts as a (LIFO) queue or stack
+    """
     def __init__(self):
         super().__init__()
         self.frontier = deque()
         self.frontier_set = set()
 
+    def add_to_frontier(self, state: 'State'):
+        self.frontier.append(state)
+        self.frontier_set.add(state)
+
     def get_and_remove_leaf(self) -> 'State':
         leaf = self.frontier.pop()
         self.frontier_set.remove(leaf)
         return leaf
-
-    def add_to_frontier(self, state: 'State'):
-        self.frontier.append(state)
-        self.frontier_set.add(state)
 
     def in_frontier(self, state: 'State') -> 'bool':
         return state in self.frontier_set
@@ -126,18 +135,18 @@ class StrategyBestFirst(Strategy):
         self.frontier_set = set()
         self.frontier = []
 
-    def get_and_remove_leaf(self) -> 'State':
-        leaf = heapq.heappop(self.frontier)
-        leaf = leaf[1]
-        self.frontier_set.remove(leaf)
-        return leaf
-
-    def add_to_frontier(self, state: 'State', goalstate = None):
+    def add_to_frontier(self, state: 'State', goalstate=None):
         if goalstate is None:
             heapq.heappush(self.frontier, (self.heuristic.f(state), state))
         else:
             heapq.heappush(self.frontier, (self.heuristic.f(state, goalstate), state))
         self.frontier_set.add(state)
+
+    def get_and_remove_leaf(self) -> 'State':
+        leaf = heapq.heappop(self.frontier)
+        leaf = leaf[1]
+        self.frontier_set.remove(leaf)
+        return leaf
 
     def in_frontier(self, state: 'State') -> 'bool':
         return state in self.frontier_set

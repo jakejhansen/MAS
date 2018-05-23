@@ -4,7 +4,7 @@ logNames = os.listdir("./logs")
 
 
 for logName in sorted(logNames):
-    if "_strategy" not in logName and ".DS_Store" not in logName:
+    if "_planner" not in logName and ".DS_Store" not in logName:
 
         res = []
         for line in open("logs/" + logName):

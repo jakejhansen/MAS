@@ -227,7 +227,7 @@ def main(strat, lvl, log):
             myfile.write(tabulate([[lvl.ljust(22), format(len(solution)),
                                     "{0:.2f}".format(time.time() - start)]],
                                   tablefmt="plain") + "\n")
-        shutil.copy2('strategy.py', "logs/" + log_name + "_strategy")
+        shutil.copy2('planner.py', "logs/" + log_name + "_planner")
 
 
 if __name__ == '__main__':
