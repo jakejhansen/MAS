@@ -33,26 +33,31 @@ class Custom():
         G, labels = self.construct_graph()
         completed_goals = []
         completed_goals_index = []
-        G, completed_goals, completed_goals_index = \
-            self.compute_goalgraph_edges(self.state, G, labels, completed_goals, completed_goals_index, boxes)
+        # G, completed_goals, completed_goals_index = \
+        #     self.compute_goalgraph_edges(self.state, G, labels, completed_goals, completed_goals_index, boxes)
 
 
         taken = []
         subgoals = []
         tot_solution = []
 
-        for i in completed_goals_index:
-            goal = self.state.goal_list[i]
+        for i in range(len(G)): #Run through all goals
+            completed_goals, completed_goals_index = self.sample_next_goal(self.state, G, labels, completed_goals, completed_goals_index,
+                                self.state.box_list.tolist())
+            goal = self.state.goal_list[completed_goals_index[-1]]
             box_id = self.find_best_box(goal, boxes, taken)
             box = self.state.box_list.tolist()[box_id]
 
             # Move agent to box, imaginarily.
-            subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
-            solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
-                                                                  box,
-                                                                  subgoals)
-            # tot_solution.append(solution)
+            # subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
+            # solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
+            #                                                       box,
+            #                                                       subgoals)
 
+            state_imaginary = deepcopy(self.state)
+            state_imaginary.parent = None
+            state_imaginary.agent_row = box[0]
+            state_imaginary.agent_col = box[1]
             if not self.path_is_clear(state_imaginary,
                                       [state_imaginary.agent_row, state_imaginary.agent_col],
                                       goal,
@@ -146,8 +151,8 @@ class Custom():
                               box_ignore=box):
             solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
                                                             msg="Box {} to Goal {} - No other "
-                                                                "boxes".format(goal,
-                                                                               box))
+                                                                "boxes".format(box,
+                                                                               goal))
 
             len_wall = len(solution_wall)
 
@@ -175,12 +180,12 @@ class Custom():
         if solution_wall == None:
             solution_normal, temp_state_normal = client.search2(strategy, subgoals,
                                                                 msg="Box {} to Goal{} - With other "
-                                                                    "boxes".format(goal, box))
+                                                                    "boxes".format(box, goal))
 
         else:
             solution_normal, temp_state_normal = client.search2(strategy, subgoals,
                                                                 msg="Box {} to Goal{} - With other "
-                                                                    "boxes".format(goal, box),
+                                                                    "boxes".format(box, goal),
                                                                 max_time=5)
 
         if solution_normal:
@@ -236,6 +241,48 @@ class Custom():
                 break
 
         return G, completed_goals, completed_goals_index
+
+
+    def sample_next_goal(self, state, G, labels, completed_goals, completed_goals_index,
+                                boxes):
+        counter = 0
+        while len(completed_goals) != len(G.nodes):
+            for i in G:
+                if i not in completed_goals_index:
+                    goal = state.goal_list[i]
+                    # Check if completing the goal will block the completion of other goals
+                    nmap = state.walls.astype('int')
+                    nmap[goal[0]][
+                        goal[1]] = 1  # Pretend that current goal is occupied -> make into wall
+                    for g in completed_goals:
+                        nmap[g[0]][g[1]] = 1
+                    all_goals_completeable = True
+                    for j, other_goal in enumerate(state.goal_list):
+                        if j != i and j not in completed_goals_index:
+                            goal_completable = False
+                            for b_n, box in enumerate(boxes):
+                                if box[2] == other_goal[2]:  # same type
+                                    v = pathfinder(nmap, (box[0], box[1]),
+                                                   (other_goal[0], other_goal[1]))
+                                    if v:
+                                        goal_completable = True  # goal achievable by *some* box of same type
+
+                            if goal_completable == False:
+                                G.add_edge(j, i)
+                                all_goals_completeable = False
+
+                    if all_goals_completeable:
+                        completed_goals.append(goal)
+                        completed_goals_index.append(i)
+
+                        return completed_goals, completed_goals_index
+
+            counter += 1
+            if counter > 100:
+                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
+                break
+
+        return completed_goals, completed_goals_index
 
     def path_is_clear(self, state, start, finish, box_ignore=None):
         nmap = state.walls.astype('int')
