@@ -62,7 +62,8 @@ class SearchClient:
 
             iterations += 1
 
-    def search2(self, strategy, goalstate, display=False, msg="") -> '[State, ...]':
+    def search2(self, strategy, goalstate, display=False, msg="", max_time = 300) -> '[State, ...]':
+        start = time.perf_counter()
 
         if msg == "":
             print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -87,6 +88,10 @@ class SearchClient:
                 print(strategy.search_status(), file=sys.stderr, flush=True)
                 iterations = 0
 
+            if iterations % 100 == 0:
+                if (time.perf_counter() - start) > max_time:
+                    return None, None
+
             if memory.get_usage() > memory.max_usage:
                 print('Maximum memory usage exceeded.', file=sys.stderr, flush=True)
                 return None
@@ -105,6 +110,7 @@ class SearchClient:
                     strategy.add_to_frontier(child_state, goalstate)
 
             iterations += 1
+
 
     def search3(self, strategy, goalstate) -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr,

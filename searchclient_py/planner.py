@@ -9,6 +9,7 @@ import heapq
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
+from copy import deepcopy
 
 class Custom():
     def __init__(self, init_state):
@@ -28,56 +29,17 @@ class Custom():
         boxes = self.state.box_list
         boxes = boxes.tolist()
 
+        #Make graph and find edges
         G, labels = self.construct_graph()
-
-        completeable_boxes = defaultdict(set)
         completed_goals = []
         completed_goals_index = []
+        G, completed_goals, completed_goals_index = \
+            self.compute_goalgraph_edges(self.state, G, labels, completed_goals, completed_goals_index, boxes)
 
-        # Run through goals in graph
-        counter = 0
-        while len(completed_goals) != len(G.nodes):
-            for i in G:
-                if i not in completed_goals_index:
-                    goal = self.state.goal_list[i]
-                    # Check if completing the goal will block the completion of other goals
-                    nmap = self.state.walls.astype('int')
-                    nmap[goal[0]][
-                        goal[1]] = 1  # Pretend that current goal i is occupied -> make into wall
-                    for g in completed_goals:
-                        nmap[g[0]][g[1]] = 1
-                    all_goals_completeable = True
-                    for j, other_goal in enumerate(self.state.goal_list):
-                        if j != i and j not in completed_goals_index:
-                            goal_completable = False
-                            for b_n, box in enumerate(boxes):
-                                if box[2] == other_goal[2]:  # same type
-                                    v = pathfinder(nmap, (box[0], box[1]),
-                                                   (other_goal[0], other_goal[1]))
-                                    if v:
-                                        goal_completable = True  # goal achievable by *some* box of same type
-                                        completeable_boxes[j].add(
-                                            b_n)  # Goal of index j can be achieved
-                                        # specifically by box of index b_n
-                            if goal_completable == False:
-                                G.add_edge(j, i)
-                                all_goals_completeable = False
-
-                    if all_goals_completeable:
-                        completed_goals.append(goal)
-                        completed_goals_index.append(i)
-
-            counter += 1
-            if counter > 100:
-                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
-                break
-
-        # sorted_nodes, labels = self.topological_sort_with_cycles(G, labels)
 
         taken = []
         subgoals = []
         tot_solution = []
-        from copy import deepcopy
 
         for i in completed_goals_index:
             goal = self.state.goal_list[i]
@@ -150,6 +112,10 @@ class Custom():
             import strategy
             import heuristic
 
+            len_wall = 10000
+            len_normal = 10000
+
+            #Calculate length of solution with other boxes set to walls
             client = searchclient.SearchClient(server_messages=None,
                                                init_state=deepcopy(self.state))
             strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
@@ -161,40 +127,63 @@ class Custom():
             client.initial_state.boxes[client.initial_state.boxes != None] = None
             client.initial_state.boxes[box[0]][box[1]] = box[2].upper()
             client.initial_state.box_list = np.array([box], dtype="object")
+
+            solution_wall = None #Flag for use later
             if self.path_is_clear(client.initial_state,
                                   [box[0], box[1]],
                                   goal[:2],
                                   box_ignore=box):
-                solution, temp_state = client.search2(strategy, [[0, goal[:2]]],
+                solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
                                                       msg="Box {} to Goal {} - No other "
                                                           "boxes".format(goal,
                                                           box))
+
+                len_wall = len(solution_wall)
 
                 # Remove old pos
                 init_backup.boxes[init_backup.box_list[box_id][0]][
                     init_backup.box_list[box_id][1]] = None
                 # Put at new pos
-                init_backup.boxes[temp_state.box_list[0][0]][temp_state.box_list[0][1]] = \
-                    temp_state.box_list[0][
+                init_backup.boxes[temp_state_wall.box_list[0][0]][temp_state_wall.box_list[0][1]]\
+                    = \
+                    temp_state_wall.box_list[0][
                         2].upper()
 
-                init_backup.box_list[box_id] = temp_state.box_list[0]
-                init_backup.agent_col = temp_state.agent_col
-                init_backup.agent_row = temp_state.agent_row
-                temp_state = init_backup
+                init_backup.box_list[box_id] = temp_state_wall.box_list[0]
+                init_backup.agent_col = temp_state_wall.agent_col
+                init_backup.agent_row = temp_state_wall.agent_row
+                temp_state_wall = init_backup
 
-            # Else do the normal thingie and hope it works
+            #Do the other search
+            import searchclient
+            import strategy
+            import heuristic
+            client = searchclient.SearchClient(server_messages=None,
+                                               init_state=deepcopy(self.state))
+            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+            if solution_wall == None:
+                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
+                                                                    msg="Box {} to Goal{} - With other "
+                                                                        "boxes".format(goal, box))
+
             else:
-                import searchclient
-                import strategy
-                import heuristic
-                client = searchclient.SearchClient(server_messages=None,
-                                                   init_state=deepcopy(self.state))
-                strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
-                solution, temp_state = client.search2(strategy, subgoals,
+                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
                                                       msg = "Box {} to Goal{} - With other "
-                                                            "boxes".format(goal, box))
-                temp_state.parent = None
+                                                            "boxes".format(goal, box),
+                                                                    max_time=5)
+
+            if solution_normal:
+                len_normal = len(solution_normal)
+                temp_state_normal.parent = None
+
+
+            if len_wall < (1.5 * len_normal) and solution_wall:
+                solution = solution_wall
+                temp_state = temp_state_wall
+
+            else:
+                solution = solution_normal
+                temp_state = temp_state_normal
 
             tot_solution.append(solution)
             self.state = temp_state
@@ -202,6 +191,46 @@ class Custom():
             taken.append(box_id)
 
         return tot_solution
+
+
+    def compute_goalgraph_edges(self, state, G, labels, completed_goals, completed_goals_index,
+                                boxes):
+        counter = 0
+        while len(completed_goals) != len(G.nodes):
+            for i in G:
+                if i not in completed_goals_index:
+                    goal = state.goal_list[i]
+                    # Check if completing the goal will block the completion of other goals
+                    nmap = state.walls.astype('int')
+                    nmap[goal[0]][
+                        goal[1]] = 1  # Pretend that current goal is occupied -> make into wall
+                    for g in completed_goals:
+                        nmap[g[0]][g[1]] = 1
+                    all_goals_completeable = True
+                    for j, other_goal in enumerate(state.goal_list):
+                        if j != i and j not in completed_goals_index:
+                            goal_completable = False
+                            for b_n, box in enumerate(boxes):
+                                if box[2] == other_goal[2]:  # same type
+                                    v = pathfinder(nmap, (box[0], box[1]),
+                                                   (other_goal[0], other_goal[1]))
+                                    if v:
+                                        goal_completable = True  # goal achievable by *some* box of same type
+
+                            if goal_completable == False:
+                                G.add_edge(j, i)
+                                all_goals_completeable = False
+
+                    if all_goals_completeable:
+                        completed_goals.append(goal)
+                        completed_goals_index.append(i)
+
+            counter += 1
+            if counter > 100:
+                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
+                break
+
+        return G, completed_goals, completed_goals_index
 
     def path_is_clear(self, state, start, finish, box_ignore=None):
         nmap = state.walls.astype('int')
