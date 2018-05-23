@@ -1,148 +1,73 @@
-import numpy as np
-from constants import *
+import sys
+from state import Info
+from state import State
 
 
-def print_level(level):
-    """
-    Print a raw level formatted as a list of strings, without \n.
-    """
-    for row in range(len(level)):
-        for col in range(len(level[0])):
-            print(level[row][col], end='')
-        print('')
+def import_level(server_messages):
 
+    try:
 
-def import_level(filename, printout=(0, 0, 0, 0, 0)):
-    """
-    Imports .lvl text files to color dict and numpy arrays.
-    If position [x,y] is a wall, then walls[x,y] is 1, otherwise 0. etc.
-    INPUT:
-        - filename (string): filename of level
-        - printout ([string]): list of ints that specifies which level elements to print.
-            e.g. [1,1,1,1] will print [raw level & colors, walls, goals, agents, boxes]
-    OUTPUT: tuple with 5 elements:
-                tuple[0]: raw map ([string])
-                tuple[1]: walls (numpy.ndarray)
-                tuple[2]: goals (numpy.ndarray)
-                tuple[3]: agents (numpy.ndarray)
-                tuple[4]: boxes (numpy.ndarray)
-    """
+        line = server_messages.readline().rstrip()
 
-    with open(LEVELS_PATH + filename, 'r') as f:
-        raw = f.readlines()
-
-        # Remove \n at end of every line
-        for i, line in enumerate(raw):
-            raw[i] = line[:-1]
-
-        # Pop all lines about colors before level
-        colors_raw = []
-        while '+' not in raw[0]:
-            colors_raw.append(raw.pop(0))
+        # In case of MA level, pop all first lines about colors before actual level
+        colors_list = []
+        while '+' not in line:  # Test if row is a color information row
+            colors_list.append(line)
+            line = server_messages.readline().rstrip()
 
         # Make dict of {colors:elements}
         colors = {}
-        for line in colors_raw:
-            line = "".join(line.split())  # strip all whitespace
-            color, elements = line.split(':')
+        for color_line in colors_list:
+            color_line = "".join(color_line.split())  # strip all whitespace
+            color, elements = color_line.split(':')
             elements = elements.split(',')
             colors[color] = elements
 
-        # Determine number of rows (nrows) and longest row length (ncols) of level
-        nrows = len(raw)
-        ncols = 0
-        for row in raw:
-            if len(row) > ncols:
-                ncols = len(row)
-
-        # Pad all lines with spaces until longest row length (ncols) for rect level
-        for i, row in enumerate(raw):
-            raw[i] = row.ljust(ncols)
-
-        # Convert rows from strings to lists of chars
-        for i, line in enumerate(raw):
-            raw[i] = list(line)
-
-        raw = np.array(raw)
-
-    # Element types
-    wall_chars = ['+']
-
-    goal_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-                  'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z']
-
-    agent_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-    box_chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-                 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z']
-
-    walls = np.zeros((nrows, ncols), dtype=int)
-    goals = np.zeros((nrows, ncols), dtype=int)
-    agents = np.zeros((nrows, ncols), dtype=int)
-    boxes = np.zeros((nrows, ncols), dtype=int)
-
-    for i, row in enumerate(raw):
-        for j, char in enumerate(row):
-
-            if char in wall_chars:
-                walls[i, j] = 1
-
-            elif char in goal_chars:
-                goals[i, j] = 1
-
-            elif char in agent_chars:
-                agents[i, j] = 1
-
-            elif char in box_chars:
-                boxes[i, j] = 1
-
-            elif char == ' ':
-                continue
-
-            else:
-                raise Exception('Invalid character in .lvl file: {}'.format(char))
-
-    if printout[0]:
-        print('ROWS: {}'.format(nrows))
-        print('COLUMNS: {}'.format(ncols))
-        print()
-        print("COLORS:")
-        for color in colors:
-            print("{}: {}".format(color, colors[color]))
-        print()
-        print('RAW:')
-        print_level(raw)
-        print()
-
-    if printout[1]:
-        print('WALLS:')
-        print(walls)
-        print()
-
-    if printout[2]:
-        print('GOALS:')
-        print(goals)
-        print()
-
-    if printout[3]:
-        print('AGENTS:')
-        print(agents)
-        print()
-
-    if printout[4]:
-        print('BOXES:')
-        print(boxes)
-        print()
-
-    return colors, walls, goals, agents, boxes, raw
+        # Read in level, line by line, and detect level size
+        line_save = []
+        row_dim = 0
+        col_dim = 0
+        while line:
+            line_save.append(line)  # Save current line
+            row_dim += 1
+            if len(line) > col_dim:  # Get max width of level (necessary if not rectangular)
+                col_dim = len(line)
+            line = server_messages.readline().rstrip()
 
 
-# noinspection SpellCheckingInspection
-if __name__ == "__main__":
-    # test_level = "pathfinderTest.lvl"
-    # noinspection SpellCheckingInspection
-    test_level = "SAsokobanLevel96.lvl"
-    # test_level = "MAtbsAppartment.lvl"
+        # Info contains static level data (dims, colors, walls, goals)
+        # State contains dynamic level data (agents, boxes, child states etc.)
+        info = Info(dims=[row_dim, col_dim])
+        initial_state = State(dims=[row_dim, col_dim], info=info)
 
-    level = import_level(test_level, printout=[1, 1, 1, 1, 1])
-    colors, walls, goals, agents, boxes, raw = level
+        # Write level info into "info" and "initial_state"
+        if colors:
+            info.colors = colors
+
+        row = 0
+        for line in line_save:
+            for col, char in enumerate(line):
+                if char == '+':
+                    info.walls[row][col] = True
+                elif char in "0123456789":
+                    if initial_state.agent_row is not None:
+                        print(
+                            'Error, encountered a second agent (client only supports one agent).',
+                            file=sys.stderr,
+                            flush=True)
+                        sys.exit(1)
+                    initial_state.agent_row = row
+                    initial_state.agent_col = col
+                elif char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                    initial_state.boxes[row][col] = char
+                elif char in "abcdefghijklmnopqrstuvwxyz":
+                    info.goals[row][col] = char
+            row += 1
+
+    except Exception as ex:
+        print('Error parsing level: {}.'.format(repr(ex)), file=sys.stderr, flush=True)
+        sys.exit(1)
+
+    initial_state.make_list_representation()
+
+    return info, initial_state
