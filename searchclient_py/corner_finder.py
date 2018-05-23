@@ -1,6 +1,7 @@
+import numpy as np
+
 from import_level import *
 from pathfinder import pathfinder
-import copy
 
 
 def corner_finder(walls, goals, print_corners=False):
