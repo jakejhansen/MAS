@@ -3,14 +3,13 @@
     Date:   2016-02-11
 '''
 
-
 import random
-import sys
 import numpy as np
 from action import ALL_ACTIONS, ActionType
-from copy import deepcopy
+
 
 class Info:
+    """Contains all the static level info: dimensions, colors, walls and goals."""
     def __init__(self, dims, colors=None, agent=None):
         self.dims = dims
         self.MAX_ROW, self.MAX_COL = dims
@@ -25,8 +24,7 @@ class Info:
 class State:
     _RANDOM = random.Random(1)
 
-
-    def __init__(self, copy: 'State' = None, dims = [50, 50], info = None):
+    def __init__(self, copy: 'State' = None, dims=[50, 50], info=None):
         '''
         If copy is None: Creates an empty State.
         If copy is not None: Creates a copy of the copy state.
@@ -56,7 +54,8 @@ class State:
             self.agent_row = None
             self.agent_col = None
 
-            self.boxes = np.array([[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)])
+            self.boxes = np.array(
+                [[None for _ in range(State.MAX_COL)] for _ in range(State.MAX_ROW)])
 
             self.parent = None
             self.action = None
@@ -71,15 +70,12 @@ class State:
             self.parent = copy.parent
             self.action = copy.action
 
-
             self.box_list = copy.box_list.copy()
             self.goal_list = copy.goal_list
 
             self.g = copy.g
 
             self.desired_agent = copy.desired_agent
-
-
 
     def make_list_representation(self):
         loc = np.argwhere(self.goals != None)
@@ -90,13 +86,12 @@ class State:
         for l in loc:
             self.box_list.append([l[0], l[1], self.boxes[l[0]][l[1]].lower()])
 
-        self.box_list = np.array(self.box_list, dtype = "object")
+        self.box_list = np.array(self.box_list, dtype="object")
 
     def get_index_from_list(self, obj, row, col):
         for i, v in enumerate(obj):
             if v[0] == row and v[1] == col:
                 return i
-
 
     def get_children(self) -> '[State, ...]':
         '''
@@ -126,7 +121,8 @@ class State:
                         child = State(self, self.dims, self.info)
                         child.agent_row = new_agent_row
                         child.agent_col = new_agent_col
-                        child.boxes[new_box_row][new_box_col] = self.boxes[new_agent_row][new_agent_col]
+                        child.boxes[new_box_row][new_box_col] = self.boxes[new_agent_row][
+                            new_agent_col]
                         child.boxes[new_agent_row][new_agent_col] = None
                         child.parent = self
                         child.action = action
@@ -159,10 +155,8 @@ class State:
         State._RANDOM.shuffle(children)
         return children
 
-
     def is_initial_state(self) -> 'bool':
         return self.parent is None
-
 
     def is_goal_state(self) -> 'bool':
 
@@ -176,19 +170,19 @@ class State:
         return True
         """
 
-
-        #Convert arrays to np and filter out fields with goals and boxes
-        #ontop of goal fields.
+        # Convert arrays to np and filter out fields with goals and boxes
+        # ontop of goal fields.
         g_list = self.goals[self.goals != None]
         b_list = self.boxes[self.goals != None]
 
-        #Agent is not at desired location
+        # Agent is not at desired location
         if self.desired_agent != None:
-            if not(self.agent_row == self.desired_agent[0] and self.agent_col == self.desired_agent[1]):
+            if not (self.agent_row == self.desired_agent[0] and self.agent_col ==
+                    self.desired_agent[1]):
                 return False
 
-        #If any goal does not have a box, we havn't reached the goal state
-        if not(np.any(np.equal(b_list, None))):
+        # If any goal does not have a box, we havn't reached the goal state
+        if not (np.any(np.equal(b_list, None))):
             if np.sum(g_list) == np.sum(b_list).lower():
                 return True
 
@@ -201,23 +195,23 @@ class State:
         """
 
         if goal_state is not None:
-                for subgoal in goal_state:
-                    if len(subgoal) <= 2:
+            for subgoal in goal_state:
+                if len(subgoal) <= 2:
 
-                        if type(subgoal[1]) == list:
-                            target_box = self.box_list[subgoal[0]]
-                            target_goal = subgoal[1]
-                            if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
-                                return False
+                    if type(subgoal[1]) == list:
+                        target_box = self.box_list[subgoal[0]]
+                        target_goal = subgoal[1]
+                        if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
+                            return False
 
-                        else:
-                            target_box = self.box_list[subgoal[0]]
-                            path = subgoal[1]
-                            if self.action:
-                                if self.action.action_type == ActionType.Pull:
-                                    return False
-                            if path[target_box[0],target_box[1]] == 1:
+                    else:
+                        target_box = self.box_list[subgoal[0]]
+                        path = subgoal[1]
+                        if self.action:
+                            if self.action.action_type == ActionType.Pull:
                                 return False
+                        if path[target_box[0], target_box[1]] == 1:
+                            return False
 
         if self.desired_agent is not None:
             for pos in self.desired_agent:
@@ -228,14 +222,11 @@ class State:
 
         return True
 
-
     def is_free(self, row: 'int', col: 'int') -> 'bool':
         return not self.walls[row][col] and self.boxes[row][col] is None
 
-
     def box_at(self, row: 'int', col: 'int') -> 'bool':
         return self.boxes[row][col] is not None
-
 
     def extract_plan(self) -> '[State, ...]':
         plan = []
@@ -245,7 +236,6 @@ class State:
             state = state.parent
         plan.reverse()
         return plan
-
 
     def __hash__(self):
         if self._hash is None:
@@ -258,13 +248,12 @@ class State:
             # _hash = _hash * prime + hash(self.walls.tostring())
             # self._hash = _hash
             # Hash a tuple of all the relevant parameters, no risk of overflow.
-            self._hash = hash(( self.agent_row,
-                                self.agent_col,
-                                self.boxes.tostring(),
-                                self.goals.tostring(),
-                                self.walls.tostring() ))
+            self._hash = hash((self.agent_row,
+                               self.agent_col,
+                               self.boxes.tostring(),
+                               self.goals.tostring(),
+                               self.walls.tostring()))
         return self._hash
-
 
     def __eq__(self, other):
 
@@ -301,7 +290,5 @@ class State:
             lines.append(''.join(line))
         return '\n'.join(lines)
 
-
     def __lt__(self, other):
         return True
-
