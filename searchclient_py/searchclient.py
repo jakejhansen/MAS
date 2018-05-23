@@ -62,7 +62,9 @@ class SearchClient:
 
             iterations += 1
 
-    def search2(self, strategy, goalstate, display=False, msg="", max_time = 300) -> '[State, ...]':
+    def search2(self, strategy, goalstate, display=False, msg="", max_time = 300, allow_pull =
+    True) \
+            -> '[State, ...]':
         start = time.perf_counter()
 
         if msg == "":
@@ -101,7 +103,7 @@ class SearchClient:
 
             leaf = strategy.get_and_remove_leaf()
 
-            if leaf.is_goal_state2(goalstate):
+            if leaf.is_goal_state2(goalstate, allow_pull):
                 return leaf.extract_plan(), leaf
 
             strategy.add_to_explored(leaf)

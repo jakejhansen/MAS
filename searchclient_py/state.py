@@ -188,7 +188,7 @@ class State:
 
         return False
 
-    def is_goal_state2(self, goal_state) -> 'bool':
+    def is_goal_state2(self, goal_state, allow_pull = True) -> 'bool':
         """ Second iteration of finding goal by using the box_list
 
             Input: goal_state - List of box_index and desired location
@@ -203,6 +203,10 @@ class State:
                         target_goal = subgoal[1]
                         if target_box[0] != target_goal[0] or target_box[1] != target_goal[1]:
                             return False
+                        if allow_pull != True:
+                            if self.action:
+                                if self.action.action_type == ActionType.Pull:
+                                    return False
 
                     else:
                         target_box = self.box_list[subgoal[0]]
@@ -212,6 +216,7 @@ class State:
                                 return False
                         if path[target_box[0], target_box[1]] == 1:
                             return False
+
 
         if self.desired_agent is not None:
             for pos in self.desired_agent:
