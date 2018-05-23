@@ -4,96 +4,34 @@
 """
 
 import argparse
-import sys
 import os
+import shutil
+import sys
 import time
 from time import localtime, strftime
 
 from tabulate import tabulate
 
 import memory
-import shutil
-from state import State
+from heuristic import AStar, WAStar, Greedy
+from import_level import import_level
+from planner import Custom
 from state import Info
 from strategy import StrategyBFS, StrategyDFS, StrategyBestFirst
-from planner import Custom
-from heuristic import AStar, WAStar, Greedy
 
 
 class SearchClient:
     def __init__(self, server_messages, init_state=None, desired_agent_pos=None):
-
         if desired_agent_pos is None:
             desired_agent_pos = [None, None]
+
+        # If level not yet imported, then import level
         if server_messages is not None:
-            self.initial_state = None
-
-            try:
-
-                line = server_messages.readline().rstrip()
-
-                # Pop all lines about colors before level
-                colors_list = []
-                while '+' not in line:  # Test if row is a color information row
-                    colors_list.append(line)
-                    line = server_messages.readline().rstrip()
-
-                # Make dict of {colors:elements}
-                colors = {}
-                for color_line in colors_list:
-                    color_line = "".join(color_line.split())  # strip all whitespace
-                    color, elements = color_line.split(':')
-                    elements = elements.split(',')
-                    colors[color] = elements
-
-                # Read in level, line by line, and detect level size
-                line_save = []
-
-                row_dim = 0
-                col_dim = 0
-                while line:
-                    line_save.append(line)  # Save current line
-                    row_dim += 1
-                    if len(line) > col_dim:  # Get max width of level (necessary if not rectangular)
-                        col_dim = len(line)
-                    line = server_messages.readline().rstrip()
-
-                # Write level info into initial state
-                self.info = Info(dims=[row_dim, col_dim])
-                self.initial_state = State(dims=[row_dim, col_dim], info=self.info)
-
-                if colors:
-                    self.info.colors = colors
-
-                row = 0
-                for line in line_save:
-                    for col, char in enumerate(line):
-                        if char == '+':
-                            self.info.walls[row][col] = True
-                        elif char in "0123456789":
-                            if self.initial_state.agent_row is not None:
-                                print(
-                                    'Error, encountered a second agent (client only supports one agent).',
-                                    file=sys.stderr,
-                                    flush=True)
-                                sys.exit(1)
-                            self.initial_state.agent_row = row
-                            self.initial_state.agent_col = col
-                        elif char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                            self.initial_state.boxes[row][col] = char
-                        elif char in "abcdefghijklmnopqrstuvwxyz":
-                            self.info.goals[row][col] = char
-                    row += 1
-
-            except Exception as ex:
-                print('Error parsing level: {}.'.format(repr(ex)), file=sys.stderr, flush=True)
-                sys.exit(1)
-
-            self.initial_state.make_list_representation()
-
+            self.info, self.initial_state = import_level(server_messages)
         else:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
+
 
     def search(self, strategy) -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -199,7 +137,7 @@ class SearchClient:
 
 
 def main(strat, lvl, log):
-    log_name = strftime("%Y-%m-%d-%H-%M", time.localtime())
+    log_name = strftime("%Y-%m-%d-%H-%M", localtime())
     start = time.time()
 
     # Read server messages from stdin.
