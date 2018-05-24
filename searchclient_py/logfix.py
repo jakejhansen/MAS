@@ -22,6 +22,8 @@ for log_name in sorted(logNames):
                 total_time += float(time)
                 loglines.append([lvl, moves, time])
 
+            loglines = sorted(loglines, key=lambda x:x[0].casefold()) # sort by lvl name, lowercase
+
             with open("logs/" + log_name, "w") as myfile:
                 myfile.write(tabulate(loglines, ["lvl", "len", "time"], tablefmt="plain"))
                 myfile.write("\n\nTotal moves: {}\nTotal time:  {:.2f}".format(total_moves, total_time))
