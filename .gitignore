@@ -156,3 +156,6 @@ $RECYCLE.BIN/
 searchclient_py/.idea/*
 /.idea/inspectionProfiles/Project_Default.xml
 /searchclient_py/logs
+/output
+/output.log
+/output.out
