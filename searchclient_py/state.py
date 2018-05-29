@@ -6,7 +6,7 @@
 import random
 import numpy as np
 from action import ALL_ACTIONS, ActionType
-
+import networkx as nx
 
 class Info:
     """Contains all the static level info: dimensions, colors, walls and goals."""
@@ -19,6 +19,65 @@ class Info:
         self.goals = np.array([[None for _ in range(self.MAX_COL)] for _ in range(self.MAX_ROW)])
 
         self.agent = agent
+
+        self.walls_dict = {}
+        self.walls_graph = None
+        self.all_pairs_shortest_path_dict = {}  # apsp = all pairs shortest path
+
+
+    def walls_to_dict(self):
+        """Convert boolean 2D ndarray to dict of nodes."""
+        nrows = self.dims[0]
+        ncols = self.dims[1]
+        walls = self.walls
+
+        graph_dict = {}
+
+        for i, row in enumerate(walls):
+            if i == 0 or i == nrows - 1:  # row edge assumed to be wall -> skip
+                continue
+            for j, wall in enumerate(row):
+                if j == 0 or j == ncols - 1:  # column edge assumed to be wall -> skip
+                    continue
+                if wall:
+                    continue
+                else:
+                    node = "({},{})".format(i, j)  # node label is e.g. (4,2)
+
+                    graph_dict[node] = self.wall_neighbors(walls, i, j)
+
+        self.walls_dict = graph_dict
+
+    def dict_to_graph(self):
+        self.walls_graph = nx.Graph(self.walls_dict)
+
+    def graph_to_all_pairs_shortest_path_dict(self):
+        self.all_pairs_shortest_path_dict = dict(nx.all_pairs_shortest_path(self.walls_graph))
+
+    def wall_neighbors(self, walls, i, j):
+        neighbor_list = []
+        # Neighbor relative coordinates
+        n = (i - 1, j)
+        s = (i + 1, j)
+        e = (i, j + 1)
+        w = (i, j - 1)
+        # Neighbors are either 0 (non-wall) or 1 (walls)
+        neighbor_n = walls[n]
+        neighbor_s = walls[s]
+        neighbor_w = walls[w]
+        neighbor_e = walls[e]
+        # If neighbor is not wall, add it as node to current
+        if not neighbor_n:
+            neighbor_list.append(str(n).replace(" ", ""))  # node label is e.g. (4,2)
+        if not neighbor_s:
+            neighbor_list.append(str(s).replace(" ", ""))
+        if not neighbor_e:
+            neighbor_list.append(str(e).replace(" ", ""))
+        if not neighbor_w:
+            neighbor_list.append(str(w).replace(" ", ""))
+
+        return neighbor_list
+
 
 
 class State:

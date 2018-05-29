@@ -4,7 +4,6 @@
 """
 
 import argparse
-import os
 import shutil
 import sys
 import time
@@ -30,6 +29,10 @@ class SearchClient:
         else:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
+
+        self.info.walls_to_dict()
+        self.info.dict_to_graph()
+        self.info.graph_to_all_pairs_shortest_path_dict()
 
 
     def search(self, strategy) -> '[State, ...]':
