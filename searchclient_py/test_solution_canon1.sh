@@ -24,7 +24,7 @@ python searchclient.py --max_memory 8192 --lvl "competition_levels/SALobot.lvl" 
 #python searchclient.py --max_memory 8192 --lvl "competition_levels/SANavy.lvl" --strategy "custom" --log $log_name &         # TIME
 python searchclient.py --max_memory 8192 --lvl "competition_levels/SANikrima.lvl" --strategy "custom" --log $log_name &      # PASSED
 python searchclient.py --max_memory 8192 --lvl "competition_levels/SANotHard.lvl" --strategy "custom" --log $log_name &      # PASSED
-#python searchclient.py --max_memory 8192 --lvl "competition_levels/SAPushPush.lvl" --strategy "custom" --log $log_name &     # TIME
+python searchclient.py --max_memory 8192 --lvl "competition_levels/SAPushPush.lvl" --strategy "custom" --log $log_name &     # TIME
 #python searchclient.py --max_memory 8192 --lvl "competition_levels/SAZEROagent.lvl" --strategy "custom" --log $log_name &    # TIME
 python searchclient.py --max_memory 8192 --lvl "competition_levels/SAbAnAnA.lvl" --strategy "custom" --log $log_name &       # PASSED
 python searchclient.py --max_memory 8192 --lvl "competition_levels/SAbongu.lvl" --strategy "custom" --log $log_name &        # PASSED
