@@ -4,7 +4,6 @@
 """
 
 import argparse
-import os
 import shutil
 import sys
 import time
@@ -31,6 +30,12 @@ class SearchClient:
             self.initial_state = init_state
             self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
 
+        self.info.walls_to_dict()
+        self.info.dict_to_graph()
+        self.info.graph_to_all_pairs_shortest_path_dict()
+
+        # test = self.info.all_pairs_shortest_path_dict["(5,36)"]["(9,38)"]
+        # test2 = 2
 
     def search(self, strategy) -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -178,15 +183,15 @@ def main(strat, lvl, log):
     # Ex. 3:
 
     elif strat == "astar":
-        strategy = StrategyBestFirst(AStar(client.initial_state))
+        strategy = StrategyBestFirst(AStar(client.initial_state, client.info))
     elif strat == "wstar":
-        strategy = StrategyBestFirst(WAStar(client.initial_state,
+        strategy = StrategyBestFirst(WAStar(client.initial_state, client.info,
                                             5))  # You can test other W values than 5, but use 5 for the report.
     elif strat == "greedy":
-        strategy = StrategyBestFirst(Greedy(client.initial_state))
+        strategy = StrategyBestFirst(Greedy(client.initial_state, client.info))
 
     elif strat == "custom":
-        strategy = Custom(client.initial_state)
+        strategy = Custom(client.initial_state, client.info)
     else:
         raise Exception("Invalid strategy")
 

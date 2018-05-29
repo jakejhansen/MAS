@@ -1,20 +1,22 @@
-from abc import ABCMeta, abstractmethod
-from collections import deque, defaultdict
-from time import perf_counter
-from pathfinder import pathfinder
-from corner_finder import corner_finder
+from copy import deepcopy
 
 import memory
 import heapq
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
-from copy import deepcopy
+import numpy as np
+
+from corner_finder import corner_finder
+from pathfinder import pathfinder
+
 
 class Custom():
-    def __init__(self, init_state):
+    def __init__(self, init_state, info):
         self.init_state = init_state
         self.state = init_state
+        self.info = info
+
         self.corner_list = corner_finder(self.state.walls.astype('int'), self.state.goals)[0]
 
         self.solution = self.initStrategy()
@@ -48,21 +50,17 @@ class Custom():
             box_id = self.find_best_box(goal, boxes, taken)
             box = self.state.box_list.tolist()[box_id]
 
-            #Solution 1: Uncomment these lines to use this one (find route to box)
-            #subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
-            #solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
-            #                                                      box,
-            #                                                      subgoals)
+            # # Move agent to box, imaginarily.
+            # subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
+            # solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
+            #                                                       box,
+            #                                                       subgoals)
 
 
-            #Solution 2: Uncomment these lines to use this one (place agent next to box without
-            # finding path for doing so)
             state_imaginary = deepcopy(self.state)
             state_imaginary.parent = None
-            #state_imaginary.agent_row = box[0]
-            #state_imaginary.agent_col = box[1]
-
-            #If path is not clear, figure out a way to clear it
+            state_imaginary.agent_row = box[0]
+            state_imaginary.agent_col = box[1]
             if not self.path_is_clear(state_imaginary,
                                       [state_imaginary.agent_row, state_imaginary.agent_col],
                                       goal,
@@ -151,7 +149,7 @@ class Custom():
         # Calculate length of solution with other boxes set to walls
         client = searchclient.SearchClient(server_messages=None,
                                            init_state=deepcopy(self.state))
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         # Set other to walls
         init_backup = deepcopy(client.initial_state)
         init_backup.parent = None
@@ -193,7 +191,7 @@ class Custom():
         import heuristic
         client = searchclient.SearchClient(server_messages=None,
                                            init_state=deepcopy(self.state))
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         if solution_wall == None:
             solution_normal, temp_state_normal = client.search2(strategy, subgoals,
                                                                 msg="Box {} to Goal{} - With other "
@@ -362,7 +360,7 @@ class Custom():
         subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
         client = searchclient.SearchClient(server_messages=None, init_state=state)
         client.initial_state.desired_agent = subgoals[-1]  # Last subgoal is to move the agent
-        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state, client.info))
         solution, state = client.search2(strategy, subgoals, msg = "Agent to box {}".format(box))
         state.desired_agent = None
         state.parent = None
@@ -715,23 +713,22 @@ class Custom():
 
         for i, box in enumerate(boxes):
             if box[2].lower() == goal_type and i not in taken:
-                nmap = self.state.walls.astype('int')
-                v = pathfinder(nmap, (box[0], box[1]),
-                               (goal[0], goal[1]))
-                if v:
-                    dist = len(v)
-                else:
-                    dist = 1000
-                #dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
+                # dist = self.manhattan_dist(box[0], box[1], goal_row, goal_col)
+                dist = self.shortest_path_dist(box[0], box[1], goal_row, goal_col)
                 if dist < best_dist:
                     best_box = i
                     best_dist = dist
 
         return best_box
 
-    def manhatten_dist(self, row0, col0, row1, col1):
+    def manhattan_dist(self, row0, col0, row1, col1):
         """Find the manhatten distance between two points"""
         return np.abs(row0 - row1) + np.abs(col0 - col1)
+
+    def shortest_path_dist(self, row0, col0, row1, col1):
+        """Look up shortest path between two points."""
+        path = self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
+        return len(path) - 1  # subtracting one, i.e. not counting the starting position in list
 
     def solve_subgoals(self):
         """
