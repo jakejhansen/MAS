@@ -48,17 +48,21 @@ class Custom():
             box_id = self.find_best_box(goal, boxes, taken)
             box = self.state.box_list.tolist()[box_id]
 
-            # # Move agent to box, imaginarily.
-            # subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
-            # solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
-            #                                                       box,
-            #                                                       subgoals)
+            #Solution 1: Uncomment these lines to use this one (find route to box)
+            #subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
+            #solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
+            #                                                      box,
+            #                                                      subgoals)
 
 
+            #Solution 2: Uncomment these lines to use this one (place agent next to box without
+            # finding path for doing so)
             state_imaginary = deepcopy(self.state)
             state_imaginary.parent = None
-            state_imaginary.agent_row = box[0]
-            state_imaginary.agent_col = box[1]
+            #state_imaginary.agent_row = box[0]
+            #state_imaginary.agent_col = box[1]
+
+            #If path is not clear, figure out a way to clear it
             if not self.path_is_clear(state_imaginary,
                                       [state_imaginary.agent_row, state_imaginary.agent_col],
                                       goal,
@@ -711,7 +715,14 @@ class Custom():
 
         for i, box in enumerate(boxes):
             if box[2].lower() == goal_type and i not in taken:
-                dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
+                nmap = self.state.walls.astype('int')
+                v = pathfinder(nmap, (box[0], box[1]),
+                               (goal[0], goal[1]))
+                if v:
+                    dist = len(v)
+                else:
+                    dist = 1000
+                #dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
                 if dist < best_dist:
                     best_box = i
                     best_dist = dist
