@@ -9,16 +9,22 @@ from abc import ABCMeta, abstractmethod
 import numpy as np
 
 import action
+from state import Info
 from state import State
 
 
 class Heuristic(metaclass=ABCMeta):
-    def __init__(self, initial_state: 'State'):
-        pass
+    def __init__(self, initial_state: 'State', info: 'Info'):
+        self.info = info
 
     def manhattan_dist(self, row0, col0, row1, col1):
         """Find the manhatten distance between two points"""
         return np.abs(row0 - row1) + np.abs(col0 - col1)
+
+    def shortest_path_dist(self, row0, col0, row1, col1):
+        """Look up shortest path between two points."""
+        path = self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
+        return len(path) - 1  # subtracting one, i.e. not counting the starting position in list
     
     def h(self, state: 'State') -> 'int':
         """
@@ -35,7 +41,8 @@ class Heuristic(metaclass=ABCMeta):
         for box in boxes_loc:
             for goal in goals_loc:
                 if boxes[box[0]][box[1]].lower() == goals[goal[0], goal[1]]:
-                    tot_dist += np.abs(box[0] - goal[0]) + np.abs(box[1] - goal[1])
+                    # tot_dist += np.abs(box[0] - goal[0]) + np.abs(box[1] - goal[1])
+                    tot_dist += self.shortest_path_dist(box[0], box[1], goal[0], goal[1])
                     
         return tot_dist
 
@@ -79,7 +86,10 @@ class Heuristic(metaclass=ABCMeta):
                     # If goal is not fulfilled, add the distance from agent to unresolved box.
 
                     if dist > 0:
-                        dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
+                        # dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
+                        #                                      state.agent_row,
+                        #                                      state.agent_col)
+                        dist_agent_box = self.shortest_path_dist(target_box[0], target_box[1],
                                                              state.agent_row,
                                                              state.agent_col)
 
@@ -89,10 +99,17 @@ class Heuristic(metaclass=ABCMeta):
                     dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
                                                          state.agent_row,
                                                          state.agent_col)
+
+                    dist_agent_box = self.shortest_path_dist(target_box[0], target_box[1],
+                                                         state.agent_row,
+                                                         state.agent_col)
+
                     tot_dist += dist_agent_box
 
             elif i == len(goalstate)-1:
-                tot_dist += self.manhattan_dist(subgoal[0][0] + 1, subgoal[0][1],
+                # tot_dist += self.manhattan_dist(subgoal[0][0] + 1, subgoal[0][1],
+                #                                 state.agent_row, state.agent_col)
+                tot_dist += self.shortest_path_dist(subgoal[0][0] + 1, subgoal[0][1],
                                                 state.agent_row, state.agent_col)
                 act = state.action.action_type
                 if (act != action.ActionType.Move):
@@ -110,8 +127,8 @@ class Heuristic(metaclass=ABCMeta):
 
 
 class AStar(Heuristic):
-    def __init__(self, initial_state: 'State'):
-        super().__init__(initial_state)
+    def __init__(self, initial_state: 'State', info: 'Info'):
+        super().__init__(initial_state, info)
     
     def f(self, state: 'State', goalstate = None) -> 'int':
         if goalstate is None:
@@ -124,8 +141,8 @@ class AStar(Heuristic):
 
 
 class WAStar(Heuristic):
-    def __init__(self, initial_state: 'State', w: 'int'):
-        super().__init__(initial_state)
+    def __init__(self, initial_state: 'State', info: 'Info', w: 'int'):
+        super().__init__(initial_state, info)
         self.w = w
     
     def f(self, state: 'State', goalstate = None) -> 'int':
@@ -136,8 +153,8 @@ class WAStar(Heuristic):
 
 
 class Greedy(Heuristic):
-    def __init__(self, initial_state: 'State'):
-        super().__init__(initial_state)
+    def __init__(self, initial_state: 'State', info: 'Info'):
+        super().__init__(initial_state, info)
     
     def f(self, state: 'State', goalstate = None) -> 'int':
         if goalstate is None:

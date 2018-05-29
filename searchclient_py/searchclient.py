@@ -183,12 +183,12 @@ def main(strat, lvl, log):
     # Ex. 3:
 
     elif strat == "astar":
-        strategy = StrategyBestFirst(AStar(client.initial_state))
+        strategy = StrategyBestFirst(AStar(client.initial_state, client.info))
     elif strat == "wstar":
-        strategy = StrategyBestFirst(WAStar(client.initial_state,
+        strategy = StrategyBestFirst(WAStar(client.initial_state, client.info,
                                             5))  # You can test other W values than 5, but use 5 for the report.
     elif strat == "greedy":
-        strategy = StrategyBestFirst(Greedy(client.initial_state))
+        strategy = StrategyBestFirst(Greedy(client.initial_state, client.info))
 
     elif strat == "custom":
         strategy = Custom(client.initial_state, client.info)

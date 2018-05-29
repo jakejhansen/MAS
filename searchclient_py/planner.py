@@ -146,7 +146,7 @@ class Custom():
         # Calculate length of solution with other boxes set to walls
         client = searchclient.SearchClient(server_messages=None,
                                            init_state=deepcopy(self.state))
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         # Set other to walls
         init_backup = deepcopy(client.initial_state)
         init_backup.parent = None
@@ -188,7 +188,7 @@ class Custom():
         import heuristic
         client = searchclient.SearchClient(server_messages=None,
                                            init_state=deepcopy(self.state))
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         if solution_wall == None:
             solution_normal, temp_state_normal = client.search2(strategy, subgoals,
                                                                 msg="Box {} to Goal{} - With other "
@@ -357,7 +357,7 @@ class Custom():
         subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
         client = searchclient.SearchClient(server_messages=None, init_state=state)
         client.initial_state.desired_agent = subgoals[-1]  # Last subgoal is to move the agent
-        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state, client.info))
         solution, state = client.search2(strategy, subgoals, msg = "Agent to box {}".format(box))
         state.desired_agent = None
         state.parent = None
