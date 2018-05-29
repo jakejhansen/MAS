@@ -9,9 +9,11 @@ from pathfinder import pathfinder
 
 
 class Custom():
-    def __init__(self, init_state):
+    def __init__(self, init_state, info):
         self.init_state = init_state
         self.state = init_state
+        self.info = info
+
         self.corner_list = corner_finder(self.state.walls.astype('int'), self.state.goals)[0]
 
         self.solution = self.initStrategy()
@@ -708,7 +710,8 @@ class Custom():
 
         for i, box in enumerate(boxes):
             if box[2].lower() == goal_type and i not in taken:
-                dist = self.manhattan_dist(box[0], box[1], goal_row, goal_col)
+                # dist = self.manhattan_dist(box[0], box[1], goal_row, goal_col)
+                dist = self.shortest_path_dist(box[0], box[1], goal_row, goal_col)
                 if dist < best_dist:
                     best_box = i
                     best_dist = dist
@@ -718,6 +721,11 @@ class Custom():
     def manhattan_dist(self, row0, col0, row1, col1):
         """Find the manhatten distance between two points"""
         return np.abs(row0 - row1) + np.abs(col0 - col1)
+
+    def shortest_path_dist(self, row0, col0, row1, col1):
+        """Look up shortest path between two points."""
+        path = self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
+        return len(path) - 1  # subtracting one, i.e. not counting the starting position in list
 
     def solve_subgoals(self):
         """

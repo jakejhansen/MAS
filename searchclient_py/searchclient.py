@@ -34,6 +34,8 @@ class SearchClient:
         self.info.dict_to_graph()
         self.info.graph_to_all_pairs_shortest_path_dict()
 
+        # test = self.info.all_pairs_shortest_path_dict["(5,36)"]["(9,38)"]
+        # test2 = 2
 
     def search(self, strategy) -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr, flush=True)
@@ -189,7 +191,7 @@ def main(strat, lvl, log):
         strategy = StrategyBestFirst(Greedy(client.initial_state))
 
     elif strat == "custom":
-        strategy = Custom(client.initial_state)
+        strategy = Custom(client.initial_state, client.info)
     else:
         raise Exception("Invalid strategy")
 
