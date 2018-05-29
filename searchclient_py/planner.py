@@ -1,15 +1,12 @@
-from abc import ABCMeta, abstractmethod
-from collections import deque, defaultdict
-from time import perf_counter
-from pathfinder import pathfinder
-from corner_finder import corner_finder
+from copy import deepcopy
 
-import memory
-import heapq
-import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
-from copy import deepcopy
+import numpy as np
+
+from corner_finder import corner_finder
+from pathfinder import pathfinder
+
 
 class Custom():
     def __init__(self, init_state):
