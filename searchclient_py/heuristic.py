@@ -72,7 +72,9 @@ class Heuristic(metaclass=ABCMeta):
                 if type(subgoal[1]) == list:
                     target_box = state.box_list[subgoal[0]]
                     target_goal = subgoal[1]
-                    dist = self.manhattan_dist(target_box[0], target_box[1], target_goal[0],
+                    # dist = self.manhattan_dist(target_box[0], target_box[1], target_goal[0],
+                    #                            target_goal[1])
+                    dist = self.shortest_path_dist(target_box[0], target_box[1], target_goal[0],
                                                target_goal[1])
 
                     tot_dist += (1 * dist)
@@ -96,10 +98,9 @@ class Heuristic(metaclass=ABCMeta):
                         tot_dist += dist_agent_box
                 else:
                     target_box = state.box_list[subgoal[0]]
-                    dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
-                                                         state.agent_row,
-                                                         state.agent_col)
-
+                    # dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
+                    #                                      state.agent_row,
+                    #                                      state.agent_col)
                     dist_agent_box = self.shortest_path_dist(target_box[0], target_box[1],
                                                          state.agent_row,
                                                          state.agent_col)

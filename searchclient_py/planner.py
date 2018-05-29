@@ -385,7 +385,7 @@ class Custom():
 
             client = searchclient.SearchClient(server_messages=None, init_state=state)
 
-            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+            strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
             solution, state = client.search2(strategy, pos[:i + 1], allow_pull=False,
                                              msg="Box {} out of path".format(self.state.box_list[
                                                                                  p[0]]))
@@ -474,7 +474,7 @@ class Custom():
         client.initial_state.agent_row = agent_row
         client.initial_state.agent_col = agent_col
 
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         solution, state = client.search2(strategy, [[0, goal[:2]]])
 
         for sol in solution:
@@ -564,7 +564,7 @@ class Custom():
         client.initial_state.agent_row = agent_row
         client.initial_state.agent_col = agent_col
 
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state, client.info))
         solution, state = client.search2(strategy, [[block_box, path]],
                                          msg="Blocking box {} new position".format(block_box))
 
