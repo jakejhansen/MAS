@@ -25,7 +25,8 @@ class Heuristic(metaclass=ABCMeta):
         """Look up shortest path between two points."""
         path = self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
         return len(path) - 1  # subtracting one, i.e. not counting the starting position in list
-    
+
+
     def h(self, state: 'State') -> 'int':
         """
         Length between all boxes and all goals.
@@ -44,6 +45,7 @@ class Heuristic(metaclass=ABCMeta):
                     # tot_dist += np.abs(box[0] - goal[0]) + np.abs(box[1] - goal[1])
                     tot_dist += self.shortest_path_dist(box[0], box[1], goal[0], goal[1])
                     
+
         return tot_dist
 
 
@@ -96,7 +98,7 @@ class Heuristic(metaclass=ABCMeta):
                                                              state.agent_col)
 
                         tot_dist += dist_agent_box
-                else:
+                elif i == len(goalstate) - 1:
                     target_box = state.box_list[subgoal[0]]
                     # dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
                     #                                      state.agent_row,
@@ -105,6 +107,11 @@ class Heuristic(metaclass=ABCMeta):
                                                          state.agent_row,
                                                          state.agent_col)
 
+                    # act = state.action.action_type
+                    # if (act != action.ActionType.Move):
+                    #     moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
+                    #     if moved_box != subgoal[0]:
+                    #         tot_dist += 0.5
                     tot_dist += dist_agent_box
 
             elif i == len(goalstate)-1:
@@ -116,7 +123,7 @@ class Heuristic(metaclass=ABCMeta):
                 if (act != action.ActionType.Move):
                     moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]
                     if moved_box not in target_boxes:
-                        tot_dist += 1
+                        tot_dist += 1.5
 
         return tot_dist
 
