@@ -16,7 +16,7 @@ class Heuristic(metaclass=ABCMeta):
     def __init__(self, initial_state: 'State'):
         pass
 
-    def manhatten_dist(self, row0, col0, row1, col1):
+    def manhattan_dist(self, row0, col0, row1, col1):
         """Find the manhatten distance between two points"""
         return np.abs(row0 - row1) + np.abs(col0 - col1)
     
@@ -65,7 +65,7 @@ class Heuristic(metaclass=ABCMeta):
                 if type(subgoal[1]) == list:
                     target_box = state.box_list[subgoal[0]]
                     target_goal = subgoal[1]
-                    dist = self.manhatten_dist(target_box[0], target_box[1], target_goal[0],
+                    dist = self.manhattan_dist(target_box[0], target_box[1], target_goal[0],
                                                target_goal[1])
 
                     tot_dist += (1 * dist)
@@ -79,21 +79,21 @@ class Heuristic(metaclass=ABCMeta):
                     # If goal is not fulfilled, add the distance from agent to unresolved box.
 
                     if dist > 0:
-                        dist_agent_box = self.manhatten_dist(target_box[0], target_box[1],
+                        dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
                                                              state.agent_row,
                                                              state.agent_col)
 
                         tot_dist += dist_agent_box
                 else:
                     target_box = state.box_list[subgoal[0]]
-                    dist_agent_box = self.manhatten_dist(target_box[0], target_box[1],
+                    dist_agent_box = self.manhattan_dist(target_box[0], target_box[1],
                                                          state.agent_row,
                                                          state.agent_col)
                     tot_dist += dist_agent_box
 
             elif i == len(goalstate)-1:
-                tot_dist += self.manhatten_dist(subgoal[0][0] + 1, subgoal[0][1],
-                                                   state.agent_row, state.agent_col)
+                tot_dist += self.manhattan_dist(subgoal[0][0] + 1, subgoal[0][1],
+                                                state.agent_row, state.agent_col)
                 act = state.action.action_type
                 if (act != action.ActionType.Move):
                     moved_box = np.argwhere(state.parent.box_list != state.box_list)[0][0]

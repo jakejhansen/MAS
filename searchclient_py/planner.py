@@ -708,14 +708,14 @@ class Custom():
 
         for i, box in enumerate(boxes):
             if box[2].lower() == goal_type and i not in taken:
-                dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
+                dist = self.manhattan_dist(box[0], box[1], goal_row, goal_col)
                 if dist < best_dist:
                     best_box = i
                     best_dist = dist
 
         return best_box
 
-    def manhatten_dist(self, row0, col0, row1, col1):
+    def manhattan_dist(self, row0, col0, row1, col1):
         """Find the manhatten distance between two points"""
         return np.abs(row0 - row1) + np.abs(col0 - col1)
 
