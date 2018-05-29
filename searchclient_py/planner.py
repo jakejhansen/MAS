@@ -727,8 +727,7 @@ class Custom():
 
     def shortest_path_dist(self, row0, col0, row1, col1):
         """Look up shortest path between two points."""
-        path = self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
-        return len(path) - 1  # subtracting one, i.e. not counting the starting position in list
+        return self.info.all_pairs_shortest_path_dict["({},{})".format(row0, col0)]["({},{})".format(row1, col1)]
 
     def solve_subgoals(self):
         """

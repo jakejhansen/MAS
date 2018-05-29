@@ -32,7 +32,7 @@ class SearchClient:
 
         self.info.walls_to_dict()
         self.info.dict_to_graph()
-        self.info.graph_to_all_pairs_shortest_path_dict()
+        self.info.graph_to_all_pairs_shortest_path_lengths_dict()
 
         # test = self.info.all_pairs_shortest_path_dict["(5,36)"]["(9,38)"]
         # test2 = 2

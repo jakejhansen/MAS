@@ -51,8 +51,8 @@ class Info:
     def dict_to_graph(self):
         self.walls_graph = nx.Graph(self.walls_dict)
 
-    def graph_to_all_pairs_shortest_path_dict(self):
-        self.all_pairs_shortest_path_dict = dict(nx.all_pairs_shortest_path(self.walls_graph))
+    def graph_to_all_pairs_shortest_path_lengths_dict(self):
+        self.all_pairs_shortest_path_dict = dict(nx.all_pairs_shortest_path_length(self.walls_graph))
 
     def wall_neighbors(self, walls, i, j):
         neighbor_list = []
