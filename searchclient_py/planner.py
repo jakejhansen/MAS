@@ -48,11 +48,12 @@ class Custom():
             box_id = self.find_best_box(goal, boxes, taken)
             box = self.state.box_list.tolist()[box_id]
 
-            # Move agent to box, imaginarily.
+            # # Move agent to box, imaginarily.
             # subgoals.append(self.get_adjacent_box_loc([box[0], box[1]]))
             # solution, state_imaginary = self.move_agt_next_to_box(deepcopy(self.state),
             #                                                       box,
             #                                                       subgoals)
+
 
             state_imaginary = deepcopy(self.state)
             state_imaginary.parent = None
@@ -123,6 +124,18 @@ class Custom():
         return tot_solution
 
     def box_to_goal(self, box, box_id, goal, subgoals):
+        """
+        Find a way to move the box to a goal
+        Args:
+            box: [row, col, type]
+            box_id: index of the box in the state.box_list
+            goal: [row, col, type]
+            subgoals: List of subgoals, used to ensure solution maintains earlier solved subgoals.
+
+        Returns:
+            solution: List of states that constitues a solution from input state
+            state: final state after solution has been applied to input state.
+        """
         # Move box to goal
         import searchclient
         import strategy
@@ -205,6 +218,9 @@ class Custom():
 
     def compute_goalgraph_edges(self, state, G, labels, completed_goals, completed_goals_index,
                                 boxes):
+        """
+        Not used atm - Can find goal order from initial condition (not dynamic)
+        """
         counter = 0
         while len(completed_goals) != len(G.nodes):
             for i in G:
@@ -245,6 +261,20 @@ class Custom():
 
     def sample_next_goal(self, state, G, labels, completed_goals, completed_goals_index,
                                 boxes):
+        """
+        Takes the list of currently completed goals and finds the next goal to complete
+        Args:
+            state: type: State
+            G: Graph
+            labels: labels of graph
+            completed_goals: With goals has been completed [[row, col, type], [row, col, type]..]
+            completed_goals_index: index of completed goals [g_index0, g_index3, ...]
+            boxes: list of boxes [[row, col, type],[row,col,type]]
+
+        Returns:
+            completed_goals: Which goals has been completed (one more than the input)
+            completed_goals_index: Index of completed goals (one more than the input)
+        """
         counter = 0
         while len(completed_goals) != len(G.nodes):
             for i in G:
@@ -285,6 +315,17 @@ class Custom():
         return completed_goals, completed_goals_index
 
     def path_is_clear(self, state, start, finish, box_ignore=None):
+        """
+        Finds out of the path from start to finish is clear in the current state.
+        Args:
+            state: type: State
+            start: [start_row, start,col]
+            finish: [finish_row, finish_col]
+            box_ignore: [row, col, type] - Default None, box to be ignored
+
+        Returns:
+            path: If path is clear, a list of visited fields is returned, else it returns False
+        """
         nmap = state.walls.astype('int')
         nmap[state.boxes != None] = 1
         if box_ignore:
@@ -293,7 +334,7 @@ class Custom():
         v = pathfinder(nmap, (start[0], start[1]),
                        (finish[0], finish[1]))
         if v:
-            return True
+            return v
 
         return False
 
@@ -308,6 +349,9 @@ class Custom():
             state: new state
             solution: the solution for getting to the new state
         """
+
+        #TODO: Rewrite so the agent can move blocking boxes
+
         import searchclient
         import strategy
         import heuristic
@@ -322,7 +366,17 @@ class Custom():
         return solution, state
 
     def move_blocking_boxes(self, pos, path, state):
+        """
+        Figure out how to move the blocking boxes out of the way
+        Args:
+            pos: List of position for the blocking boxes
+            path: Not used ATM
+            state: Type: State
 
+        Returns:
+            total_plan: Combined plan for moving all boxes out of the path from input state
+            state: Final state after plan has been carried out
+        """
         total_plan = []
         pos = pos[::-1]  # Reverse pos
         for i, p in enumerate(pos):
@@ -343,7 +397,18 @@ class Custom():
         return total_plan, state
 
     def play_plan(self, plan, wrapped=False):
-        if wrapped:
+        """
+        Plays a given plan in the console, enter to continue
+        Args:
+            plan: A list of states that constitutes a solution
+            wrapped: If the plan is a list of lists [solution1, solution2], set to True to
+                flatten list
+
+        Returns:
+            None: Prints the plan to console, enter to continue
+        """
+
+        if wrapped: #Unwrap plan if needed
             t = []
             for subp in plan:
                 for p in subp:
@@ -357,6 +422,24 @@ class Custom():
 
     def find_path_with_blocking(self, goal, box, state, subgoals, agent_row=None, agent_col=
     None, config="remove"):
+        """
+        Find the path agent to box to goal (agent can be next to box) where all other boxes are
+        removed
+        Args:
+            goal: Target goal [row, col, type]
+            box: Target box [row, col, type]
+            state: Type: State
+            subgoals: List og subgoals [subgoal1, subgoal2]. Can be box, location pairs and other things
+            agent_row / agent_col: Default is None, but can be set outside if we want to find the
+            path without actually moving the agent there with state
+            config: If other boxes should be removed or other boxes should be set to walls
+
+        Returns:
+            solution: List of states in solution
+            state: Final state after solution is found:
+            path: 2d map with 1's where the path is
+            path_order: List of visited fields in path, ordered by first visited [field0, field1,..]
+        """
 
         if agent_row is None:
             agent_row = state.agent_row
@@ -412,6 +495,17 @@ class Custom():
         return solution, state, path, path_order
 
     def find_blocking_path(self, path_order, box_list, ignore_box=None):
+        """
+        Finds the boxes which are in the path and gives them in the order that they appear seen
+        from goal --> box
+        Args:
+            path_order: List of visited fields in path, ordered by first visited [field0, field1,..]
+            box_list: List of boxes [[row, col, type]_0, [row, col, type]_1]
+            ignore_box: Box to be ignored when finding blocking boxes [row, col, type]
+
+        Returns:
+            blocking_boxes: List of the blocking boxes in the path
+        """
         blocking_boxes = []
         for row, col in path_order[1:]:
             for i, box in enumerate(box_list):
@@ -422,6 +516,22 @@ class Custom():
         return blocking_boxes
 
     def find_pos_blocks(self, block_box, blocking_boxes, path, path_order, state):
+        """
+        Takes the list of blocking boxes and finds where to place them out of path
+        Args:
+            block_box: The box that we want to move out of pathj
+            blocking_boxes: List of all blocking boxes
+            path: 2d Map of the path
+            path_order: List of visited fields in path, ordered by first visited [field0, field1,..]
+            state: Type: State
+
+        Returns:
+            pos: Designated position of box
+            path: Union(Path, Path for moving box out of old path). Essentially expands the path
+            path_order: Same as input, where we add to the path_order
+            [agent_row, agent_col]: End position of the agent
+
+        """
         import searchclient
         import strategy
         import heuristic
@@ -475,6 +585,16 @@ class Custom():
         return pos, path, path_order, [agent_row, agent_col]
 
     def topological_sort_with_cycles(self, G, labels):
+        """
+        Runs a topological sort on the graph using cycles
+        Args:
+            G: Graph
+            labels: Labels of graph
+
+        Returns:
+            sorted_nodes: Nodes in sorted order
+            labels: New labels
+        """
         sorted_nodes = []
         while list(G.nodes):
             i, in_degree = sorted(G.in_degree, key=lambda x: x[1], reverse=False)[0]
@@ -484,6 +604,16 @@ class Custom():
         return sorted_nodes, labels
 
     def print_nmap(self, nmap, walls=None):
+        """
+        Small function that can print a path in readable format. Optionally is can also plot the
+        walls
+        Args:
+            nmap: Binary map
+            walls: state.walls
+
+        Returns:
+            None: Prints the nmap to console
+        """
         if walls is not None:
             walls = np.array(walls.copy(), dtype="int")
             walls[nmap != 0] = 2
@@ -499,6 +629,12 @@ class Custom():
             print("")
 
     def draw_graph(self, G, labels):
+        """
+        Draws the graph
+        Args:
+            G: Graph
+            labels: Labels of graph
+        """
         pos = nx.spring_layout(G)  # positions for all nodes
         nx.draw(G, pos=pos, labels=labels, with_labels=True, node_size=800, width=3)
         plt.show()
