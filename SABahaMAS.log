@@ -1,0 +1,131 @@
++++++++++++++++++++
++      0+B        +
++       +a        +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++  A    +         +
++  b    +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++       +         +
++                 +
++++++++++++++++++++
+
+[Move(S)];11211
+[Move(W)];0
+[Move(S)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(W)];0
+[Move(S)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(W,S)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];1
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(W,N)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Move(E)];0
+[Move(N)];0
+[Move(N)];1
+[Pull(S,W)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(W,N)];0
+[Push(E,S)];0
+[Push(S,W)];0
+[Push(W,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Pull(E,S)];0
+[Move(S)];0
+[Move(W)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(S,N)];0
+[Pull(E,N)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,W)];0
+[Push(W,N)];0
+[Push(N,W)];0
+[Push(W,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+d4753be373d4876d1ecdeaee5ff5898fcf8e1c67
+successful
+11213
+100
+ef49d94dea1788506d5283d6e9b592f9fe01491a
+1527696596488

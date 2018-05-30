@@ -1,0 +1,133 @@
+++++++++++++++++++++
++0ZA  Z     Z     a+
++ Z Z    ZZZZ ZZZZZ+
++ Z   Z   Z Z      +
++ Z ZZZ Z Z ZZZZZZ +
++ Z   Z   Z      Z +
++ ZZZ ZZ ZZZZZZZ Z +
++ Z           ZZ   +
++ Z    ZZZZZZZ     +
++ Z  Z        ZZ   +
++ Z ZZZ Z Z Z Z ZZ +
++ ZZZ ZZ ZZ ZZ Z Z +
++ Z            ZZZ +
++ Z    ZZZZZ Z     +
++ Z        Z  ZZZZ +
++ Z ZZZ Z Z Z ZZZZ +
++ Z   Z   Z      Z +
++ ZZZ ZZ ZZZ ZZZZZ +
++ Z            Z   +
++ Z    ZZZZZZZ     +
++ Z     Z  Z   Z   +
++ Z Z Z Z Z Z  Z   +
++ Z Z Z Z Z Z ZZ   +
++              Z   +
++ ZBZZZ Z Z ZZZZZZ +
++ Z   Z   Z      Z +
++ ZZZ ZZ ZZZZZZZ Z +
++ Z            Z   +
++bZ    ZZZZZZZ     +
+++++++++++++++++++++
+
+[Move(S)];1717
+[Pull(N,E)];0
+[Push(E,S)];0
+[Push(E,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,E)];0
+[Push(E,E)];1
+[Push(E,S)];0
+[Push(S,S)];0
+[Push(S,E)];0
+[Push(E,S)];0
+[Push(S,S)];0
+[Push(S,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,S)];0
+[Push(S,S)];1
+[Push(S,S)];0
+[Push(S,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,S)];0
+[Push(S,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,N)];0
+[Push(N,N)];1
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,N)];0
+[Push(N,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];0
+[Push(W,W)];2
+[Push(W,N)];0
+[Push(N,N)];0
+[Push(N,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Push(E,E)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Push(S,S)];0
+[Push(S,W)];0
+[Push(S,S)];0
+[Push(S,W)];0
+[Push(S,E)];0
+[Move(S)];0
+[Move(W)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Move(W)];0
+[Move(W)];0
+[Move(W)];0
+[Move(S)];0
+[Move(S)];0
+[Push(S,S)];0
+[Push(S,E)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Move(S)];0
+[Pull(N,S)];0
+[Push(S,W)];0
+[Push(W,W)];0
+[Push(W,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+[Push(S,S)];0
+12f3ee9d7901a0fe041a338a7e7e3f9b5705af4d
+successful
+1722
+96
+5a48a66b53888c1d08521afd93d45c4af878f14c
+1526656438536

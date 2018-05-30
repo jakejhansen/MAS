@@ -1,0 +1,16 @@
+blue: 0,A,C,E
+red: 1,D
+green: 2,B
++++++++++++++
++0   D  +b a+
++ 2   A +++d+
++ 1  E  +++e+
++C     B c  +
++++++++++++++
+
+73dde43d2d586b8e25ac3bd582d6237ce8749490
+unsuccessful
+0
+0
+91200d2be314a6a3a9be2d076ddee81738d61d79
+1526657250375

@@ -57,8 +57,9 @@ class Custom():
 
             state_imaginary = deepcopy(self.state)
             state_imaginary.parent = None
-            state_imaginary.agent_row = box[0]
-            state_imaginary.agent_col = box[1]
+            if (self.state.MAX_ROW * self.state.MAX_COL) < 120:
+                state_imaginary.agent_row = box[0]
+                state_imaginary.agent_col = box[1]
             if not self.path_is_clear(state_imaginary,
                                       [state_imaginary.agent_row, state_imaginary.agent_col],
                                       goal,
@@ -107,10 +108,14 @@ class Custom():
 
             # Go back to box
             box = self.state.box_list.tolist()[box_id]
-            solution, self.state = self.move_agt_next_to_box(self.state,
-                                                             box,
-                                                             subgoals)
-            tot_solution.append(solution)
+            if not self.path_is_clear(self.state,
+                              [self.state.agent_row, self.state.agent_col],
+                              [box[0], box[1]],
+                              box_ignore=box):
+                solution, self.state = self.move_agt_next_to_box(self.state,
+                                                                 box,
+                                                                 subgoals)
+                tot_solution.append(solution)
 
             subgoals.append([box_id, goal[:2]])
             box = self.state.box_list.tolist()[box_id]
@@ -147,7 +152,7 @@ class Custom():
         # Calculate length of solution with other boxes set to walls
         client = searchclient.SearchClient(server_messages=None,
                                            init_state=deepcopy(self.state))
-        strategy = strategy.StrategyBestFirst(heuristic.AStar(client.initial_state))
+        strategy = strategy.StrategyBestFirst(heuristic.Greedy(client.initial_state))
         # Set other to walls
         init_backup = deepcopy(client.initial_state)
         init_backup.parent = None
@@ -162,26 +167,30 @@ class Custom():
                               [box[0], box[1]],
                               goal[:2],
                               box_ignore=box):
-            solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
-                                                            msg="Box {} to Goal {} - No other "
-                                                                "boxes".format(box,
-                                                                               goal))
+            try:
+                solution_wall, temp_state_wall = client.search2(strategy, [[0, goal[:2]]],
+                                                                msg="Box {} to Goal {} - No other "
+                                                                    "boxes".format(box,
+                                                                                   goal))
 
-            len_wall = len(solution_wall)
+                len_wall = len(solution_wall)
 
-            # Remove old pos
-            init_backup.boxes[init_backup.box_list[box_id][0]][
-                init_backup.box_list[box_id][1]] = None
-            # Put at new pos
-            init_backup.boxes[temp_state_wall.box_list[0][0]][temp_state_wall.box_list[0][1]] \
-                = \
-                temp_state_wall.box_list[0][
-                    2].upper()
+                # Remove old pos
+                init_backup.boxes[init_backup.box_list[box_id][0]][
+                    init_backup.box_list[box_id][1]] = None
+                # Put at new pos
+                init_backup.boxes[temp_state_wall.box_list[0][0]][temp_state_wall.box_list[0][1]] \
+                    = \
+                    temp_state_wall.box_list[0][
+                        2].upper()
 
-            init_backup.box_list[box_id] = temp_state_wall.box_list[0]
-            init_backup.agent_col = temp_state_wall.agent_col
-            init_backup.agent_row = temp_state_wall.agent_row
-            temp_state_wall = init_backup
+                init_backup.box_list[box_id] = temp_state_wall.box_list[0]
+                init_backup.agent_col = temp_state_wall.agent_col
+                init_backup.agent_row = temp_state_wall.agent_row
+                temp_state_wall = init_backup
+
+            except:
+                pass
 
         # Do the other search
         import searchclient
@@ -196,10 +205,16 @@ class Custom():
                                                                     "boxes".format(box, goal))
 
         else:
-            solution_normal, temp_state_normal = client.search2(strategy, subgoals,
-                                                                msg="Box {} to Goal{} - With other "
-                                                                    "boxes".format(box, goal),
-                                                                max_time=5)
+            if len(self.state.goal_list) < 30:
+                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
+                                                                    msg="Box {} to Goal{} - With other "
+                                                                        "boxes".format(box, goal),
+                                                                    max_time=5)
+            else:
+                solution_normal, temp_state_normal = client.search2(strategy, subgoals,
+                                                                    msg="Box {} to Goal{} - With other "
+                                                                        "boxes".format(box, goal),
+                                                                    max_time=1)
 
         if solution_normal:
             len_normal = len(solution_normal)
@@ -309,8 +324,14 @@ class Custom():
 
             counter += 1
             if counter > 100:
-                completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
-                break
+                while True:
+                    for i in range(1,len(G.nodes)):
+                        if i not in completed_goals_index:
+                            completed_goals.append(goal)
+                            completed_goals_index.append(i)
+                            return completed_goals, completed_goals_index
+                #completed_goals_index, labels = self.topological_sort_with_cycles(G, labels)
+                #break
 
         return completed_goals, completed_goals_index
 
@@ -711,7 +732,14 @@ class Custom():
 
         for i, box in enumerate(boxes):
             if box[2].lower() == goal_type and i not in taken:
-                dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
+                nmap = self.state.walls.astype('int')
+                v = pathfinder(nmap, (box[0], box[1]),
+                               (goal[0], goal[1]))
+                if v:
+                    dist = len(v)
+                else:
+                    dist = 1000
+                #dist = self.manhatten_dist(box[0], box[1], goal_row, goal_col)
                 if dist < best_dist:
                     best_box = i
                     best_dist = dist

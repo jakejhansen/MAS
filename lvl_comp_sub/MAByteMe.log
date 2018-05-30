@@ -1,0 +1,16 @@
+red: 0,A
+green: 1,B
+yellow: 2,C
++++++++++++++++++++++++
++a c ++++    B   B   b+
++   0BBBB         1   +
++    ++++       CCC  b+
++2   BBBB       CAC  C+
++++++++++++++++++++++++
+
+1890e266f38701144822ba62c6cb6e087a2a659f
+unsuccessful
+0
+0
+d820f2f6691fae97d2d5d0cd64cd07207dd478c7
+1526656484669

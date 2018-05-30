@@ -1,0 +1,27 @@
+red: 0,A,B,C
+blue: 1,D,E,F
+cyan: 2,G,H,I
+magenta: 3,J,K,L
+    +++++
+    +1 3+
+    +0 2+
+    +F L+
+    +E K+
+    +D J+
+    +C I+
+    +B H+
+    +A G+
+++++++ ++++++
++           +
++           +
++c++f+++i++l+
++b++e+++h++k+
++a++d+++g++j+
++++++++++++++
+
+0f3aad78fcfdd613a45c22a853843cc99f2af42a
+unsuccessful
+0
+0
+3ca7f09f2831a92ce841f4f28d8b3d407d7229c2
+1526656437596

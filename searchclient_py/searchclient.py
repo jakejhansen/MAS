@@ -113,7 +113,7 @@ class SearchClient:
             iterations += 1
 
 
-    def search3(self, strategy, goalstate) -> '[State, ...]':
+    def search3(self, strategy, goalstate, msg=None) -> '[State, ...]':
         print('Starting search with strategy {}.'.format(strategy), file=sys.stderr,
               flush=True)
         strategy.add_to_frontier(self.initial_state)
