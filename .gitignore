@@ -159,3 +159,4 @@ searchclient_py/.idea/*
 /output
 /output.log
 /output.out
+./searchclient_py/__*
