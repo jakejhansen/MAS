@@ -28,11 +28,7 @@ class SearchClient:
             self.info, self.initial_state = import_level(server_messages)
         else:
             self.initial_state = init_state
-            self.info = Info(dims=[init_state.MAX_ROW, init_state.MAX_COL], agent=desired_agent_pos)
-
-        self.info.walls_to_dict()
-        self.info.dict_to_graph()
-        self.info.graph_to_all_pairs_shortest_path_lengths_dict()
+            self.info = init_state.info
 
         # test = self.info.all_pairs_shortest_path_dict["(5,36)"]["(9,38)"]
         # test2 = 2

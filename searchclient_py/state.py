@@ -24,6 +24,9 @@ class Info:
         self.walls_graph = None
         self.all_pairs_shortest_path_dict = {}  # apsp = all pairs shortest path
 
+        self.walls_to_dict()
+        self.dict_to_graph()
+        self.graph_to_all_pairs_shortest_path_lengths_dict()
 
     def walls_to_dict(self):
         """Convert boolean 2D ndarray to dict of nodes."""
